@@ -1,0 +1,12 @@
+.pointer-defualt {
+    cursor: default;
+}
+
+.input-center {
+    margin: 0 auto;
+    float: none;
+}
+
+.center {
+    text-align: center;
+}
