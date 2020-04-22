@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
+    Route::get('profile/{id}/edit', 'ProfileController@edit')->name('editprofile');
+});
