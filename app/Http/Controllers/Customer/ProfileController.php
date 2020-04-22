@@ -8,7 +8,7 @@ use App\User;
 
 class ProfileController extends Controller
 {
-    public function edit($id)
+    public function view($id)
     {
         $banners = [
             0 => [
@@ -21,8 +21,15 @@ class ProfileController extends Controller
             ]
         ];
 
+        $list_title = \DB::table('l_title')
+            ->get();
+
         $user = User::find($id)->with(['profile'])->first();
-        return response()->json($user);
-        return view('customer.profile.app', ['banners' => $banners, 'user' => $user]);
+        return view('customer.profile.app', ['banners' => $banners, 'user' => $user, 'l_title' => $list_title]);
+    }
+
+    public function edit($id)
+    {
+        return '1234';
     }
 }

@@ -2,33 +2,44 @@
 
 @section('title', 'แก้ไขข้อมูลส่วนตัว')
 
+@section('header-css')
+<link rel="stylesheet" href="/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+@endsection
+
 @section('content')
 
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
 
-            <form action="login" method="POST">
-                @csrf
-                <div class="col-lg-12">
-                    <div class="row">
-                        {{var_dump($user)}}
-                        <div class="col-lg-6 form-group input-center">
-                            <input name="email" placeholder="อีเมล์หรือชื่อผู้ใช้" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'อีเมล์หรือชื่อผู้ใช้'"
-                                class="common-input mb-20 form-control" required="" type="text" />
-
-                            <input name="password" placeholder="รหัสผ่าน" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = 'รหัสผ่าน'" class="common-input mb-20 form-control"
-                                required="" type="password" />
-                            <div class="button-group-area center">
-                                <button type="submit" class="genric-btn success radius">เข้าสู่ระบบ</button>
-                                <a href="/forgotPassword" class="genric-btn primary radius">ลืมรหัสผ่าน</a>
-                            </div>
-                        </div>
-
+            <form action="{{ route('editprofile', ['id' => \Auth::user()->id]) }}" method="POST">
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-1">
+                        <label>คำนำหน้า</label>
+                        <select class="form-control">
+                            @foreach ($l_title as $item)
+                            <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
+                                ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>ชื่อ</label>
+                        <input name="first_name" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>นามสกุล</label>
+                        <input name="last_name" type="text" class="form-control" required>
                     </div>
                 </div>
+
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-5">
+                        <label>วัน-เดือน-ปีเกิด</label>
+                        <input name="birth_date" type="text" class="form-control" required>
+                    </div>
+                </div>
+
             </form>
 
         </div>
@@ -36,4 +47,14 @@
 </div>
 
 
+@endsection
+
+@section('footer-js')
+<script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+    $('input[name="birth_date"]').datepicker({
+        maxDate: moment().subtract(18, 'years')
+    });
+</script>
 @endsection

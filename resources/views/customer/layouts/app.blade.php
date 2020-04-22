@@ -187,6 +187,7 @@
     <script src="/js/customer/layouts/owl.carousel.min.js"></script>
     <script src="/js/customer/layouts/mail-script.js"></script>
     <script src="/js/customer/layouts/main.js"></script>
+    <script src="/plugins/moment/moment-locale.js"></script>
     {{-- start import js --}}
     @yield('footer-js')
     {{-- end import js --}}

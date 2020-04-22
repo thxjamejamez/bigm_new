@@ -20,5 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
-    Route::get('profile/{id}/edit', 'ProfileController@edit')->name('editprofile');
+    Route::get('profile/{id}/edit', 'ProfileController@view')->name('editprofile');
+    Route::post('profile/{id}/edit', 'ProfileController@edit')->name('editprofile');
 });
