@@ -10,3 +10,7 @@
 .center {
     text-align: center;
 }
+
+input[readonly] {
+    background-color: white !important;
+}

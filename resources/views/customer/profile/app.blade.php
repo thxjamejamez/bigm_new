@@ -23,22 +23,28 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label>ชื่อ</label>
                         <input name="first_name" type="text" class="form-control" required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label>นามสกุล</label>
                         <input name="last_name" type="text" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-2">
                         <label>วัน-เดือน-ปีเกิด</label>
-                        <input name="birth_date" type="text" class="form-control" required>
+                        <input name="birth_date" type="text" class="form-control" required readonly>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <label>ที่อยู่</label>
+                        <input name="address" type="text" class="form-control">
                     </div>
                 </div>
+
 
             </form>
 
@@ -54,7 +60,10 @@
 
 <script>
     $('input[name="birth_date"]').datepicker({
-        maxDate: moment().subtract(18, 'years')
+        locale: moment().local('th'),
+        format: 'dd-mm-yyyy',
+        autoclose: true,
+        endDate: moment().subtract(18, 'years').toDate()
     });
 </script>
 @endsection
