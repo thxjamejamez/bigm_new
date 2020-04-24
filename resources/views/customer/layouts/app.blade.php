@@ -18,6 +18,8 @@
     <title>{{env('APP_NAME')}} - @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     <!--
     CSS
     ============================================= -->
@@ -36,7 +38,7 @@
     {{-- end import css --}}
 </head>
 
-<body>
+<body style="font-family: 'Kanit', sans-serif !important;">
     <header id="header">
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">

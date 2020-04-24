@@ -9,8 +9,8 @@
   <div class="container">
     <div class="row fullscreen align-items-center justify-content-between">
       <div class="col-lg-6 col-md-6 banner-left">
-        <h6>Wichian Ganchang</h6>
-        <h1>ร้าน วิเชียร์การช่าง</h1>
+        <p>Wichian Ganchang</p>
+        <p style="font-size: 50px">ร้าน วิเชียร์การช่าง</p>
         <!--
         <p>
         รับติดตั้งกระจก รับทำงานเหล็กดัดมุกระจก มุ้งลวด ออกแบบหน้าต่างเหล็กดัด
