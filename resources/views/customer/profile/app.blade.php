@@ -12,7 +12,7 @@
     <div class="container">
         <div class="section-top-border">
 
-            <form action="{{ route('editprofile', ['id' => \Auth::user()->id]) }}" method="POST">
+            <form action="{{ route('editprofile') }}" method="POST">
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-1">
                         <label>คำนำหน้า</label>
@@ -23,29 +23,53 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>ชื่อ</label>
                         <input name="first_name" type="text" class="form-control" required>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>นามสกุล</label>
                         <input name="last_name" type="text" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <label>วัน-เดือน-ปีเกิด</label>
                         <input name="birth_date" type="text" class="form-control" required readonly>
                     </div>
 
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-6">
                         <label>ที่อยู่</label>
                         <input name="address" type="text" class="form-control">
                     </div>
                 </div>
 
-
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label>จังหวัด</label>
+                        <select class="form-control" name="province">
+                            <option value="0">--เลือกจังหวัด--</option>
+                            @foreach ($l_province as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>อำเภอ</label>
+                        <select class="form-control" name="amphure" disabled>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>ตำบล</label>
+                        <select class="form-control" name="district" disabled>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-group-area center">
+                    <button type="submit" class="genric-btn primary-border circle">บันทึก</button>
+                    <button type="reset" class="genric-btn danger-border circle">ยกเลิก</button>
+                </div>
             </form>
 
         </div>
@@ -59,11 +83,69 @@
 <script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
 <script>
+    const elm_province = $('select[name="province"]')
+    const elm_amphure = $('select[name="amphure"]')
+    const elm_district = $('select[name="district"]')
+
     $('input[name="birth_date"]').datepicker({
         locale: moment().local('th'),
         format: 'dd-mm-yyyy',
         autoclose: true,
         endDate: moment().subtract(18, 'years').toDate()
     });
+
+    $(elm_province).on('change', function () {
+        if ($(this).val() == 0) { 
+            $(elm_amphure).empty()
+            $(elm_amphure).prop('disabled', true)
+            $(elm_district).empty()
+            $(elm_district).prop('disabled', true)
+        }else {
+            CallAmphure($(this).val())      
+            $(elm_amphure).prop('disabled', false)
+        }
+    })
+    
+    $(elm_amphure).on('change', function (){
+        if ($(this).val() == 0) { 
+            $(elm_district).empty()
+            $(elm_district).prop('disabled', true)
+        }else {
+            CallDistrict($(this).val())      
+            $(elm_district).prop('disabled', false)
+        }
+    })
+
+    function CallAmphure (province_id) {
+        $.ajax({
+            url: '/api/list/amphure/' + province_id,
+            async: true,
+        }).done(function (response) {
+            $(elm_amphure).empty()
+            let option = `<option value='0'>--เลือกอำเภอ--</option>`
+            if (response.data.length) {
+                response.data.forEach(element => {
+                    option += `<option value='`+element.id+`'>`+element.name+`</option>`
+                });
+            }
+            $(elm_amphure).append(option)
+        })
+    }
+
+    function CallDistrict (amphure_id){
+        $.ajax({
+            url: '/api/list/district/' + amphure_id,
+            async: true,
+        }).done(function (response) {
+            $(elm_district).empty()
+            let option = `<option value='0'>--เลือกตำบล--</option>`
+            if (response.data.length) {
+                response.data.forEach(element => {
+                    option += `<option value='`+element.id+`'>`+element.name+`</option>`
+                });
+            }
+            $(elm_district).append(option)
+        })
+    }
 </script>
 @endsection

@@ -53,8 +53,7 @@
                         <li class="menu-has-children"><a href="">{{ \Auth::user()->name }}</a>
                             <ul>
                                 <li>
-                                    <a class="dropdown-item"
-                                        href="{{ route('editprofile', ['id' => \Auth::user()->id]) }}">แก้ไขข้อมูลส่วนตัว</a>
+                                    <a class="dropdown-item" href="{{ route('editprofile') }}">แก้ไขข้อมูลส่วนตัว</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                         ออกจากระบบ
