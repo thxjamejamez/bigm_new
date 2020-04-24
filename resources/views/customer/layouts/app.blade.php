@@ -49,13 +49,16 @@
                     <ul class="nav-menu">
                         <li><a href="/">หน้าแรก</a></li>
                         <li><a href="about.html">เกี่ยวกับเรา</a></li>
-                        <li><a href="services.html">สินค้า</a></li>
+                        <li><a href="/product">สินค้า</a></li>
                         <li><a href="portfolio.html">ติดต่อ</a></li>
                         @auth
                         <li class="menu-has-children"><a href="">{{ \Auth::user()->name }}</a>
                             <ul>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('editprofile') }}">แก้ไขข้อมูลส่วนตัว</a>
+                                    <a class="dropdown-item" href="{{ route('sendAddress') }}">
+                                        ที่อยู่การติดตั้ง
+                                      </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                         ออกจากระบบ
