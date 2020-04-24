@@ -9,13 +9,13 @@
   <div class="container">
     <div class="row fullscreen align-items-center justify-content-between">
       <div class="col-lg-6 col-md-6 banner-left">
-        <h6>This is me</h6>
-        <h1>Philip Gilbert</h1>
+        <h6>Wichian Ganchang</h6>
+        <h1>ร้าน วิเชียร์การช่าง</h1>
+        <!--
         <p>
-          You will begin to realise why this exercise is called the Dickens Pattern with reference to the ghost
-          showing Scrooge some different futures.
+        รับติดตั้งกระจก รับทำงานเหล็กดัดมุกระจก มุ้งลวด ออกแบบหน้าต่างเหล็กดัด
         </p>
-        <a href="#" class="primary-btn text-uppercase">discover now</a>
+        -->
       </div>
       <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
         <img class="img-fluid" src="/img/customer/img-banner.png" alt="">
@@ -30,7 +30,7 @@
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-lg-6 col-md-6 home-about-left">
-        <img class="img-fluid" src="img/about-img.png" alt="">
+        <img class="img-fluid" src="/img/customer/Design/894myImg.png" alt="">
       </div>
       <div class="col-lg-5 col-md-6 home-about-right">
         <h6>About Me</h6>
@@ -40,7 +40,29 @@
           such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
         </p>
-        <a href="#" class="primary-btn text-uppercase">View Full Details</a>
+        <!-- <a href="#" class="primary-btn text-uppercase">View Full Details</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End home-about Area -->
+
+<!-- Start home-about Area2 -->
+<section class="home-about-area pt-120">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-lg-5 col-md-6 home-about-right">
+        <h6>About Me</h6>
+        <h1 class="text-uppercase">Personal Details</h1>
+        <p>
+          Here, I focus on a range of items and features that we use in life without giving them a second thought.
+          such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        </p>
+        <!-- <a href="#" class="primary-btn text-uppercase">View Full Details</a> -->
+      </div>
+      <div class="col-lg-6 col-md-6 home-about-left">
+        <img class="img-fluid" src="/img/customer/Design/1011myImg.png" alt="">
       </div>
     </div>
   </div>
@@ -53,82 +75,42 @@
     <div class="row d-flex justify-content-center">
       <div class="menu-content  col-lg-7">
         <div class="title text-center">
-          <h1 class="mb-10">My Offered Services</h1>
-          <p>At about this time of year, some months after New Year’s resolutions have been made and kept, or made and
-            neglected.</p>
+          <h1 class="mb-10">Wichian Ganchang Services</h1>
+          <p></p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="single-services">
-          <span class="lnr lnr-pie-chart"></span>
+          <span class="lnr lnr-enter"></span>
           <a href="#">
-            <h4>Web Design</h4>
+            <h4>Product</h4>
           </a>
           <p>
-            “It is not because things are difficult that we do not dare; it is because we do not dare that they are
-            difficult.”
+            หน้าต่างเหล็กดัดสำเร็จรูป สั่งซื้อลายที่คุณชอบเลยได้เลย!
           </p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-services">
-          <span class="lnr lnr-laptop-phone"></span>
+          <span class="lnr lnr-select"></span>
           <a href="#">
-            <h4>Web Development</h4>
+            <h4>Design Product</h4>
           </a>
           <p>
-            If you are an entrepreneur, you know that your success cannot depend on the opinions of others. Like the
-            wind, opinions.
+            ออกแบบหน้าต่างเหล็กดัด ลวดลายตามใจคุณ! มาโชว์ฝีมือกันเลย
           </p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="single-services">
-          <span class="lnr lnr-camera"></span>
+          <span class="lnr lnr-user"></span>
           <a href="#">
-            <h4>Photography</h4>
+            <h4>Contact</h4>
           </a>
           <p>
-            Do you want to be even more successful? Learn to love learning and growth. The more effort you put into
-            improving your skills.
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="single-services">
-          <span class="lnr lnr-picture"></span>
-          <a href="#">
-            <h4>Clipping Path</h4>
-          </a>
-          <p>
-            Hypnosis quit smoking methods maintain caused quite a stir in the medical world over the last two decades.
-            There is a lot of argument.
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="single-services">
-          <span class="lnr lnr-tablet"></span>
-          <a href="#">
-            <h4>Apps Interface</h4>
-          </a>
-          <p>
-            Do you sometimes have the feeling that you’re running into the same obstacles over and over again? Many of
-            my conflicts.
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="single-services">
-          <span class="lnr lnr-rocket"></span>
-          <a href="#">
-            <h4>Graphic Design</h4>
-          </a>
-          <p>
-            You’ve heard the expression, “Just believe it and it will come.” Well, technically, that is true, however,
-            ‘believing’ is not just thinking that.
+            มีปัญหาอะไรไหม ติดต่อเราสิ!
           </p>
         </div>
       </div>
@@ -137,32 +119,7 @@
 </section>
 <!-- End services Area -->
 
-<!-- Start fact Area -->
-<section class="facts-area section-gap" id="facts-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 single-fact">
-        <h1 class="counter">2536</h1>
-        <p>Projects Completed</p>
-      </div>
-      <div class="col-lg-3 col-md-6 single-fact">
-        <h1 class="counter">6784</h1>
-        <p>Happy Clients</p>
-      </div>
-      <div class="col-lg-3 col-md-6 single-fact">
-        <h1 class="counter">2239</h1>
-        <p>Cups of Coffee</p>
-      </div>
-      <div class="col-lg-3 col-md-6 single-fact">
-        <h1 class="counter">435</h1>
-        <p>Real Professionals</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- end fact Area -->
-
-<!-- Start portfolio-area Area -->
+<!-- Start portfolio-area Area 
 <section class="portfolio-area section-gap" id="portfolio">
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -294,9 +251,9 @@
 
   </div>
 </section>
-<!-- End portfolio-area Area -->
+End portfolio-area Area -->
 
-<!-- Start testimonial Area -->
+<!-- Start testimonial Area
 <section class="testimonial-area section-gap">
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -340,9 +297,9 @@
     </div>
   </div>
 </section>
-<!-- End testimonial Area -->
+End testimonial Area -->
 
-<!-- Start price Area -->
+<!-- Start price Area
 <section class="price-area section-gap">
   <div class="container">
     <div class="row d-flex justify-content-center">
@@ -356,16 +313,12 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 single-price">
         <div class="top-part">
-          <h1 class="package-no">01</h1>
-          <h4>Economy</h4>
+          <img class="package-no w-100" src="c1.jpg" alt="">
+          <h4>Product1</h4>
           <p class="mt-10">For the individuals</p>
         </div>
         <div class="package-list">
-          <ul>
-            <li>Secure Online Transfer</li>
-            <li>Unlimited Styles for interface</li>
-            <li>Reliable Customer Service</li>
-          </ul>
+          <img class="w-100" src="c1.jpg" alt="">
         </div>
         <div class="bottom-part">
           <h1>£199.00</h1>
@@ -429,9 +382,9 @@
     </div>
   </div>
 </section>
-<!-- End price Area -->
+End price Area -->
 
-<!-- Start recent-blog Area -->
+<!-- Start recent-blog Area
 <section class="recent-blog-area section-gap">
   <div class="container">
     <div class="row justify-content-center">
@@ -521,7 +474,7 @@
     </div>
   </div>
 </section>
-<!-- end recent-blog Area -->
+end recent-blog Area -->
 
 <!-- Start brands Area -->
 <section class="brands-area">
