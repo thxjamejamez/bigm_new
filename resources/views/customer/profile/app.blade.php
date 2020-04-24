@@ -18,6 +18,7 @@
                     <div class="form-group col-md-1">
                         <label>คำนำหน้า</label>
                         <select class="form-control" name="title">
+                            <option value="0">--เลือก--</option>
                             @foreach ($l_title as $item)
                             <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
                                 ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}</option>
