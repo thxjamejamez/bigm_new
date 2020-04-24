@@ -18,7 +18,6 @@ class CreateCustSendAddressTable extends Migration
             $table->unsignedInteger('cust_id');
             $table->string('address', 100);
             $table->unsignedInteger('district_id');
-            $table->string('map_file', 50)->nullable();
             $table->boolean('defualt');
             $table->boolean('active');
             $table->foreign('cust_id')->references('id')->on('customer_info');
