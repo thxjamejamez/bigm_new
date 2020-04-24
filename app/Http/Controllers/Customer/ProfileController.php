@@ -8,7 +8,7 @@ use App\User;
 
 class ProfileController extends Controller
 {
-    public function view($id)
+    public function view()
     {
         $banners = [
             0 => [
@@ -24,11 +24,14 @@ class ProfileController extends Controller
         $list_title = \DB::table('l_title')
             ->get();
 
-        $user = User::find($id)->with(['profile'])->first();
-        return view('customer.profile.app', ['banners' => $banners, 'user' => $user, 'l_title' => $list_title]);
+        $list_province = \DB::table('l_province')
+            ->get();
+
+        $user = User::find(\Auth::user()->id)->with(['profile'])->first();
+        return view('customer.profile.app', ['banners' => $banners, 'user' => $user, 'l_title' => $list_title, 'l_province' => $list_province]);
     }
 
-    public function edit($id)
+    public function edit()
     {
         return '1234';
     }

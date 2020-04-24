@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +12,9 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix' => 'list', 'namespace' => 'API'], function () {
+    Route::get('amphure/{province_id}', 'ListController@GetAmphureList');
+    Route::get('district/{amphure_id}', 'ListController@GetDistrictList');
 });
