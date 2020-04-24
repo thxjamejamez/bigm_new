@@ -20,6 +20,8 @@ class ProductController extends Controller
             ]
         ];
 
-        return view('customer.product.app', ['banners' => $banners]);
+        $product_by_cate = \App\ProductCate::with('products')->get();
+
+        return view('customer.product.app', ['banners' => $banners, 'products' => $product_by_cate]);
     }
 }
