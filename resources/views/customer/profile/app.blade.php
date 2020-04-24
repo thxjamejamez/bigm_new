@@ -13,10 +13,11 @@
         <div class="section-top-border">
 
             <form action="{{ route('editprofile') }}" method="POST">
+                @csrf
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-1">
                         <label>คำนำหน้า</label>
-                        <select class="form-control">
+                        <select class="form-control" name="title">
                             @foreach ($l_title as $item)
                             <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
                                 ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}</option>
@@ -39,13 +40,11 @@
                         <input name="birth_date" type="text" class="form-control" required readonly>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label>ที่อยู่</label>
                         <input name="address" type="text" class="form-control">
                     </div>
-                </div>
 
-                <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>จังหวัด</label>
                         <select class="form-control" name="province">
@@ -55,17 +54,27 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+
+                <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>อำเภอ</label>
                         <select class="form-control" name="amphure" disabled>
                         </select>
                     </div>
+
                     <div class="form-group col-md-3">
                         <label>ตำบล</label>
                         <select class="form-control" name="district" disabled>
                         </select>
                     </div>
+
+                    <div class="form-group col-md-3">
+                        <label>เบอร์โทร</label>
+                        <input name="tel" type="text" class="form-control" onkeypress="return isNumberKey(event)">
+                    </div>
                 </div>
+
                 <div class="button-group-area center">
                     <button type="submit" class="genric-btn primary-border circle">บันทึก</button>
                     <button type="reset" class="genric-btn danger-border circle">ยกเลิก</button>
@@ -119,7 +128,6 @@
     function CallAmphure (province_id) {
         $.ajax({
             url: '/api/list/amphure/' + province_id,
-            async: true,
         }).done(function (response) {
             $(elm_amphure).empty()
             let option = `<option value='0'>--เลือกอำเภอ--</option>`
@@ -135,7 +143,6 @@
     function CallDistrict (amphure_id){
         $.ajax({
             url: '/api/list/district/' + amphure_id,
-            async: true,
         }).done(function (response) {
             $(elm_district).empty()
             let option = `<option value='0'>--เลือกตำบล--</option>`
@@ -147,5 +154,14 @@
             $(elm_district).append(option)
         })
     }
+
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31 
+        && (charCode < 48 || charCode > 57))
+        return false;
+        return true;
+    }  
 </script>
 @endsection

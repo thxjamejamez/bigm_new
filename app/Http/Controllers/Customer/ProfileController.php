@@ -31,8 +31,19 @@ class ProfileController extends Controller
         return view('customer.profile.app', ['banners' => $banners, 'user' => $user, 'l_title' => $list_title, 'l_province' => $list_province]);
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return '1234';
+        return response()->json($request);
+        \App\Custinfo::updateOrCreate([
+            'user_id' => \Auth::user()->id
+        ], [
+            'title_id' => $request->get('title'),
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'birthdate' => $request->get('birth_date'),
+            'address' => $request->get('address'),
+            'district_id ' => $request->get('district'),
+            'tel' => $request->get('tel'),
+        ]);
     }
 }
