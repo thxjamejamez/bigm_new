@@ -28,14 +28,31 @@ class ProductController extends Controller
         //         return $query->where('created_by', \Auth::user()->id);
         //     });
         // }])->get();
+        $product = \DB::table('product_categories')
+            ->join('products', 'product_categories.id', '=', 'products.category_id')
+            ->where('product_categories.id', 1)
+            ->select(
+                'product_categories.*',
+                'product_categories.name as pd_cate_name',
+                'products.*'
+            )
+            ->get();
 
-        $product_by_cate = \App\ProductCate::with('products')->get();
-        $product_by_cate->map(function ($item, $key) {
-            return $role = 123;
-        });
+        if (isset(\Auth::user()->id)) {
+            $custom_product = \DB::table('product_categories')
+                ->join('products', 'product_categories.id', '=', 'products.category_id')
+                ->where('product_categories.id', 2)
+                ->where('products.created_by', \Auth::user()->id)
+                ->select(
+                    'product_categories.*',
+                    'product_categories.name as pd_cate_name',
+                    'products.*'
+                )
+                ->get();
 
-        return response()->json($product_by_cate);
+            $product = collect($product)->merge($custom_product);
+        }
 
-        return view('customer.product.app', ['banners' => $banners, 'products' => $product_by_cate]);
+        return view('customer.product.app', ['banners' => $banners, 'products' => $product->groupBy('pd_cate_name')]);
     }
 }

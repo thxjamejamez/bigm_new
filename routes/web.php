@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
 });
 Route::get('product', 'Customer\ProductController@view');
-Route::get('cart', 'CartController@view')->name('cart');
+Route::get('cart', 'Customer\CartController@view')->name('cart');
 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::get('/', function () {
