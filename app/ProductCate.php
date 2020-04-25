@@ -11,6 +11,7 @@ class ProductCate extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Products', 'category_id', 'id');
+        return $this->hasMany('App\Products', 'category_id', 'id')->when(isset(\Auth::user()->id), function () {
+        });
     }
 }
