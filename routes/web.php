@@ -20,12 +20,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('product', 'Customer\ProductController@view');
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
     Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
     Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
 });
+Route::get('product', 'Customer\ProductController@view');
+Route::get('cart', 'CartController@view')->name('cart');
 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::get('/', function () {

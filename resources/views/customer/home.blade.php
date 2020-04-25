@@ -9,8 +9,10 @@
   <div class="container">
     <div class="row fullscreen align-items-center justify-content-between">
       <div class="col-lg-6 col-md-6 banner-left">
-        <p>Wichian Ganchang</p>
-        <p style="font-size: 50px">ร้าน วิเชียร์การช่าง</p>
+        <p style="font-size: 40px">Wichian Ganchang</p>
+        <div style="font-size: 50px;margin-top: 50px">
+          <p>ร้าน วิเชียร์การช่าง</p>
+        </div>
         <!--
         <p>
         รับติดตั้งกระจก รับทำงานเหล็กดัดมุกระจก มุ้งลวด ออกแบบหน้าต่างเหล็กดัด
@@ -33,12 +35,10 @@
         <img class="img-fluid" src="/img/customer/Design/894myImg.png" alt="">
       </div>
       <div class="col-lg-5 col-md-6 home-about-right">
-        <h6>About Me</h6>
-        <h1 class="text-uppercase">Personal Details</h1>
-        <p>
-          Here, I focus on a range of items and features that we use in life without giving them a second thought.
-          such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        {{-- <h6>About Me</h6> --}}
+        <p class="text-uppercase" style="font-size: 40px;font-weight: bold">วิเชียร์การช่าง</p>
+        <p style="font-size: 16px">
+          เราคือร้านทำ หน้าต่างเหล็กดัด หรือออกแบบหน้าต่างเอง ประเมินราคาฟรี มีแบบลายสวยๆ และทันสมัยให้เลือกมากมาย เราเลือกใช้แต่วัสดุเกรดดีในการผลิต ใส่ใจทุกรายละเอียดในการติดตั้ง การันตีว่างานดี ฝีมือเยี่ยม ผลิตและติดตั้งโดยทีมช่างมืออาชีพ ชัดเจน จริงใจ ไม่เอาเปรียบลูกค้า ใช้บริการกับเรา วิเชียร์การช่าง ไม่ผิดหวังอย่างแน่นอน!
         </p>
         <!-- <a href="#" class="primary-btn text-uppercase">View Full Details</a> -->
       </div>
@@ -52,13 +52,25 @@
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-lg-5 col-md-6 home-about-right">
-        <h6>About Me</h6>
-        <h1 class="text-uppercase">Personal Details</h1>
-        <p>
-          Here, I focus on a range of items and features that we use in life without giving them a second thought.
-          such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-        </p>
+        {{-- <h6>About Me</h6> --}}
+        {{-- <h1 class="text-uppercase">Personal Details</h1> --}}
+        <div>
+          <div>
+            <div style="font-size: 18px;font-weight: bold">ใช้วัสดุคุณภาพดี</div>
+            <div style="font-size: 16px">เลือกใช้แต่วัสดุคุณภาพสูงในการผลิตเหล็กดัด และอบสีอย่างดี สีอบคุณภาพสูง</div>
+          </div>
+          
+          <div style="margin-top: 20px">
+            <div style="font-size: 18px;font-weight: bold">ประสบการณ์สูง</div>
+            <div style="font-size: 16px">ทีมช่างมีความชำนาญ และประสบการณ์สูงในการผลิตและติดตั้ง</div>
+          </div>
+          
+          <div style="margin-top: 20px">
+            <div style="font-size: 18px;font-weight: bold">มีความรับผิดชอบ</div>
+            <div style="font-size: 16px">ทำงานด้วยใจ และประสบการณ์ เปี่ยมด้วยความรับผิดชอบ ทั้งก่อนและหลังติดตั้ง</div>
+          </div>
+         
+        </div>
         <!-- <a href="#" class="primary-btn text-uppercase">View Full Details</a> -->
       </div>
       <div class="col-lg-6 col-md-6 home-about-left">
@@ -75,7 +87,7 @@
     <div class="row d-flex justify-content-center">
       <div class="menu-content  col-lg-7">
         <div class="title text-center">
-          <h1 class="mb-10">Wichian Ganchang Services</h1>
+          <p class="mb-10" style="font-size: 40px;font-weight: bold;color: black">บริการ วิเชียร์การช่าง</p>
           <p></p>
         </div>
       </div>
@@ -83,9 +95,10 @@
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="single-services">
-          <span class="lnr lnr-enter"></span>
+          {{-- <span class="lnr lnr-enter"></span> --}}
+          <span class="lnr lnr-layers"></span>
           <a href="#">
-            <h4>Product</h4>
+            <p style="font-size: 18px">สินค้า</p>
           </a>
           <p>
             หน้าต่างเหล็กดัดสำเร็จรูป สั่งซื้อลายที่คุณชอบเลยได้เลย!
@@ -96,7 +109,7 @@
         <div class="single-services">
           <span class="lnr lnr-select"></span>
           <a href="#">
-            <h4>Design Product</h4>
+            <p style="font-size: 18px">ออกเเบบสินค้า</p>
           </a>
           <p>
             ออกแบบหน้าต่างเหล็กดัด ลวดลายตามใจคุณ! มาโชว์ฝีมือกันเลย
@@ -107,7 +120,7 @@
         <div class="single-services">
           <span class="lnr lnr-user"></span>
           <a href="#">
-            <h4>Contact</h4>
+            <p style="font-size: 18px">ติดต่อเรา</p>
           </a>
           <p>
             มีปัญหาอะไรไหม ติดต่อเราสิ!

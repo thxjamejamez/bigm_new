@@ -58,7 +58,11 @@
                                     <a class="dropdown-item" href="{{ route('editprofile') }}">แก้ไขข้อมูลส่วนตัว</a>
                                     <a class="dropdown-item" href="{{ route('sendAddress') }}">
                                         ที่อยู่การติดตั้ง
-                                      </a>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('cart') }}">
+                                        ตะกร้าสินค้า
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                         ออกจากระบบ
