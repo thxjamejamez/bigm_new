@@ -33,14 +33,14 @@ class ProfileController extends Controller
 
     public function edit(Request $request)
     {
-        // return response()->json($request['title']);
+        // return response()->json($request);
         \App\Custinfo::updateOrCreate([
             'user_id' => \Auth::user()->id
         ], [
             'title_id' => $request['title'],
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
-            'birthdate' => $request['birth_date'],
+            'birthdate' => ($request['birth_date']) ? date('Y-m-d H:i:s', strtotime($request['birth_date'])) : '',
             'address' => $request['address'],
             'district_id ' => $request['district'],
             'tel' => $request['tel'],

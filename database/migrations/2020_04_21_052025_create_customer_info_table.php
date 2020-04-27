@@ -19,10 +19,10 @@ class CreateCustomerInfoTable extends Migration
             $table->unsignedInteger('title_id');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
-            $table->date('birthdate');
-            $table->string('address', 100);
-            $table->unsignedInteger('district_id');
-            $table->string('tel', 20);
+            $table->date('birthdate')->nullable();
+            $table->string('address', 100)->nullable();
+            $table->unsignedInteger('district_id')->nullable();
+            $table->string('tel', 20)->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('title_id')->references('id')->on('l_title');
             $table->foreign('district_id')->references('id')->on('l_district');
