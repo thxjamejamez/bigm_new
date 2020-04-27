@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
     Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
     Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
+    Route::get('payment', 'PaymentController@view')->name('payment');
+
 });
 Route::get('product', 'Customer\ProductController@view');
 Route::get('cart', 'Customer\CartController@view')->name('cart');
