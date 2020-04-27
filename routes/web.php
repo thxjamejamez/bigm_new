@@ -28,8 +28,13 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 Route::get('product', 'Customer\ProductController@view');
 Route::get('cart', 'CartController@view')->name('cart');
 
+Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
+Route::get('contact', 'Customer\ContactController@view')->name('contact');
+
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::get('/', function () {
         return view('apanel.home');
     });
+
+    
 });
