@@ -17,11 +17,15 @@ class CreateCustSendAddressTable extends Migration
             $table->Increments('id');
             $table->unsignedInteger('cust_id');
             $table->string('address', 100);
-            $table->unsignedInteger('district_id');
+            $table->unsignedInteger('district_id')->nullable();
+            $table->unsignedInteger('amphure_id')->nullable();
+            $table->unsignedInteger('province_id')->nullable();
             $table->boolean('defualt');
             $table->boolean('active');
             $table->foreign('cust_id')->references('id')->on('customer_info');
             $table->foreign('district_id')->references('id')->on('l_district');
+            $table->foreign('amphure_id')->references('id')->on('l_amphure');
+            $table->foreign('province_id')->references('id')->on('l_province');
         });
     }
 
