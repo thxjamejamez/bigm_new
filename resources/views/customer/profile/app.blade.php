@@ -11,11 +11,15 @@
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
-
+            @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+            @endif
             <form action="{{ route('editprofile') }}" method="POST">
                 @csrf
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-1">
+                    <div class="form-group col-md-2">
                         <label>คำนำหน้า</label>
                         <select class="form-control" name="title">
                             <option value="0">--เลือก--</option>
@@ -25,54 +29,79 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-5">
                         <label>ชื่อ</label>
-                        <input name="first_name" type="text" class="form-control" required>
+                        <input name="first_name" type="text" class="form-control" @if(isset($user->profile->first_name)
+                        &&
+                        ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif required>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-5">
                         <label>นามสกุล</label>
-                        <input name="last_name" type="text" class="form-control" required>
+                        <input name="last_name" type="text" class="form-control" @if(isset($user->profile->last_name)
+                        &&
+                        ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required>
                     </div>
                 </div>
 
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>วัน-เดือน-ปีเกิด</label>
-                        <input name="birth_date" type="text" class="form-control" required readonly>
+                        <input name="birth_date" type="text" class="form-control" @if(isset($user->profile->birthdate)
+                        &&
+                        ($user->profile->birthdate))
+                        value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required readonly>
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>ที่อยู่</label>
-                        <input name="address" type="text" class="form-control">
+                        <input name="address" type="text" class="form-control" @if(isset($user->profile->address)
+                        &&
+                        ($user->profile->address)) value="{{$user->profile->address}}" @endif>
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>จังหวัด</label>
                         <select class="form-control" name="province">
                             <option value="0">--เลือกจังหวัด--</option>
                             @foreach ($l_province as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            <option value="{{$item->id}}" @if (isset($user->profile->province_id) &&
+                                ($user->profile->province_id == $item->id)) selected @endif >{{$item->name}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
                 <div class="form-row justify-content-center">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>อำเภอ</label>
-                        <select class="form-control" name="amphure" disabled>
+                        <select class="form-control" name="amphure" @if (!isset($user->profile->amphure_id)) disabled
+                            @endif>
+                            <option value="0">--เลือกอำเภอ--</option>
+                            @foreach ($l_amphure as $item)
+                            <option value="{{$item->id}}" @if (isset($user->profile->amphure_id) &&
+                                ($user->profile->amphure_id == $item->id)) selected @endif>{{$item->name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>ตำบล</label>
-                        <select class="form-control" name="district" disabled>
+                        <select class="form-control" name="district" @if (!isset($user->profile->district_id))
+                            disabled @endif>
+                            <option value="0">--เลือกตำบล--</option>
+                            @foreach ($l_district as $item)
+                            <option value="{{$item->id}}" @if (isset($user->profile->district_id) &&
+                                ($user->profile->district_id == $item->id)) selected @endif>{{$item->name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                         <label>เบอร์โทร</label>
-                        <input name="tel" type="text" class="form-control" onkeypress="return isNumberKey(event)">
+                        <input name="tel" type="text" class="form-control" onkeypress="return isNumberKey(event)"
+                            @if(isset($user->profile->tel)
+                        &&
+                        ($user->profile->tel)) value="{{$user->profile->tel}}" @endif>
                     </div>
                 </div>
 
@@ -108,12 +137,14 @@
         if ($(this).val() == 0) { 
             $(elm_amphure).empty()
             $(elm_amphure).prop('disabled', true)
-            $(elm_district).empty()
-            $(elm_district).prop('disabled', true)
         }else {
             CallAmphure($(this).val())      
             $(elm_amphure).prop('disabled', false)
         }
+        $(elm_district).empty()
+        $(elm_district).prop('disabled', true)
+        $(elm_amphure).append(`<option value='0'>--เลือกอำเภอ--</option>`)
+        $(elm_district).append(`<option value='0'>--เลือกตำบล--</option>`)
     })
     
     $(elm_amphure).on('change', function (){
@@ -124,6 +155,7 @@
             CallDistrict($(this).val())      
             $(elm_district).prop('disabled', false)
         }
+        $(elm_district).append(`<option value='0'>--เลือกตำบล--</option>`)
     })
 
     function CallAmphure (province_id) {

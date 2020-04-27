@@ -22,10 +22,14 @@ class CreateCustomerInfoTable extends Migration
             $table->date('birthdate')->nullable();
             $table->string('address', 100)->nullable();
             $table->unsignedInteger('district_id')->nullable();
+            $table->unsignedInteger('amphure_id')->nullable();
+            $table->unsignedInteger('province_id')->nullable();
             $table->string('tel', 20)->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('title_id')->references('id')->on('l_title');
             $table->foreign('district_id')->references('id')->on('l_district');
+            $table->foreign('amphure_id')->references('id')->on('l_amphure');
+            $table->foreign('province_id')->references('id')->on('l_province');
         });
     }
 

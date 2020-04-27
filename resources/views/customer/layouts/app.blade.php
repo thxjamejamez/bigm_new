@@ -51,7 +51,7 @@
                         <li><a href="{{ route('aboutme') }}">เกี่ยวกับเรา</a></li>
                         <li><a href="/product">สินค้า</a></li>
                         <li><a href="{{ route('contact') }}">ติดต่อ</a></li>
-                        
+
                         @auth
                         <li class="menu-has-children"><a href="">{{ \Auth::user()->name }}</a>
                             <ul>
@@ -103,9 +103,9 @@
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
-                    <h1 class="text-white">
+                    <div style="font-size: 35px; padding-bottom: 10px;" class="text-white">
                         {{ collect($banner)->last()['name'] }}
-                    </h1>
+                    </div>
                     <p class="text-white link-nav">
                         @foreach ($banner as $key => $item)
                         <a href="{{ $item['path'] }}">{{ $item['name'] }}</a>
