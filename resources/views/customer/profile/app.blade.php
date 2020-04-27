@@ -11,7 +11,7 @@
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
-
+            {{ var_dump($user->profile) }}
             <form action="{{ route('editprofile') }}" method="POST">
                 @csrf
                 <div class="form-row justify-content-center">
@@ -27,23 +27,32 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label>ชื่อ</label>
-                        <input name="first_name" type="text" class="form-control" required>
+                        <input name="first_name" type="text" class="form-control" @if(isset($user->profile->first_name)
+                        &&
+                        ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif required>
                     </div>
                     <div class="form-group col-md-4">
                         <label>นามสกุล</label>
-                        <input name="last_name" type="text" class="form-control" required>
+                        <input name="last_name" type="text" class="form-control" @if(isset($user->profile->last_name)
+                        &&
+                        ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required>
                     </div>
                 </div>
 
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label>วัน-เดือน-ปีเกิด</label>
-                        <input name="birth_date" type="text" class="form-control" required readonly>
+                        <input name="birth_date" type="text" class="form-control" @if(isset($user->profile->birthdate)
+                        &&
+                        ($user->profile->birthdate))
+                        value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required readonly>
                     </div>
 
                     <div class="form-group col-md-3">
                         <label>ที่อยู่</label>
-                        <input name="address" type="text" class="form-control">
+                        <input name="address" type="text" class="form-control" @if(isset($user->profile->address)
+                        &&
+                        ($user->profile->address)) value="{{$user->profile->address}}" @endif>
                     </div>
 
                     <div class="form-group col-md-3">
@@ -108,12 +117,13 @@
         if ($(this).val() == 0) { 
             $(elm_amphure).empty()
             $(elm_amphure).prop('disabled', true)
-            $(elm_district).empty()
-            $(elm_district).prop('disabled', true)
         }else {
             CallAmphure($(this).val())      
             $(elm_amphure).prop('disabled', false)
         }
+        $(elm_district).empty()
+        $(elm_district).prop('disabled', true)
+        $(elm_district).append(`<option value='0'>--เลือกตำบล--</option>`)
     })
     
     $(elm_amphure).on('change', function (){
