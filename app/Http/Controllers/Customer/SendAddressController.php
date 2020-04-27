@@ -14,7 +14,7 @@ class SendAddressController extends Controller
                 'path' => '/'
             ],
             1 => [
-                'name' => 'ที่อยู่',
+                'name' => 'ที่อยู่การติดตั้ง',
                 'path' => '#'
             ]
         ];
