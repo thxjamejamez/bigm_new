@@ -8,12 +8,15 @@
 
 @section('content')
 sdfdsfsdfdsf
-{{-- <div class="container" >
-    <div class="section-top-border">
 
 
-    </div>                     
-</div> --}}
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('footer-js')
