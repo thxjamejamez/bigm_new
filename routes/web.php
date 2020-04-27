@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
 });
 Route::get('product', 'Customer\ProductController@view');
-Route::get('cart', 'CartController@view')->name('cart');
+Route::get('cart', 'Customer\CartController@view')->name('cart');
 
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');

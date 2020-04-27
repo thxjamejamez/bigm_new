@@ -9,16 +9,16 @@
 @section('content')
 
 <div class="container">
-    @foreach ($products as $item_cate)
-    @if(count($item_cate->products))
+    @foreach ($products as $key_cate => $item_cate)
+    @if(count($item_cate))
     <div>
-        {{ $item_cate->name }}
+        {{ $key_cate }}
     </div>
 
 
     <div class="row" style="margin-top: 10px;margin-bottom: 10px;padding: 5px">
 
-        @foreach ($item_cate->products as $key => $pd)
+        @foreach ($item_cate as $key => $pd)
         <div class="single-recent-blog col-lg-4 col-md-4">
             <div class="thumb">
                 <img class="f-img img-fluid mx-auto" src="https://love.campus-star.com/app/uploads/2019/08/Doraemon.jpg"
