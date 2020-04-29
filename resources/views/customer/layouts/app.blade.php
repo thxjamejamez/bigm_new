@@ -185,7 +185,7 @@
         </div>
     </footer>
     <!-- End footer Area -->
-
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/js/customer/layouts/vendor/jquery-2.2.4.min.js"></script>
     <script src="/js/customer/layouts/popper.min.js"></script>
     <script src="/js/customer/layouts/vendor/bootstrap.min.js"></script>

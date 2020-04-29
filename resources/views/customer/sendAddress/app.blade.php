@@ -22,7 +22,8 @@
         <div class="section-top-border">
             @if (isset($permission_add) && $permission_add)
             <div class="col-md-12 text-center">
-                <a href="#" class="genric-btn primary-border circle mb-30">+ เพิ่มข้อมูลที่อยู่การติดตั้ง</a>
+                <a href="#" class="genric-btn primary-border circle mb-30" @click="showModal('add')">+
+                    เพิ่มข้อมูลที่อยู่การติดตั้ง</a>
             </div>
             @if(!empty($list_address))
             <div class="col-md-12 text-center">
@@ -68,65 +69,63 @@
             </div>
             @endif
         </div>
-
-        <button id="show-modal" @click="showModal = true">Show Modal</button>
-        <!-- use the modal component, pass in the prop -->
-        <modal v-if="showModal" @close="showModal = false">
-            <!--
-      you can use custom content here to overwrite
-      default content
-    -->
-            <h3 slot="header">custom header</h3>
-        </modal>
-
-        {{-- <button class="btn btn-info" @click="showModal">show modal</button>
-
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade bd-example-modal-lg" id="form-sendAddress" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <div class="modal-title" id="exampleModalLabel" style="font-size: 20px;">
+                            @{{ action.set_modal.header }}</div>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <div class="form-row justify-content-center">
+                            <div class="form-group col-md-12">
+                                <label>ที่อยู่</label>
+                                <input v-model="form.address" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row justify-content-center">
+                            <div class="form-group col-md-6">
+                                <label>จังหวัด</label>
+                                <select class="form-control" v-model="form.province">
+                                    <option value="0">--เลือกจังหวัด--</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>อำเภอ</label>
+                                <select class="form-control" v-model="form.amphure" :disabled="form.province = 0">
+                                    <option value="0">--เลือกอำเภอ--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row justify-content-center">
+                            <div class="form-group col-md-6">
+                                <label>ตำบล</label>
+                                <select class="form-control" v-model="form.district" :disabled="form.amphure = 0">
+                                    <option value="0">--เลือกตำบล--</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">@{{ action.set_modal.btn_cancel }}</button>
+                            <button type="button" class="btn btn-primary">@{{ action.set_modal.btn_save }}</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 @endsection
 
 @section('footer-js')
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-          message: 'Hello Vue!'
-        },
-        methods: {
-            showModal() {
-                $('#exampleModal').modal()
-       
-            }
-        },
-        computed: {
-            
-        },
-    })
-
-    app.component('modal', require('/components/modal.vue'));
-
-</script>
+<script src="/js/customer/sendAddress/app.js"></script>
 @endsection
