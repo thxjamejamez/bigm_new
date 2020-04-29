@@ -37,7 +37,7 @@ class SendAddressController extends Controller
             ->orderByDesc('cust_send_address.id')
             ->get();
 
-        return response()->json($list_send_address);
+        // return response()->json(empty($list_send_address));
 
         return view('customer.sendAddress.app', ['banners' => $banners, 'permission_add' => true, 'list_address' => $list_send_address]);
     }
