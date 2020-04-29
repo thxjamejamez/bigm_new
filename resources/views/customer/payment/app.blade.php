@@ -22,9 +22,7 @@
                                 <label for="cc_name">เลือกรายการจอง</label>
                                 <select class="form-control" name="bk_id" required>
                                   <option value="0" disabled selected>กรุณาเลือก 1 รายการ</option>
-                                 
                                   <option value=""></option> 
-                              
                                 </select>
                             </div>
                             <div class="form-group">
