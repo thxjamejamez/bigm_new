@@ -14,7 +14,7 @@ new Vue({
             district: {}
         },
         form: {
-            address: 'asdfasdfsdf',
+            address: '',
             province: 0,
             amphure: 0,
             district: 0
@@ -31,6 +31,10 @@ new Vue({
             if (action == 'add') {
                 el.action.set_modal.header = 'เพิ่มข้อมูลที่อยู่การติดตั้ง'
                 el.action.set_modal.btn_save = 'บันทึก'
+                el.form.address = ''
+                el.form.province = 0
+                el.form.amphure = 0
+                el.form.district = 0
             } else {
                 el.action.set_modal.header = 'แก้ไขข้อมูลการติดตั้ง'
                 el.action.set_modal.btn_save = 'บันทึกการแก้ไข'
@@ -48,33 +52,35 @@ new Vue({
         },
 
         async callAmphure(province_id) {
+            let el = this
             const response = await fetch('/api/list/amphure/' + province_id);
             const myJson = await response.json();
             if (myJson.status) {
-                return myJson.data
+                el.lib.amphure = myJson.data
+                let result = el.lib.amphure.find(({
+                    id
+                }) => id == el.form.amphure)
+                if (!result) {
+                    el.form.amphure = 0
+                    el.form.district = 0
+                }
             }
         },
 
-        async callDistrict() {
+        async callDistrict(amphure_id) {
             let el = this
-            const response = await fetch('/api/list/district/' + form.amphure);
+            const response = await fetch('/api/list/district/' + amphure_id);
             const myJson = await response.json();
             if (myJson.status) {
                 el.lib.district = myJson.data
+                let result = el.lib.district.find(({
+                    id
+                }) => id == el.form.district)
+                if (!result) {
+                    el.form.district = 0
+                }
             }
         }
     },
 
-    computed: {
-        list_amphure() {
-            let el = this
-            const result = {}
-            el.callAmphure(el.form.province).then((data) => {
-                result = data
-                console.log(result);
-            });
-
-            return result;
-        }
-    },
 })

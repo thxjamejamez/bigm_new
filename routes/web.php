@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
     Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
     Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
+    Route::post('sendAddress', 'SendAddressController@add')->name('AddSendAddress');
     Route::get('payment', 'PaymentController@view')->name('payment');
     Route::get('status', 'StatusController@view')->name('status');
 
@@ -38,6 +39,4 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::get('/', function () {
         return view('apanel.home');
     });
-
-    
 });

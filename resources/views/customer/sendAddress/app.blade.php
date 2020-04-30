@@ -69,61 +69,72 @@
             </div>
             @endif
         </div>
+
         <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" id="form-sendAddress" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="modal-title" id="exampleModalLabel" style="font-size: 20px;">
-                            @{{ action.set_modal.header }}</div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-row justify-content-center">
-                            <div class="form-group col-md-12">
-                                <label>ที่อยู่</label>
-                                <input v-model="form.address" type="text" class="form-control">
-                            </div>
+        <form action="{{ route('AddSendAddress') }}" method="POST">
+            @csrf
+            <div class="modal fade bd-example-modal-lg" id="form-sendAddress" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title" id="exampleModalLabel" style="font-size: 20px;">
+                                @{{ action.set_modal.header }}</div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-
-                        <div class="form-row justify-content-center">
-                            <div class="form-group col-md-6">
-                                <label>จังหวัด</label>
-                                <select class="form-control" v-model="form.province">
-                                    <option value="0">--เลือกจังหวัด--</option>
-                                    <option v-for="item in lib.province" :value="item.id">
-                                        @{{ item.name }}</option>
-                                </select>
+                        <div class="modal-body">
+                            <div class="form-row justify-content-center">
+                                <div class="form-group col-md-12">
+                                    <label>ที่อยู่</label>
+                                    <input v-model="form.address" name="address" type="text" class="form-control">
+                                </div>
                             </div>
-                            @{{ list_amphure }}
-                            <div class="form-group col-md-6">
-                                <label>อำเภอ</label>
-                                <select class="form-control" v-model="form.amphure" :disabled="form.province == 0">
-                                    <option value="0">--เลือกอำเภอ--</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="form-row justify-content-center">
-                            <div class="form-group col-md-6">
-                                <label>ตำบล</label>
-                                <select class="form-control" v-model="form.district" :disabled="form.amphure == 0">
-                                    <option value="0">--เลือกตำบล--</option>
-                                </select>
+                            <div class="form-row justify-content-center">
+                                <div class="form-group col-md-6">
+                                    <label>จังหวัด</label>
+                                    <select name="province" class="form-control" v-model="form.province"
+                                        @change="callAmphure(form.province)">
+                                        <option value="0">--เลือกจังหวัด--</option>
+                                        <option v-for="item in lib.province" :value="item.id">
+                                            @{{ item.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>อำเภอ</label>
+                                    <select name="amphure" class="form-control" v-model="form.amphure"
+                                        @change="callDistrict(form.amphure)" :disabled="form.province == 0">
+                                        <option value="0">--เลือกอำเภอ--</option>
+                                        <option v-for="item in lib.amphure" :value="item.id">
+                                            @{{ item.name }}</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">@{{ action.set_modal.btn_cancel }}</button>
-                            <button type="button" class="btn btn-primary">@{{ action.set_modal.btn_save }}</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>ตำบล</label>
+                                    <select name="district" class="form-control" v-model="form.district"
+                                        :disabled="form.amphure == 0">
+                                        <option value="0">--เลือกตำบล--</option>
+                                        <option v-for="item in lib.district" :value="item.id">
+                                            @{{ item.name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="reset" class="btn btn-secondary"
+                                    data-dismiss="modal">@{{ action.set_modal.btn_cancel }}</button>
+                                <button type="submit" class="btn btn-primary">@{{ action.set_modal.btn_save }}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+
     </div>
 </div>
 @endsection
