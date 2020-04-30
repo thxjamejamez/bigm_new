@@ -7,6 +7,24 @@ use App\Http\Controllers\Controller;
 
 class ListController extends Controller
 {
+    public function GetProvinceList()
+    {
+        try {
+            $province = \DB::table('l_province')
+                ->get();
+
+            return response()->json([
+                "status" => true,
+                "data" => $province
+            ], 200);
+        } catch (\Throwable $e) {
+            return response()->json([
+                "status" => false,
+                "error" => $e->getMessage()
+            ], 400);
+        }
+    }
+
     public function GetAmphureList($province_id)
     {
         try {

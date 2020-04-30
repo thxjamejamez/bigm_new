@@ -93,12 +93,14 @@
                                 <label>จังหวัด</label>
                                 <select class="form-control" v-model="form.province">
                                     <option value="0">--เลือกจังหวัด--</option>
+                                    <option v-for="item in lib.province" :value="item.id">
+                                        @{{ item.name }}</option>
                                 </select>
                             </div>
-
+                            @{{ list_amphure }}
                             <div class="form-group col-md-6">
                                 <label>อำเภอ</label>
-                                <select class="form-control" v-model="form.amphure" :disabled="form.province = 0">
+                                <select class="form-control" v-model="form.amphure" :disabled="form.province == 0">
                                     <option value="0">--เลือกอำเภอ--</option>
                                 </select>
                             </div>
@@ -107,7 +109,7 @@
                         <div class="form-row justify-content-center">
                             <div class="form-group col-md-6">
                                 <label>ตำบล</label>
-                                <select class="form-control" v-model="form.district" :disabled="form.amphure = 0">
+                                <select class="form-control" v-model="form.district" :disabled="form.amphure == 0">
                                     <option value="0">--เลือกตำบล--</option>
                                 </select>
                             </div>

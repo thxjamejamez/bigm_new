@@ -1,4 +1,4 @@
-var app = new Vue({
+new Vue({
     el: '#app',
     data: {
         action: {
@@ -8,8 +8,13 @@ var app = new Vue({
                 btn_cancel: 'ยกเลิก'
             }
         },
+        lib: {
+            province: {},
+            amphure: {},
+            district: {}
+        },
         form: {
-            address: '',
+            address: 'asdfasdfsdf',
             province: 0,
             amphure: 0,
             district: 0
@@ -33,10 +38,43 @@ var app = new Vue({
             $('#form-sendAddress').modal()
         },
 
-        callProvince() {
-            axios
-                .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-                .then(response => (this.info = response))
+        async callProvince() {
+            let el = this
+            const response = await fetch('/api/list/province');
+            const myJson = await response.json();
+            if (myJson.status) {
+                el.lib.province = myJson.data
+            }
+        },
+
+        async callAmphure(province_id) {
+            const response = await fetch('/api/list/amphure/' + province_id);
+            const myJson = await response.json();
+            if (myJson.status) {
+                return myJson.data
+            }
+        },
+
+        async callDistrict() {
+            let el = this
+            const response = await fetch('/api/list/district/' + form.amphure);
+            const myJson = await response.json();
+            if (myJson.status) {
+                el.lib.district = myJson.data
+            }
         }
-    }
+    },
+
+    computed: {
+        list_amphure() {
+            let el = this
+            const result = {}
+            el.callAmphure(el.form.province).then((data) => {
+                result = data
+                console.log(result);
+            });
+
+            return result;
+        }
+    },
 })
