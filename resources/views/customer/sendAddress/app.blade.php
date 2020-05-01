@@ -25,28 +25,34 @@
                 <a href="#" class="genric-btn primary-border circle mb-30" @click="showModal('add')">+
                     เพิ่มข้อมูลที่อยู่การติดตั้ง</a>
             </div>
-            @if(!empty($list_address))
+            @if(empty($list_address))
             <div class="col-md-12 text-center">
                 No result.
             </div>
             @else
+            @foreach ($list_address as $item)
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-lg-12">
                         <blockquote class="generic-blockquote">
                             <div class="row">
                                 <div class="col-md-6 d-flex align-items-center">
-                                    88 ม.4 ต.หนองหนาม อ.เมือง จ.ลำพูน
+                                    {{ $item->address }} ตำบล{{ $item->district_name }} อำเภอ{{ $item->amphure_name }}
+                                    จังหวัด{{ $item->province_name }}
                                 </div>
                                 <div class="col-md-2 d-flex justify-content-center">
+                                    @if($item->defualt)
                                     <span class="label-green align-self-center">ค่าเริ่มต้น</span>
+                                    @endif
                                 </div>
                                 <div class="col-md-4 d-flex justify-content-center">
                                     <div>
-                                        <a href="#" class="genric-btn primary circle">
+                                        <a href="#" class="genric-btn primary circle"
+                                            @click="showModal('edit', {{ $item->id }})">
                                             <span class="lnr lnr-pencil" style="font-size: 16px"></span>
                                         </a>
-                                        <a href="#" class="genric-btn danger circle">
+                                        <a href="#" class="genric-btn danger circle"
+                                            @click="removeAddress({{ $item->id }})">
                                             <span class="lnr lnr-trash" style="font-size: 16px"></span>
                                         </a>
                                     </div>
@@ -57,6 +63,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
             @endif
 
             @else
@@ -71,9 +78,9 @@
         </div>
 
         <!-- Modal -->
-        <form action="{{ route('AddSendAddress') }}" method="POST">
+        <form v-bind:action="action.set_modal.form_action" method="POST">
             @csrf
-            <div class="modal fade bd-example-modal-lg" id="form-sendAddress" tabindex="-1" role="dialog">
+            <div id="form-sendAddress" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -141,4 +148,25 @@
 
 @section('footer-js')
 <script src="/js/customer/sendAddress/app.js"></script>
+<script>
+    @if (session()->has('updated'))
+        Swal.fire(
+            'สำเร็จ',
+            'แก้ไขข้อมูลที่อยู่การติดตั้งเรียบร้อยแล้ว',
+            'success'
+        )
+    @elseif(session()->has('created'))
+        Swal.fire(
+            'สำเร็จ',
+            'เพิ่มข้อมูลที่อยู่การติดตั้งเรียบร้อยแล้ว',
+            'success'
+        )
+    @elseif(session()->has('deleted'))
+    Swal.fire(
+            'สำเร็จ',
+            'ลบข้อมูลที่อยู่การติดตั้งเรียบร้อยแล้ว',
+            'success'
+        )
+    @endif
+</script>
 @endsection

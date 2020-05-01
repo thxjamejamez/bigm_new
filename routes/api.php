@@ -19,3 +19,5 @@ Route::group(['prefix' => 'list', 'namespace' => 'API'], function () {
     Route::get('amphure/{province_id}', 'ListController@GetAmphureList');
     Route::get('district/{amphure_id}', 'ListController@GetDistrictList');
 });
+
+Route::get('sendaddress/{id}', 'Customer\SendAddressController@viewDetail');

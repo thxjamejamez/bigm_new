@@ -23,11 +23,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
     Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
-    Route::get('sendAddress', 'SendAddressController@view')->name('sendAddress');
-    Route::post('sendAddress', 'SendAddressController@add')->name('AddSendAddress');
+
+    Route::group(['prefix' => 'sendAddress'], function () {
+        Route::get('/', 'SendAddressController@view')->name('sendAddress');
+        Route::post('/', 'SendAddressController@add')->name('AddSendAddress');
+        Route::post('/{id}', 'SendAddressController@update')->name('editSendAddress');
+        Route::get('/{id}/remove', 'SendAddressController@remove')->name('removeSendAddress');
+    });
+
     Route::get('payment', 'PaymentController@view')->name('payment');
     Route::get('status', 'StatusController@view')->name('status');
-
 });
 Route::get('product', 'Customer\ProductController@view');
 Route::get('cart', 'Customer\CartController@view')->name('cart');
