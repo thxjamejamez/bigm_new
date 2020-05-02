@@ -17,7 +17,6 @@
 
 
     <div class="row" style="margin-top: 10px;margin-bottom: 10px;padding: 5px">
-
         @foreach ($item_cate as $key => $pd)
         <div class="single-recent-blog col-lg-4 col-md-4">
             <div class="thumb">
@@ -36,10 +35,14 @@
                     <div class="col-md-6 col-sm-12 d-flex align-items-center" style="padding: 0">
                         {{ number_format($pd->price, 2) }} บาท
                     </div>
+                    <form action="{{ route('updateCart') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $pd->id }}">
+                        <div class="col-md-6 col-sm-12" style="padding: 0px;text-align: right;">
+                            <button type="submit" class="btn btn-secondary">Add to cart</button>
+                        </div>
+                    </form>
 
-                    <div class="col-md-6 col-sm-12" style="padding: 0px;text-align: right;">
-                        <button type="button" class="btn btn-secondary">Add to cart</button>
-                    </div>
                 </div>
             </div>
         </div>
