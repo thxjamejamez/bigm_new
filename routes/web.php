@@ -48,7 +48,12 @@ Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
-    Route::get('/', function () {
-        return view('apanel.home');
-    });
+
+    Route::get('product','ProductController@view')->name('product');
+
+
+
+    // Route::get('/', function () {
+    //     return view('apanel.home');
+    // });
 });

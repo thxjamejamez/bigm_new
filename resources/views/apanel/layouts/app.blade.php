@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>จัดการข้อมูลผู้ใช้งาน</span></a>
             </li>
@@ -276,12 +276,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/js/apanel/layouts/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/plugins/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/js/apanel/layouts/demo/chart-area-demo.js"></script>
-    <script src="/js/apanel/layouts/demo/chart-pie-demo.js"></script>
+ 
     @yield('footer-js')
 
 </body>
