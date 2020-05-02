@@ -14,16 +14,16 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        จัดการข้อมูลสินค้า
+                        ข้อมูลผู้ใช้งาน
                     </h6>
                 </div>
-                <div style="margin-left: auto;">
+                {{-- <div style="margin-left: auto;">
                     <div>
                         <button class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
                             เพิ่มข้อมูลสินค้า
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="card-body">
@@ -32,27 +32,33 @@
                 <thead>
                     <tr align="center">
                     <th style="width: 5%">ลำดับ</th>
-                    <th style="width: 25%">ชื่อสินค้า</th>
-                    <th style="width: 26%">รูปสินค้า</th>
-                    <th style="width: 15%">ราคา (บาท)</th>
-                    <th style="width: 15%">ขนาด (เซนติเมตร)</th>
+                    <th style="width: 20%">ชื่อ</th>
+                    <th style="width: 19%">สกุล</th>
+                    <th style="width: 15%">ประเภทผู้ใช้งาน</th>
+                    <th style="width: 15%">เบอร์โทร</th>
+                    <th style="width: 12%">ดูรายละเอียด</th>
                     <th style="width: 7%">เเก้ไข</th>
                     <th style="width: 7%">ลบ</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>ประตูหน้าต่าง</td>
-                        <td><img style="width: 250px;height: 150px;" src="https://www.prachachat.net/wp-content/uploads/2019/09/ctn01160962p1-728x520.jpg"></td>
-                        <td>30.00</td>
-                        <td>120*21</td>
-                        <td>
+                        <td align="center">1</td>
+                        <td>สิทธิกร</td>
+                        <td>มะกูลต๊ะ</td>
+                        <td align="center">ลูกค้า</td>
+                        <td align="center">0856238872</td>
+                        <td align="center">
+                            <div class="btn btn-success  btn-circle btn-sm">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </td>
+                        <td align="center">
                             <div class="btn btn-warning btn-circle btn-sm">
                                 <i class="far fa-edit"></i>
                             </div>
                         </td>
-                        <td>
+                        <td align="center">
                             <div  class="btn btn-danger btn-circle btn-sm">
                                 <i class="fas fa-trash"></i>
                             </div>
