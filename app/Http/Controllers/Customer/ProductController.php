@@ -21,13 +21,6 @@ class ProductController extends Controller
             ]
         ];
 
-
-
-        // $product_by_cate = \App\ProductCate::with(['products' => function ($q) {
-        //     $q->when(isset(\Auth::user()->id), function ($query) {
-        //         return $query->where('created_by', \Auth::user()->id);
-        //     });
-        // }])->get();
         $product = \DB::table('product_categories')
             ->join('products', 'product_categories.id', '=', 'products.category_id')
             ->where('product_categories.id', 1)

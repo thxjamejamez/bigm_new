@@ -7,56 +7,79 @@
 @endsection
 
 @section('content')
+@php
+$sum = 0;
+@endphp
 
-<div class="container" >
-    <div class="section-top-border">
-        <div style="font-size: 20px;font-weight: bold">ตะกร้าสินค้า</div>
-        <div style="margin-top: 10px">
-            <table class="table table-hover">
-                <thead>
-                  <tr style="text-align: center">
-                    <th  scope="col" style="width: 30%">รายการ</th>
-                    <th  scope="col">ราคาต่อชิ้น (บาท)</th>
-                    <th  scope="col">จำนวน (ชิ้น)</th>
-                    <th  scope="col">ราคารวม (บาท)</th>
-                    <th  scope="col">ลบ</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style="text-align: center">
-                    <th scope="row" style="text-align: center" >
-                        <img style="width: 200px" src="https://f.ptcdn.info/115/028/000/1423052744-coach2-o.png">
-                        <div style="margin-top: 5px">กระเป๋าหลุย</div>
-                    </th>
-                    <td>10.00</td>
-                    <td>1</td>
-                    <td>10.00</td>
-                    <td style="color: red"><span class="lnr lnr-trash"></span></td>
-                  </tr>
+<div id="app" class="container">
+  <div class="section-top-border">
+    <div style="font-size: 20px;font-weight: bold">ตะกร้าสินค้า</div>
+    <div style="margin-top: 10px">
+      <table class="table table-hover">
+        <thead>
+          <tr style="text-align: center">
+            <th scope="col" style="width: 30%">รายการ</th>
+            <th scope="col">ราคาต่อชิ้น (บาท)</th>
+            <th scope="col">จำนวน (ชิ้น)</th>
+            <th scope="col">ราคารวม (บาท)</th>
+            <th scope="col">ลบ</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if(\Session::get('cart'))
+          @foreach (\Session::get('cart') as $item)
+          <tr style="text-align: center">
+            <th scope="row" style="text-align: center">
+              <img style="width: 200px" src="{{($item['img_path']) ? $item['img_path']: '/img/defualt_product.jpg' }}">
+              <div style="margin-top: 5px">{{$item['product_name']}}</div>
+            </th>
+            <td>{{ number_format($item['price'], 2) }}</td>
+            <td>{{ $item['qty'] }}</td>
+            <td>{{ number_format($item['price'] * $item['qty'], 2) }}</td>
+            <td style="color: red"><span class="lnr lnr-trash"></span></td>
+          </tr>
+          @php
+          $sum += ($item['price'] * $item['qty']);
+          @endphp
+          @endforeach
+          @else
+          <tr style="text-align: center">
+            <td colspan="5">No Result.</td>
+          </tr>
+          @endif
 
-                  <tr style="text-align: center">
-                    <th scope="row" style="text-align: center" >
-                        <img style="width: 200px" src="https://f.ptcdn.info/115/028/000/1423052744-coach2-o.png">
-                        <div style="margin-top: 5px">กระเป๋าหลุย</div>
-                    </th>
-                    <td>10.00</td>
-                    <td>1</td>
-                    <td>10.00</td>
-                    <td style="color: red"><span class="lnr lnr-trash"></span></td>
-                  </tr>
+          <tr>
+            <th colspan="3" style="font-weight: bold;font-size: 18px;text-align: right">ราคารวม</th>
+            <td colspan="3" style="font-weight: bold;font-size: 18px;text-align: center">{{ number_format($sum, 2) }}
+              บาท</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-                  <tr>
-                    <th colspan="3" style="font-weight: bold;font-size: 18px;text-align: right">ราคารวม</th>
-                    <td colspan="3" style="font-weight: bold;font-size: 18px;text-align: center">20.00 บาท</td>
-                  </tr>
+    <div class="form-row justify-content-center">
+      <div class="form-group col-md-6">
+        <label>ที่อยู่การติดตั้ง</label>
+        <select class="form-control" name="province">
+          <option value="0">--เลือกที่อยู่การติดตั้ง--</option>
+          @foreach ($send_address as $item)
+          <option value="{{$item->id}}" @if($item->defualt) selected @endif>{{$item->address}}
+            ต.{{$item->district_name}} อ.{{$item->amphure_name}}
+            จ.{{$item->province_name}}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
 
-                </tbody>
-              </table>
-        </div>
-    </div>                     
+    <div class="col-md-12 text-center">
+      <a href="#" class="genric-btn primary-border circle mb-30 @if(!$can_order) disable @endif"
+        style="width: 300px;">สั่งซื้อสินค้า</a>
+    </div>
+
+  </div>
 </div>
 @endsection
 
 @section('footer-js')
-
+<script src="/public/js/customer/cart/app.js"></script>
 @endsection

@@ -33,9 +33,16 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
     Route::get('payment', 'PaymentController@view')->name('payment');
     Route::get('status', 'StatusController@view')->name('status');
+
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('/', 'CartController@view')->name('viewCart');
+        Route::post('/update', 'CartController@updateCart')->name('updateCart');
+        Route::get('/clear', 'CartController@clearCart')->name('clearCart');
+        // Route::get('/testupdate', 'CartController@updateCart')->name('updateCart');
+    });
 });
 Route::get('product', 'Customer\ProductController@view');
-Route::get('cart', 'Customer\CartController@view')->name('cart');
+
 
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
