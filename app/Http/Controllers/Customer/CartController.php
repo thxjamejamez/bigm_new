@@ -54,7 +54,7 @@ class CartController extends Controller
             }
         }
 
-        return view('customer.cart.app', ['banners' => $banners, 'can_order' => false, 'send_address' => []]);
+        return view('customer.cart.app', ['banners' => $banners, 'can_order' => $can_order, 'send_address' => $list_send_address]);
     }
 
     public function updateCart(Request $request)

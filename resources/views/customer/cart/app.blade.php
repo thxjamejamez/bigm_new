@@ -13,6 +13,11 @@ $sum = 0;
 
 <div id="app" class="container">
   <div class="section-top-border">
+    @if(!$can_order)
+    <div class="alert alert-danger" role="alert">
+      กรุณาเพิ่มข้อมูลที่อยู่การติดตั้ง
+    </div>
+    @endif
     <div style="font-size: 20px;font-weight: bold">ตะกร้าสินค้า</div>
     <div style="margin-top: 10px">
       <table class="table table-hover">
@@ -81,5 +86,11 @@ $sum = 0;
 @endsection
 
 @section('footer-js')
-<script src="/public/js/customer/cart/app.js"></script>
+<script>
+  $('.disable').click(function(e){
+    e.preventDefault();
+  })
+
+
+</script>
 @endsection
