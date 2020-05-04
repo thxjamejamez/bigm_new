@@ -51,6 +51,8 @@ Route::get('product', 'Customer\ProductController@view');
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
+
+# Apanel 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
     Route::get('product', 'ProductController@view')->name('product');

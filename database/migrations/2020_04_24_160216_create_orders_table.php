@@ -20,11 +20,11 @@ class CreateOrdersTable extends Migration
             $table->date('send_date');
             $table->unsignedInteger('send_address_id');
             $table->unsignedInteger('order_status');
-            $table->string('remark', 100);
-            $table->date('change_send_date');
-            $table->string('pay_file', 100);
-            $table->datetime('pay_datetime');
-            $table->double('total_pay', 8,2);
+            $table->string('remark', 100)->nullable();
+            $table->date('change_send_date')->nullable();
+            $table->string('pay_file', 100)->nullable();
+            $table->datetime('pay_datetime')->nullable();
+            $table->double('total_pay', 8,2)->nullable();
             $table->foreign('order_by')->references('id')->on('users');
             $table->foreign('send_address_id')->references('id')->on('cust_send_address');
             $table->foreign('order_status')->references('id')->on('l_order_status');

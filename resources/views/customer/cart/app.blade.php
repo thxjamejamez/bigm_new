@@ -3,7 +3,7 @@
 @section('title', 'สินค้า')
 
 @section('header-css')
-
+<link rel="stylesheet" href="/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
 @endsection
 
 @section('content')
@@ -35,7 +35,8 @@ $sum = 0;
           <tbody>
             @if(\Session::get('cart'))
             @foreach (\Session::get('cart') as $item)
-            <input name="product[]" type="hidden" value="{{$item['product_id']}}">
+            <input name="products[]" type="hidden" value="{{$item['product_id']}}">
+            <input name="qty[]" type="hidden" value="{{$item['qty']}}">
             <tr style="text-align: center">
               <th scope="row" style="text-align: center">
                 <img style="width: 200px"
@@ -67,9 +68,9 @@ $sum = 0;
       </div>
 
       <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-5">
           <label>ที่อยู่การติดตั้ง</label>
-          <select class="form-control" name="province">
+          <select class="form-control" name="cust_send_address">
             <option value="0">--เลือกที่อยู่การติดตั้ง--</option>
             @foreach ($send_address as $item)
             <option value="{{$item->id}}" @if($item->defualt) selected @endif>{{$item->address}}
@@ -78,10 +79,16 @@ $sum = 0;
             @endforeach
           </select>
         </div>
+
+        <div class="form-group col-md-5">
+          <label>วันที่ติดตั้ง</label>
+          <input name="send_date" type="text" class="form-control" required>
+        </div>
       </div>
 
       <div class="col-md-12 text-center">
-        <button type="submit" class="genric-btn primary-border circle mb-30 @if(!$can_order) disable @endif"
+        <button type="submit"
+          class="genric-btn primary-border circle mb-30 @if(!$can_order || !\Session::get('cart')) disable @endif"
           style="width: 300px;">สั่งซื้อสินค้า</button>
       </div>
 
@@ -91,11 +98,19 @@ $sum = 0;
 @endsection
 
 @section('footer-js')
+<script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
 <script>
   $('.disable').click(function(e){
     e.preventDefault();
   })
 
+  $('input[name="send_date"]').datepicker({
+    locale: moment().local('th'),
+    format: 'dd-mm-yyyy',
+    autoclose: true,
+    startDate: moment().add(3, 'days').toDate()
+  });
 
 </script>
 @endsection
