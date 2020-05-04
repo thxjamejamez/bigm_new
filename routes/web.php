@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::get('/clear', 'CartController@clearCart')->name('clearCart');
         // Route::get('/testupdate', 'CartController@updateCart')->name('updateCart');
     });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::post('/', 'OrderController@store')->name('storeOrder');
+    });
 });
 Route::get('product', 'Customer\ProductController@view');
 
@@ -49,13 +53,13 @@ Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
-    Route::get('product','ProductController@view')->name('product');
+    Route::get('product', 'ProductController@view')->name('product');
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/','UserController@view')->name('user');
-        Route::get('/{id}','UserController@viewDetail')->name('detailUser');
+        Route::get('/', 'UserController@view')->name('user');
+        Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
     });
-    
+
 
     // Route::get('/', function () {
     //     return view('apanel.home');
