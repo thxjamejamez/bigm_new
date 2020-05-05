@@ -125,10 +125,10 @@
                                 </div>
                             </div>
             
-                            {{-- <div class="button-group-area center">
+                            <div class="button-group-area center" aria-disabled="true">
                                 <button type="submit" class="genric-btn primary-border circle">บันทึก</button>
                                 <button type="reset" class="genric-btn danger-border circle">ยกเลิก</button>
-                            </div> --}}
+                            </div>
                         </form>
                     </div>
                 </div>

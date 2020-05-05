@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Apanel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class CheckPayMentController extends Controller
 {
     public function view()
     {
-        return view('apanel.product.app',);
+        return view('apanel.checkPayMent.app',);
     }
 
     public function viewDetail()
     {
-        return view('apanel.product.components.detail',);
+
+        return view('apanel.checkPayMent.components.detail',);
     }
 }
