@@ -3,7 +3,25 @@
 @section('title', 'สินค้า')
 
 @section('header-css')
+<style>
+    div.st-label {
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+    }
 
+    .st-process {
+        background-color: #f4e700;
+    }
+
+    .st-success {
+        background-color: #00b555;
+    }
+
+    .st-unsuccess {
+        background-color: red;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -33,60 +51,31 @@
 
                     <div class="filters-content">
                         <div class="row grid">
-                            <div class="single-portfolio col-sm-12 all process">
-                                <div class="single-portfolio col-sm-12 ">
-                                    <div class="relative">
-                                        <div class="col-md-12">
-                                            <div class="row mt-2"
-                                                style="background-color: #60ebfd30;height: 100px;border-radius: 10px">
-                                                <div class="col-md-10 "
-                                                    style="word-wrap:break-word;align-self: center;">
-                                                    <div>
-                                                        ชื่อสินค้า : ประตูหน้าต่าง
-                                                    </div>
-                                                    <div>
-                                                        วันที่ทำรายการ : 20 เมษายน 2563
-                                                    </div>
-                                                    <div>
-                                                        วันที่ทำการติดตั้ง : 27 เมษายน 2563
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 d-flex align-items-center"
-                                                    style="justify-content: space-around;">
-                                                    <div
-                                                        style="background-color: #f4e700;color: white;padding: 5px;border-radius: 5px">
-                                                        กำลังดำเนินการ
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="single-portfolio col-sm-12 all success">
+                            @foreach ($orders as $item)
+                            <div class="single-portfolio col-sm-12 all {{ $item->sts_class }}">
                                 <div class="single-portfolio col-sm-12 ">
                                     <div class="relative">
                                         <div class="col-md-12">
                                             <div class="row mt-2"
                                                 style="background-color: #60ebfd30;height: 100px;border-radius: 10px">
-                                                <div class="col-md-10 "
-                                                    style="word-wrap:break-word;align-self: center;">
+                                                <div class="col-md-10" style="word-wrap:break-word;align-self: center;">
                                                     <div>
-                                                        ชื่อสินค้า : ประตูหน้าต่าง
+                                                        เลขที่คำสั่งซื้อ: {{ $item->order_no }}
                                                     </div>
                                                     <div>
-                                                        วันที่ทำรายการ : 20 เมษายน 2563
+                                                        วันที่ทำรายการ:
+                                                        {{ date('d-m-Y', strtotime($item->order_date)) }}
                                                     </div>
                                                     <div>
-                                                        วันที่ทำการติดตั้ง : 27 เมษายน 2563
+                                                        วันที่ทำการติดตั้ง:
+                                                        {{ date('d-m-Y', strtotime($item->send_date)) }}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 d-flex align-items-center"
                                                     style="justify-content: space-around;">
-                                                    <div
-                                                        style="background-color: #00b555;color: white;padding: 5px;border-radius: 5px">
-                                                        ติดตั้งเสร็จเเล้ว
+                                                    <div class="st-label st-process">
+                                                        {{ $item->order_status_name }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,37 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="single-portfolio col-sm-12 all unsuccess">
-                                <div class="single-portfolio col-sm-12 ">
-                                    <div class="relative">
-                                        <div class="col-md-12">
-                                            <div class="row mt-2"
-                                                style="background-color: #60ebfd30;height: 100px;border-radius: 10px">
-                                                <div class="col-md-10 "
-                                                    style="word-wrap:break-word;align-self: center;">
-                                                    <div>
-                                                        ชื่อสินค้า : ประตูหน้าต่าง
-                                                    </div>
-                                                    <div>
-                                                        วันที่ทำรายการ : 20 เมษายน 2563
-                                                    </div>
-                                                    <div>
-                                                        วันที่ทำการติดตั้ง : 27 เมษายน 2563
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 d-flex align-items-center"
-                                                    style="justify-content: space-around;">
-                                                    <div
-                                                        style="background-color:red;color: white;padding: 5px;border-radius: 5px">
-                                                        รายการถูกยกเลิก
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
