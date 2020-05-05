@@ -60,9 +60,4 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
         Route::get('/', 'UserController@view')->name('user');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
     });
-
-
-    // Route::get('/', function () {
-    //     return view('apanel.home');
-    // });
 });

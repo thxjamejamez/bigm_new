@@ -64,17 +64,17 @@
                                         ตะกร้าสินค้า
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('status') }}">
-                                        รายการสั่งซื้อ
+                                    <a class="dropdown-item" href="{{ route('viewOrder') }}">
+                                        รายการคำสั่งซื้อ
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('payment') }}">
                                         เเจ้งชำระเงิน
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('status') }}">
-                                        สถานะ
-                                    </a>
+                                    {{-- <a class="dropdown-item" href="{{ route('viewOrder') }}">
+                                    สถานะ
+                                    </a> --}}
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">

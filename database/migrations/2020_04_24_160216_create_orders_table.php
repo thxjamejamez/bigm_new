@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->date('change_send_date')->nullable();
             $table->string('pay_file', 100)->nullable();
             $table->datetime('pay_datetime')->nullable();
-            $table->double('total_pay', 8,2)->nullable();
+            $table->double('total_pay', 8, 2)->nullable();
             $table->foreign('order_by')->references('id')->on('users');
             $table->foreign('send_address_id')->references('id')->on('cust_send_address');
             $table->foreign('order_status')->references('id')->on('l_order_status');

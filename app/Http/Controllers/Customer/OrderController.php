@@ -7,6 +7,28 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+
+    public function view()
+    {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'รายการคำสั่งซื้อ',
+                'path' => '#'
+            ]
+        ];
+
+        $orders = \App\Orders::where('orders.order_by', \Auth::user()->id)
+            ->get();
+
+        // return response()->json($orders);
+
+        return view('customer.status.app', ['banners' => $banners, 'orders' => $orders]);
+    }
+
     public function store(Request $request)
     {
         $AddOrder = new \App\Orders;
@@ -30,6 +52,7 @@ class OrderController extends Controller
         }
 
         \Session::forget('cart');
-        return response()->json($AddOrder);
+
+        return redirect()->route('viewOrder');
     }
 }
