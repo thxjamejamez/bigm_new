@@ -49,7 +49,8 @@ class CartController extends Controller
                     'cust_send_address.defualt'
                 )
                 ->get();
-            if (!empty($list_send_address)) {
+
+            if (count($list_send_address)) {
                 $can_order = true;
             }
         }

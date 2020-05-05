@@ -32,13 +32,16 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     });
 
     Route::get('payment', 'PaymentController@view')->name('payment');
-    Route::get('status', 'StatusController@view')->name('status');
 
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/', 'CartController@view')->name('viewCart');
         Route::post('/update', 'CartController@updateCart')->name('updateCart');
         Route::get('/clear', 'CartController@clearCart')->name('clearCart');
-        // Route::get('/testupdate', 'CartController@updateCart')->name('updateCart');
+    });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('/', 'OrderController@view')->name('viewOrder');
+        Route::post('/', 'OrderController@store')->name('storeOrder');
     });
 });
 Route::get('product', 'Customer\ProductController@view');
@@ -47,6 +50,8 @@ Route::get('product', 'Customer\ProductController@view');
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
+
+# Apanel 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
     Route::get('product','ProductController@view')->name('product');
@@ -61,7 +66,7 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::get('detailCheckPayMent','CheckPayMentController@viewDetail')->name('detailCheckPayMent');
 
    
-
+    Route::get('product', 'ProductController@view')->name('product');
     // Route::group(['prefix' => 'checkPayMent'], function () {
     //     Route::get('/','CheckPayMentController@view')->name('checkPayMent');
     //     Route::get('/{id}','CheckPayMentController@viewDetail')->name('detailCheckPayMent');
@@ -69,10 +74,10 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/','UserController@view')->name('user');
-        Route::get('/{id}','UserController@viewDetail')->name('detailUser');
+        Route::get('/', 'UserController@view')->name('user');
+        Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
     });
-    
+
 
     // Route::get('/', function () {
     //     return view('apanel.home');
