@@ -25,7 +25,7 @@
 @endsection
 
 @section('content')
-<div class="whole-wrap">
+<div id="app" class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
             <section class="portfolio-area" id="portfolio">
@@ -59,7 +59,9 @@
                                         <div class="col-md-12">
                                             <div class="row mt-2"
                                                 style="background-color: #60ebfd30;height: 100px;border-radius: 10px">
-                                                <div class="col-md-10" style="word-wrap:break-word;align-self: center;">
+                                                <div class="col-md-10"
+                                                    style="word-wrap:break-word;align-self: center; cursor: pointer;"
+                                                    @click="tests1()">
                                                     <div>
                                                         เลขที่คำสั่งซื้อ: {{ $item->order_no }}
                                                     </div>
@@ -71,6 +73,7 @@
                                                         วันที่ทำการติดตั้ง:
                                                         {{ date('d-m-Y', strtotime($item->send_date)) }}
                                                     </div>
+                                                    <button @click="tests()">test</button>
                                                 </div>
                                                 <div class="col-md-2 d-flex align-items-center"
                                                     style="justify-content: space-around;">
@@ -93,9 +96,12 @@
             <!-- End portfolio-area Area -->
         </div>
     </div>
+
+
+
 </div>
 @endsection
 
 @section('footer-js')
-
+<script src="/js/customer/status/app.js"></script>
 @endsection

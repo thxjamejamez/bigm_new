@@ -53,20 +53,23 @@ Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
 # Apanel 
 Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
+    Route::get('/', function () {
+        return view('apanel.home');
+    });
 
-    Route::get('product','ProductController@view')->name('product');
-    Route::get('detailProduct','ProductController@viewDetail')->name('detailProduct');
-
-
-
-    Route::get('material','MaterialController@view')->name('material');
-   
-   
-    Route::get('checkPayMent','CheckPayMentController@view')->name('checkPayMent');
-    Route::get('detailCheckPayMent','CheckPayMentController@viewDetail')->name('detailCheckPayMent');
-
-   
     Route::get('product', 'ProductController@view')->name('product');
+    Route::get('detailProduct', 'ProductController@viewDetail')->name('detailProduct');
+
+
+
+    Route::get('material', 'MaterialController@view')->name('viewMaterial');
+
+
+    Route::get('checkPayMent', 'CheckPayMentController@view')->name('viewCheckPayment');
+    Route::get('detailCheckPayMent', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
+
+
+    Route::get('product', 'ProductController@view')->name('viewProduct');
     // Route::group(['prefix' => 'checkPayMent'], function () {
     //     Route::get('/','CheckPayMentController@view')->name('checkPayMent');
     //     Route::get('/{id}','CheckPayMentController@viewDetail')->name('detailCheckPayMent');
@@ -74,7 +77,7 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/', 'UserController@view')->name('user');
+        Route::get('/', 'UserController@view')->name('viewUser');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
     });
 });
