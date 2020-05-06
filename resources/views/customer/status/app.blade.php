@@ -26,6 +26,7 @@
 
 @section('content')
 <div id="app" class="whole-wrap">
+    <blog-post title="My journey with Vue"></blog-post>
     <div class="container">
         <div class="section-top-border">
             <section class="portfolio-area" id="portfolio">
@@ -59,9 +60,9 @@
                                         <div class="col-md-12">
                                             <div class="row mt-2"
                                                 style="background-color: #60ebfd30;height: 100px;border-radius: 10px">
-                                                <div class="col-md-10"
+                                                <div class="col-md-10" id="tttt"
                                                     style="word-wrap:break-word;align-self: center; cursor: pointer;"
-                                                    @click="tests1()">
+                                                    @click="goto('/order/' + {!! json_encode($item->order_id) !!})">
                                                     <div>
                                                         เลขที่คำสั่งซื้อ: {{ $item->order_no }}
                                                     </div>
@@ -73,7 +74,7 @@
                                                         วันที่ทำการติดตั้ง:
                                                         {{ date('d-m-Y', strtotime($item->send_date)) }}
                                                     </div>
-                                                    <button @click="tests()">test</button>
+
                                                 </div>
                                                 <div class="col-md-2 d-flex align-items-center"
                                                     style="justify-content: space-around;">

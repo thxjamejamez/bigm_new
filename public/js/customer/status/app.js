@@ -4,11 +4,8 @@ new Vue({
         test: 'sdfsdfds'
     },
     methods: {
-        tests() {
-            console.log(12323);
-        },
-        tests1() {
-            console.log(11111);
+        goto(url) {
+            console.log(url);
 
         }
     },
