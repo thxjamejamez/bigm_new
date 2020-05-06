@@ -149,9 +149,9 @@
                    <tr>
                        <td style="width: 140px;">
                            <a href="">
-                               <button style="width: 100%;" class="btn btn-success">
-                                   ถูกต้อง
-                               </button>
+                                <button style="width: 100%;" class="btn btn-danger">
+                                    ไม่ถูกต้อง
+                                </button>
                            </a>
                        </td>
                        <td>
@@ -159,9 +159,9 @@
                        </td>
                        <td style="width: 140px">
                            <a href="">
-                               <button style="width: 100%;" class="btn btn-danger">
-                                   ไม่ถูกต้อง
-                               </button>
+                                <button style="width: 100%;" class="btn btn-success">
+                                    ถูกต้อง
+                                </button>   
                            </a>
                        </td>
                    </tr>

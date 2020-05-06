@@ -65,6 +65,11 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
     Route::get('material', 'MaterialController@view')->name('viewMaterial');
 
+   
+    Route::get('product', 'ProductController@view')->name('product');
+
+    Route::get('Order', 'OrderController@view')->name('Order');
+    Route::get('OrderDetail', 'OrderController@viewDtail')->name('OrderDetail');
 
     Route::get('checkPayMent', 'CheckPayMentController@view')->name('viewCheckPayment');
     Route::get('detailCheckPayMent', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
