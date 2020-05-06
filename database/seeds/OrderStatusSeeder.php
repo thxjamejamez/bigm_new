@@ -14,15 +14,15 @@ class OrderStatusSeeder extends Seeder
         $data = $this->data();
         foreach ($data as $key => $value) {
             \DB::table('l_order_status')
-            ->insertOrIgnore([
-                'id' => $value['id'],
-                'name' => $value['name'],
-                'active' => 1
-            ]);
+                ->insertOrIgnore([
+                    'id' => $value['id'],
+                    'name' => $value['name'],
+                    'active' => 1
+                ]);
         }
     }
 
-    private function data ()
+    private function data()
     {
         return [
             ['id' => 1, 'name' => 'รอการตอบรับ'],

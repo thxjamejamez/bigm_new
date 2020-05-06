@@ -7,6 +7,42 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+
+    public function view()
+    {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'รายการคำสั่งซื้อ',
+                'path' => '#'
+            ]
+        ];
+
+        $orders = \App\Orders::where('orders.order_by', \Auth::user()->id)
+            ->leftjoin('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
+            ->select(
+                'orders.id as order_id',
+                'orders.order_date',
+                'orders.send_date',
+                'orders.order_status',
+                'l_order_status.name as order_status_name'
+            )
+            ->get();
+
+        if (count($orders)) {
+            $orders = collect($orders)->map(function ($item, $key) {
+                $item->order_no = $this->getOrderNo($item->order_id);
+                $item->sts_class = $this->getStatusClass($item->order_status);
+                return $item;
+            });
+        }
+
+        return view('customer.status.app', ['banners' => $banners, 'orders' => $orders]);
+    }
+
     public function store(Request $request)
     {
         $AddOrder = new \App\Orders;
@@ -30,6 +66,23 @@ class OrderController extends Controller
         }
 
         \Session::forget('cart');
-        return response()->json($AddOrder);
+
+        return redirect()->route('viewOrder');
+    }
+
+    private function getOrderNo($id)
+    {
+        return sprintf("ORD%05d", $id);
+    }
+
+    private function getStatusClass($status_id)
+    {
+        if (in_array($status_id, [1, 2, 3, 4, 5, 6])) {
+            return 'process';
+        } else if ($status_id == 7) {
+            return 'success';
+        } else {
+            return 'unsuccess';
+        }
     }
 }

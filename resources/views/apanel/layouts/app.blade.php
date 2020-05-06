@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/css/apanel/layouts/sb-admin-2.min.css" rel="stylesheet">
@@ -47,26 +47,26 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" href="{{ route('viewUser') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>จัดการข้อมูลผู้ใช้งาน</span></a>
             </li>
 
-            
+
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('viewProduct') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>จัดการข้อมูลสินค้า</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('viewMaterial') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>จัดการข้อมูลวัตถุดิบ</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('viewCheckPayment') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>ตรวจสอบการชำระเงิน</span></a>
             </li>
@@ -284,7 +284,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/js/apanel/layouts/sb-admin-2.min.js"></script>
 
- 
+
     @yield('footer-js')
 
 </body>
