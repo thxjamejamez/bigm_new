@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
     Route::group(['prefix' => 'order'], function () {
         Route::get('/', 'OrderController@view')->name('viewOrder');
+        Route::get('/{id}', 'OrderController@viewDetail')->name('viewOrderDetail');
         Route::post('/', 'OrderController@store')->name('storeOrder');
     });
 });

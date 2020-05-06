@@ -43,6 +43,19 @@ class OrderController extends Controller
         return view('customer.status.app', ['banners' => $banners, 'orders' => $orders]);
     }
 
+    public function viewDetail($id)
+    {
+        $orderDetail = \App\Orders::with(['details'])
+            ->leftjoin('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
+            ->where('orders.order_by', \Auth::user()->id)
+            ->where('orders.id', $id)
+            ->select(
+                'orders.*',
+                'l_order_status.name as order_status_name'
+            )
+            ->get();
+    }
+
     public function store(Request $request)
     {
         $AddOrder = new \App\Orders;
@@ -59,6 +72,8 @@ class OrderController extends Controller
                 $AddOrderDetail = new \App\OrderDetail;
                 $AddOrderDetail->order_id = $AddOrder->id;
                 $AddOrderDetail->product_id = $product_id;
+                $AddOrderDetail->product_name = $product->name;
+                $AddOrderDetail->product_size = $product->size;
                 $AddOrderDetail->product_qty = $request->qty[$key];
                 $AddOrderDetail->product_price = $product->price;
                 $AddOrderDetail->save();

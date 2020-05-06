@@ -5,8 +5,7 @@ new Vue({
     },
     methods: {
         goto(url) {
-            console.log(url);
-
+            window.location.href = url
         }
     },
 })
