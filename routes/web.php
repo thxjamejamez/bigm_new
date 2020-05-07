@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+# Customer Page
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
     Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
@@ -65,7 +66,7 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
     Route::get('material', 'MaterialController@view')->name('viewMaterial');
 
-   
+
     Route::get('product', 'ProductController@view')->name('product');
 
     Route::get('Order', 'OrderController@view')->name('Order');
