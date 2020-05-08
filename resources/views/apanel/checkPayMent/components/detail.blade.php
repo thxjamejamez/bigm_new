@@ -24,7 +24,7 @@
                        <table style="width: 100%;">
                            <tr style="text-align: left;">
                                <td>
-                                   หมายเลขการจอง
+                                   หมายเลขคำสั่งซื้อ
                                </td>
                                <td>
                                    : xxxxxxxxxxxxxxxxxxx
@@ -32,7 +32,7 @@
                            </tr>
                            <tr style="text-align: left;">
                                <td>
-                                   ชื่อผู้จอง
+                                   ชื่อลูกค้า
                                </td>
                                <td>
                                    : xxxxxxxxxxxxxxxxxxx
@@ -48,7 +48,7 @@
                            </tr>
                            <tr style="text-align: left;">
                                <td>
-                                   วันที่จอง
+                                   วันที่ติดตั้ง
                                </td>
                                <td>
                                        : xxxxxxxxxxxxxxxxxxxxxxx
@@ -72,15 +72,48 @@
                                    : xxxxxxxxxxxx
                                </td>
                            </tr>
-   
+
                            <tr style="text-align: left;">
-                               <td>
-                                   หมายเหตุ
-                               </td>
-                               <td >
-                                   : xxxxxxxxxxx
-                               </td>
-                           </tr>
+                            <td>
+                                ชื่อบัญชี
+                            </td>
+                            <td>
+                                : xxxxxxxxxxx
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                โอนไปธนาคาร
+                            </td>
+                            <td>
+                                : xxxxxxxxxxxxx
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                จำนวนเงิน
+                            </td>
+                            <td>
+                            : xxxxxxxxxxxxxxxxx
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                            วันที่โอน
+                            </td>
+                            <td>
+                            : xxxxxxxxxxxxxxxxxxxxxxx
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                            เวลา
+                            </td>
+                            <td>
+                            : xxxxxxxxxxxxxxx
+                            </td>
+                        </tr>
+   
                        </table>
                    </div>
                </div>
@@ -91,55 +124,6 @@
                    <div class="col-md-12" align="center">
                        <p>img</p>
           
-                   </div>
-               </div>
-           </div>
-           <hr>
-           <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-6">
-                       <table style="width: 100%;">
-                           <tr style="text-align: left;">
-                               <td>
-                                   ชื่อบัญชี
-                               </td>
-                               <td>
-                                   : xxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                                   โอนไปธนาคาร
-                               </td>
-                               <td>
-                                   : xxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                                   จำนวนเงิน
-                               </td>
-                               <td>
-                               : xxxxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                               วันที่โอน
-                               </td>
-                               <td>
-                               : xxxxxxxxxxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                               เวลา
-                               </td>
-                               <td>
-                               : xxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                       </table>
                    </div>
                </div>
            </div>

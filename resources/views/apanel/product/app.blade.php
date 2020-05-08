@@ -48,8 +48,8 @@
                         <td>30.00</td>
                         <td>120*21</td>
                         <td>
-                            <div class="btn btn-warning btn-circle btn-sm">
-                                <i class="far fa-edit"></i>
+                            <div  class="btn btn-success btn-circle btn-sm">
+                                <i class="fas fa-search"></i>
                             </div>
                         </td>
                         <td>

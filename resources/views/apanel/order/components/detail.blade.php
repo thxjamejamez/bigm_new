@@ -15,13 +15,13 @@
              รายการสั่งซื้อของ xxxxxxxxxxxxxxx
            </h6>
          </div>
-         <div style="margin-left: auto;">
+         {{-- <div style="margin-left: auto;">
           <div>
               <button class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">
                   ยกเลิก
               </button>
           </div>
-      </div>
+         </div> --}}
        </div>
      </div>
      <div class="card-body">

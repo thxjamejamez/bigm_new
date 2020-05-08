@@ -24,10 +24,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr align="center">
-                    <th style="width: 5%">ลำดับ</th>
+                    <th style="width: 13%">หมายเลขคำสั่งซื้อ</th>
                     <th style="width: 22%">ชื่อ - สกุล</th>
-                    <th style="width: 18%">วันที่ติดตั้ง</th>
-                    <th style="width: 15%">ราคา</th>
+                    <th style="width: 13%">วันที่ติดตั้ง</th>
+                    <th style="width: 12%">ราคา</th>
                     <th style="width: 15%">สถานะ</th>
                     <th style="width: 10%">รายละเอียด</th>          
                     </tr>
@@ -40,9 +40,11 @@
                         <td align="center">xxxxx</td>
                         <td align="center">xxxxxxx</td>
                         <td align="center">
-                            <div  class="btn btn-success btn-circle btn-sm">
-                                <i class="fas fa-search"></i>
-                            </div>
+                            <a href="{{ route('OrderDetail') }}">
+                                <div  class="btn btn-success btn-circle btn-sm">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </a>
                         </td>
                     </tr>
                 </tbody>

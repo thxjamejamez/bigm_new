@@ -19,11 +19,12 @@
                         <hr>
                         <form class="form" role="form" action="" method="post" id="registrationForm" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="cc_name">เลือกรายการจอง</label>
+                                {{-- <label for="cc_name">เลือกรายการจอง</label>
                                 <select class="form-control" name="bk_id" required>
                                   <option value="0" disabled selected>กรุณาเลือก 1 รายการ</option>
                                   <option value=""></option> 
-                                </select>
+                                </select> --}}
+                                <label>## หมายเลขคำสั่งซื้อ A02555544 </label>
                             </div>
                             <div class="form-group">
                                 <label>เลือกธนาคารที่โอน</label>

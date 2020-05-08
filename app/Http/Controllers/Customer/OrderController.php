@@ -54,6 +54,8 @@ class OrderController extends Controller
                 'l_order_status.name as order_status_name'
             )
             ->get();
+
+        return response()->json($orderDetail);
     }
 
     public function store(Request $request)
