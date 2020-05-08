@@ -72,10 +72,6 @@
                                         เเจ้งชำระเงิน
                                     </a>
 
-                                    {{-- <a class="dropdown-item" href="{{ route('viewOrder') }}">
-                                    สถานะ
-                                    </a> --}}
-
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                         ออกจากระบบ
@@ -113,7 +109,7 @@
                     <p class="text-white link-nav">
                         @foreach ($banner as $key => $item)
                         <a href="{{ $item['path'] }}">{{ $item['name'] }}</a>
-                        @if(!$key == count($banner) - 1)
+                        @if($key != count($banner) - 1)
                         <span class="lnr lnr-arrow-right"></span>
                         @endif
                         @endforeach

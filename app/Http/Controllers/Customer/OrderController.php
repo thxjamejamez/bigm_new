@@ -45,6 +45,21 @@ class OrderController extends Controller
 
     public function viewDetail($id)
     {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'รายการคำสั่งซื้อ',
+                'path' => '/order'
+            ],
+            2 => [
+                'name' => 'รายละเอียดคำสั่งซื้อ',
+                'path' => '#'
+            ]
+        ];
+
         $orderDetail = \App\Orders::with(['details'])
             ->leftjoin('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
             ->where('orders.order_by', \Auth::user()->id)
@@ -53,9 +68,14 @@ class OrderController extends Controller
                 'orders.*',
                 'l_order_status.name as order_status_name'
             )
-            ->get();
+            ->first();
 
-        return response()->json($orderDetail);
+        if ($orderDetail) {
+            $orderDetail->order_no = $this->getOrderNo($orderDetail->id);
+        }
+
+        return view('customer.status.components.orderDetail', ['banners' => $banners, 'order' => $orderDetail]);
+        // return response()->json($orderDetail);
     }
 
     public function store(Request $request)
@@ -76,6 +96,7 @@ class OrderController extends Controller
                 $AddOrderDetail->product_id = $product_id;
                 $AddOrderDetail->product_name = $product->name;
                 $AddOrderDetail->product_size = $product->size;
+                $AddOrderDetail->product_img = ($product->img) ? $product->img : '/img/defualt_product.jpg';
                 $AddOrderDetail->product_qty = $request->qty[$key];
                 $AddOrderDetail->product_price = $product->price;
                 $AddOrderDetail->save();
