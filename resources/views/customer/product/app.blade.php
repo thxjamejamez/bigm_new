@@ -20,8 +20,7 @@
         @foreach ($item_cate as $key => $pd)
         <div class="single-recent-blog col-lg-4 col-md-4">
             <div class="thumb">
-                <img class="f-img img-fluid mx-auto" src="https://love.campus-star.com/app/uploads/2019/08/Doraemon.jpg"
-                    alt="">
+                <img class="f-img img-fluid mx-auto" src="{{($pd->img) ? $pd->img : '/img/defualt_product.jpg'}}">
             </div>
             <div style="color: #8490ff;font-size: 20px;margin-top: 15px">
                 {{ $pd->name }} @if($pd->size) ({{ $pd->size }}) @endif
@@ -35,6 +34,8 @@
                     <div class="col-md-6 col-sm-12 d-flex align-items-center" style="padding: 0">
                         {{ number_format($pd->price, 2) }} บาท
                     </div>
+
+                    @auth
                     <form action="{{ route('updateCart') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $pd->id }}">
@@ -42,9 +43,11 @@
                             <button type="submit" class="btn btn-secondary">Add to cart</button>
                         </div>
                     </form>
+                    @endauth
 
                 </div>
             </div>
+
         </div>
         @endforeach
 

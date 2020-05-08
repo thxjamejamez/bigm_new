@@ -75,7 +75,6 @@ class OrderController extends Controller
         }
 
         return view('customer.status.components.orderDetail', ['banners' => $banners, 'order' => $orderDetail]);
-        // return response()->json($orderDetail);
     }
 
     public function store(Request $request)

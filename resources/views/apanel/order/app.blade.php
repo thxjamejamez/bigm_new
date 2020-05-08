@@ -22,32 +22,32 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr align="center">
-                    <th style="width: 13%">หมายเลขคำสั่งซื้อ</th>
-                    <th style="width: 22%">ชื่อ - สกุล</th>
-                    <th style="width: 13%">วันที่ติดตั้ง</th>
-                    <th style="width: 12%">ราคา</th>
-                    <th style="width: 15%">สถานะ</th>
-                    <th style="width: 10%">รายละเอียด</th>          
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td align="center">xxxxxxx</td>
-                        <td>xxxxxxx</td>
-                        <td align="center">xxxxxxx</td>
-                        <td align="center">xxxxx</td>
-                        <td align="center">xxxxxxx</td>
-                        <td align="center">
-                            <a href="{{ route('OrderDetail') }}">
-                                <div  class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
+                    <thead>
+                        <tr align="center">
+                            <th style="width: 13%">หมายเลขคำสั่งซื้อ</th>
+                            <th style="width: 22%">ชื่อ - สกุล</th>
+                            <th style="width: 13%">วันที่ติดตั้ง</th>
+                            <th style="width: 12%">ราคา</th>
+                            <th style="width: 15%">สถานะ</th>
+                            <th style="width: 10%">รายละเอียด</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">xxxxxxx</td>
+                            <td>xxxxxxx</td>
+                            <td align="center">xxxxxxx</td>
+                            <td align="center">xxxxx</td>
+                            <td align="center">xxxxxxx</td>
+                            <td align="center">
+                                <a href="{{ route('OrderDetail', ['id' => 1]) }}">
+                                    <div class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

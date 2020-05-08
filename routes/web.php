@@ -59,32 +59,27 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
         return view('apanel.home');
     });
 
-    Route::get('product', 'ProductController@view')->name('product');
-    Route::get('detailProduct', 'ProductController@viewDetail')->name('detailProduct');
-
-
-
-    Route::get('material', 'MaterialController@view')->name('viewMaterial');
-
-
-    Route::get('product', 'ProductController@view')->name('product');
-
-    Route::get('Order', 'OrderController@view')->name('Order');
-    Route::get('OrderDetail', 'OrderController@viewDtail')->name('OrderDetail');
-
-    Route::get('checkPayMent', 'CheckPayMentController@view')->name('viewCheckPayment');
-    Route::get('detailCheckPayMent', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
-
-
-    Route::get('product', 'ProductController@view')->name('viewProduct');
-    // Route::group(['prefix' => 'checkPayMent'], function () {
-    //     Route::get('/','CheckPayMentController@view')->name('checkPayMent');
-    //     Route::get('/{id}','CheckPayMentController@viewDetail')->name('detailCheckPayMent');
-    // });
-
-
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@view')->name('viewUser');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
+    });
+
+    Route::group(['prefix' => 'product'], function () {
+        Route::get('/', 'ProductController@view')->name('viewProduct');
+        Route::get('/{id}', 'ProductController@viewDetail')->name('detailProduct');
+    });
+
+    Route::group(['prefix' => 'material'], function () {
+        Route::get('/', 'MaterialController@view')->name('viewMaterial');
+    });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('/', 'OrderController@view')->name('Order');
+        Route::get('/{id}', 'OrderController@viewDtail')->name('OrderDetail');
+    });
+
+    Route::group(['prefix' => 'checkPayMent'], function () {
+        Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
+        Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
 });
