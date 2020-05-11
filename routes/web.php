@@ -22,8 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 # Customer Page
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
-    Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
-    Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('edit', 'ProfileController@view')->name('editprofile');
+        Route::post('edit', 'ProfileController@edit')->name('editprofile');
+    });
 
     Route::group(['prefix' => 'sendAddress'], function () {
         Route::get('/', 'SendAddressController@view')->name('sendAddress');
