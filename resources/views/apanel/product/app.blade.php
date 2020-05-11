@@ -41,16 +41,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($product as $key=>$item)
+                            
                         <tr>
-                            <td>1</td>
-                            <td>ประตูหน้าต่าง</td>
+                        <td>{{$key+1}}</td>
+                        <td>{{$item->name}}</td>
                             <td><img style="width: 250px;height: 150px;"
-                                    src="https://www.prachachat.net/wp-content/uploads/2019/09/ctn01160962p1-728x520.jpg">
+                                src="{{($item->img) ? $item->img : '/img/defualt_product.jpg'}}">
                             </td>
-                            <td>30.00</td>
-                            <td>120*21</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->size}}</td>
                             <td>
-                                <a href="/apanel/product/1" class="btn btn-success btn-circle btn-sm">
+                                <a href="/apanel/product/{{$item->id}}" class="btn btn-success btn-circle btn-sm">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>
@@ -60,6 +62,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

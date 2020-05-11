@@ -33,23 +33,29 @@
 
                   <div class="col-md-6">
                     <div style="font-size: 30px;color:black;">
-                      ประตูบานเกรด
+                      {{$product->name}}
                     </div>
 
                     <div style="font-size: 16px;margin-top: 5px">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                      {{$product->detail}}
                     </div>
 
                     <div style="font-size: 16px;margin-top: 20px">
-                     <span style="color: black">ขนาด</span> 110*110 <span>เซนติเมตร</span>
+                     <span style="color: black">ขนาด</span> {{$product->size}} <span>เซนติเมตร</span>
                     </div>
 
                     <div style="font-size: 16px;margin-top: 5px">
-                      <span style="color: black">ราคา</span> 365 <span>บาท</span> 
+                      <span style="color: black">ราคา</span> {{$product->price}} <span>บาท</span> 
                     </div>
 
                     <div style="font-size: 16px;margin-top: 5px">
-                      <span style="color: black">สถานนะ</span> <span> ขายอยู่</span> 
+                      <span style="color: black">สถานนะ</span> 
+                      <span> @if ($product->active==1)
+                                  <span>ขายอยู่</span>
+                             @else
+                                  <span>งดขาย</span>
+                             @endif
+                      </span> 
                     </div>
 
                   </div>
@@ -66,7 +72,7 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">เพิ่มข้อมูลสินค้า</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">เเก้ไขข้อมูลสินค้า</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>

@@ -48,4 +48,23 @@ class ProductController extends Controller
 
         return view('customer.product.app', ['banners' => $banners, 'products' => $product->groupBy('pd_cate_name')]);
     }
+
+
+    public function customProduct()
+    {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'สินค้า',
+                'path' => '#'
+            ]
+        ];
+        
+        return view('customer.product.components.costom',['banners' => $banners]);
+    }
+
+
 }

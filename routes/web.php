@@ -53,10 +53,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     });
 });
 Route::get('product', 'Customer\ProductController@view');
-
-
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
+
+Route::get('customProduct', 'Customer\ProductController@customProduct')->name('customProduct');
 
 
 # Apanel 

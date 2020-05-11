@@ -10,7 +10,8 @@ class UserController extends Controller
 {
     public function view()
     {
-        return view('apanel.user.app');
+        $user = User::get();
+        return view('apanel.user.app',['user'=>$user]);
     }
 
     public function viewDetail($id)
