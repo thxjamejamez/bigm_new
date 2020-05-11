@@ -15,18 +15,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->Increments('id');
-            $table->unsignedBigInteger('order_by');
-            $table->date('order_date');
-            $table->date('send_date');
-            $table->unsignedInteger('send_address_id');
+            $table->unsignedInteger('quotation_id');
+            $table->dateTime('send_datetime', 0);
+            $table->dateTime('send_change_datetime', 0)->nullable();
             $table->unsignedInteger('order_status');
-            $table->string('remark', 100)->nullable();
-            $table->date('change_send_date')->nullable();
-            $table->string('pay_file', 100)->nullable();
-            $table->datetime('pay_datetime')->nullable();
-            $table->double('total_pay', 8, 2)->nullable();
-            $table->foreign('order_by')->references('id')->on('users');
-            $table->foreign('send_address_id')->references('id')->on('cust_send_address');
+            $table->string('remark', 100);
+            $table->timestamp('created_at', 0);
+            $table->foreign('quotation_id')->references('id')->on('quotations');
             $table->foreign('order_status')->references('id')->on('l_order_status');
         });
     }
