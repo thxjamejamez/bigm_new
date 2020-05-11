@@ -22,14 +22,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 # Customer Page
 Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
-    Route::get('profile/edit', 'ProfileController@view')->name('editprofile');
-    Route::post('profile/edit', 'ProfileController@edit')->name('editprofile');
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('edit', 'ProfileController@view')->name('editprofile');
+        Route::post('edit', 'ProfileController@edit')->name('editprofile');
+    });
 
     Route::group(['prefix' => 'sendAddress'], function () {
         Route::get('/', 'SendAddressController@view')->name('sendAddress');
         Route::post('/', 'SendAddressController@add')->name('AddSendAddress');
         Route::post('/{id}', 'SendAddressController@update')->name('editSendAddress');
         Route::get('/{id}/remove', 'SendAddressController@remove')->name('removeSendAddress');
+    });
+
+    Route::group(['prefix' => 'quotation'], function () {
+        Route::get('/', 'QuotationController@view')->name('viewQuotation');
     });
 
     Route::get('payment', 'PaymentController@view')->name('payment');

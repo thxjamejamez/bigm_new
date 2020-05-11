@@ -22,24 +22,24 @@ class ProductController extends Controller
         ];
 
         $product = \DB::table('product_categories')
-            ->join('products', 'product_categories.id', '=', 'products.category_id')
+            ->join('product_formats', 'product_categories.id', '=', 'product_formats.category_id')
             ->where('product_categories.id', 1)
             ->select(
                 'product_categories.*',
                 'product_categories.name as pd_cate_name',
-                'products.*'
+                'product_formats.*'
             )
             ->get();
 
         if (isset(\Auth::user()->id)) {
             $custom_product = \DB::table('product_categories')
-                ->join('products', 'product_categories.id', '=', 'products.category_id')
+                ->join('product_formats', 'product_categories.id', '=', 'product_formats.category_id')
                 ->where('product_categories.id', 2)
-                ->where('products.created_by', \Auth::user()->id)
+                ->where('product_formats.created_by', \Auth::user()->id)
                 ->select(
                     'product_categories.*',
                     'product_categories.name as pd_cate_name',
-                    'products.*'
+                    'product_formats.*'
                 )
                 ->get();
 

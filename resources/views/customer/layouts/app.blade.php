@@ -60,6 +60,9 @@
                                     <a class="dropdown-item" href="{{ route('sendAddress') }}">
                                         ที่อยู่การติดตั้ง
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('viewQuotation') }}">
+                                        ใบเสนอราคา
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('viewCart') }}">
                                         ตะกร้าสินค้า
                                     </a>
