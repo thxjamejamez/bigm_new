@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::get('/{id}/remove', 'SendAddressController@remove')->name('removeSendAddress');
     });
 
+    Route::group(['prefix' => 'quotation'], function () {
+        Route::get('/', 'QuotationController@view')->name('viewQuotation');
+    });
+
     Route::get('payment', 'PaymentController@view')->name('payment');
 
     Route::group(['prefix' => 'cart'], function () {

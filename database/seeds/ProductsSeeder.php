@@ -8,16 +8,14 @@ class ProductsSeeder extends Seeder
     {
         $data = $this->data();
         foreach ($data as $key => $value) {
-            \DB::table('products')
+            \DB::table('product_formats')
                 ->insertOrIgnore([
                     'id' => $value['id'],
-                    'category_id' => $value['category_id'],
                     'name' => $value['name'],
-                    'size' => $value['size'],
-                    'detail' => $value['detail'],
-                    'price' => $value['price'],
-                    'active' => $value['active'],
-                    'created_by' => $value['created_by']
+                    'img_path' => $value['img_path'],
+                    'category_id' => $value['category_id'],
+                    'created_by' => $value['created_by'],
+                    'active' => $value['active']
                 ]);
         }
     }
@@ -25,10 +23,46 @@ class ProductsSeeder extends Seeder
     private function data()
     {
         return [
-            ['id' => 1, 'category_id' => 1, 'name' => 'pd_test01', 'size' => '110*212', 'detail' => 'test detail..................', 'price' => 2500.30, 'active' => 1, 'created_by' => 1],
-            ['id' => 2, 'category_id' => 1, 'name' => 'pd_test02', 'size' => '110*200', 'detail' => 'test detail..................', 'price' => 2300.20, 'active' => 1, 'created_by' => 1],
-            ['id' => 3, 'category_id' => 2, 'name' => 'pd_test03', 'size' => '20*30', 'detail' => 'test detail..................', 'price' => 350.30, 'active' => 1, 'created_by' => 2],
-            ['id' => 4, 'category_id' => 2, 'name' => 'pd_test04', 'size' => '80*90', 'detail' => 'test detail..................', 'price' => 450.30, 'active' => 1, 'created_by' => 2]
+            [
+                'id' => 1,
+                'name' => 'pd_test01',
+                'img_path' => '',
+                'category_id' => 1,
+                'created_by' => 1,
+                'active' => 1
+            ],
+            [
+                'id' => 2,
+                'name' => 'pd_test02',
+                'img_path' => '',
+                'category_id' => 1,
+                'created_by' => 1,
+                'active' => 1
+            ],
+            [
+                'id' => 3,
+                'name' => 'pd_test03',
+                'img_path' => '',
+                'category_id' => 2,
+                'created_by' => 2,
+                'active' => 1
+            ],
+            [
+                'id' => 4,
+                'name' => 'pd_test04',
+                'img_path' => '',
+                'category_id' => 2,
+                'created_by' => 2,
+                'active' => 1
+            ],
+            [
+                'id' => 5,
+                'name' => 'pd_test05',
+                'img_path' => '',
+                'category_id' => 2,
+                'created_by' => 2,
+                'active' => 1
+            ],
         ];
     }
 }
