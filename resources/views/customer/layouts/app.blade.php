@@ -72,6 +72,10 @@
                                         เเจ้งชำระเงิน
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('customProduct') }}">
+                                        ออกเเบบสินค้า
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                         ออกจากระบบ

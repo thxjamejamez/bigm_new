@@ -41,23 +41,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td align="center">1</td>
-                            <td>สิทธิกร</td>
-                            <td>มะกูลต๊ะ</td>
-                            <td align="center">ลูกค้า</td>
-                            <td align="center">0856238872</td>
-                            <td align="center">
-                                <a href="/apanel/user/2" class="btn btn-success  btn-circle btn-sm">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                            </td>
-                            <td align="center">
-                                <div class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </div>
-                            </td>
-                        </tr>
+
+                        @foreach ($user as $key=> $item)    
+                            <tr>
+                                <td align="center">{{$key+1}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>มะกูลต๊ะ</td>
+                                <td align="center">ลูกค้า</td>
+                                <td align="center">{{$item->name}}</td>
+                                <td align="center">
+                                    <a href="/apanel/user/2" class="btn btn-success  btn-circle btn-sm">
+                                        <i class="fas fa-search"></i>
+                                    </a>
+                                </td>
+                                <td align="center">
+                                    <div class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
