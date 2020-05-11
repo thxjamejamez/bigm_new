@@ -15,7 +15,7 @@ class QuotationController extends Controller
                 'path' => '/'
             ],
             1 => [
-                'name' => 'สินค้า',
+                'name' => 'ใบเสนอราคา',
                 'path' => '#'
             ]
         ];
