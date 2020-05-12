@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
     Route::group(['prefix' => 'quotation'], function () {
         Route::get('/', 'QuotationController@view')->name('viewQuotation');
+        Route::get('/add/{type}', 'QuotationController@viewAdd')->name('viewAddQuotation');
     });
 
     Route::get('payment', 'PaymentController@view')->name('payment');

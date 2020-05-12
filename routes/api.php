@@ -19,4 +19,11 @@ Route::group(['prefix' => 'list', 'namespace' => 'API'], function () {
     Route::get('amphure/{province_id}', 'ListController@GetAmphureList');
     Route::get('district/{amphure_id}', 'ListController@GetDistrictList');
 });
-Route::get('sendaddress/{id}', 'Customer\SendAddressController@viewDetail');
+
+
+Route::group(['namespace' => 'Customer'], function () {
+    Route::get('sendaddress/{id}', 'SendAddressController@viewDetail');
+
+    # Quotations
+    Route::get('quotation', 'QuotationController@getQuotationlist');
+});
