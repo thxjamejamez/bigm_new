@@ -24,6 +24,8 @@ Route::group(['prefix' => 'list', 'namespace' => 'API'], function () {
 Route::group(['namespace' => 'Customer'], function () {
     Route::get('sendaddress/{id}', 'SendAddressController@viewDetail');
 
+    Route::get('productformat', 'QuotationController@getProductFormatList');
+
     # Quotations
     Route::get('quotation', 'QuotationController@getQuotationlist');
 });

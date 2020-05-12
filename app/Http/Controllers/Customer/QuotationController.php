@@ -43,7 +43,12 @@ class QuotationController extends Controller
 
     public function getQuotationlist()
     {
-
         return response()->json('12344');
+    }
+
+    public function getProductFormatList()
+    {
+        $ProductModels = new \App\Products();
+        return response()->json($ProductModels->getProductFormatList());
     }
 }
