@@ -72,9 +72,15 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('Order') }}">
+                <a class="nav-link" href="{{ route('quotations') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>จัดการข้อมูลคำสั่งซื้อ</span></a>
+                    <span>การนัดหมาย</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('Payquotations') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>การเสนอราคา</span></a>
             </li>
 
 

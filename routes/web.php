@@ -88,4 +88,29 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
         Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
         Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
+
+
+    Route::group(['prefix' => 'quotations'], function () {
+
+        Route::get('/', 'QuotationsController@view')->name('quotations');
+        Route::get('/{id}', 'QuotationsController@viewDetail')->name('quotationsDetail');
+
+        // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
+        // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
+    });
+
+
+    
+    Route::group(['prefix' => 'payQuotations'], function () {
+
+        Route::get('/', 'PayQuotationController@view')->name('payQuotations');
+        Route::get('/{id}', 'PayQuotationController@viewDetail')->name('payQuotationsDetail');
+
+        // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
+        // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
+    });
+
+
+
+
 });
