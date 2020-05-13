@@ -10,24 +10,61 @@
 
 <div class="whole-wrap">
     <div class="container">
-
         <div class="section-top-border">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <button type="button" class="btn btn-primary pull-right mb-10" data-toggle="modal"
+                data-target="#add-quotation">
+                ขอใบเสนอราคา
+            </button>
+
+            <div class="table-responsive mb-10">
+                <table class="table table-bordered" id="quotation-table" width="100%" cellspacing="0">
                     <thead>
                         <tr align="center">
-                            <th style="width: 5%">ลำดับ</th>
-                            <th style="width: 20%">ชื่อ</th>
-                            <th style="width: 19%">สกุล</th>
-                            <th style="width: 15%">ประเภทผู้ใช้งาน</th>
-                            <th style="width: 15%">เบอร์โทร</th>
-                            <th style="width: 12%">ดูรายละเอียด</th>
-                            <th style="width: 7%">ลบ</th>
+                            <th style="width: 50%">เลขที่ใบเสนอราคา</th>
+                            <th style="width: 50%">สถานะใบเสนอราคา</th>
                         </tr>
                     </thead>
                 </table>
             </div>
+
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="add-quotation" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+
+                            <section class="price-area section-gap" style="padding: 0;">
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 single-price" onclick="gotourl(1)">
+                                        <div class="top-part">
+                                            <h1 class="package-no"><span class="lnr lnr-strikethrough"></span></h1>
+                                            <hr>
+                                            <label style="font-size: x-large;">วัดขนาดเอง</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 single-price" onclick="gotourl(2)">
+                                        <div class="top-part">
+                                            <h1 class="package-no"><span class="lnr lnr-location"></span></h1>
+                                            <hr>
+                                            <label style="font-size: x-large;">ให้ช่างวัดขนาด</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- End modal --}}
 
     </div>
 </div>
@@ -38,8 +75,5 @@
 @section('footer-js')
 <script src="/plugins/apanel/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/apanel/datatables/dataTables.bootstrap4.min.js"></script>
-
-<script>
-    $('#dataTable').DataTable()
-</script>
+<script src="/js/customer/quotation/app.js"></script>
 @endsection
