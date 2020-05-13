@@ -30,7 +30,7 @@ const APP = new Vue({
             //     ]
             // }]
 
-            product: [{}],
+            product: [],
             modal: [{
                 id: 2,
                 pd_f_name: 'test01',
@@ -51,9 +51,26 @@ const APP = new Vue({
             $('#add-productformat').modal('toggle');
         },
 
-        addProductFormat() {
-            console.log(1234);
+        addProductFormat(data) {
+            let el = this
+            el.controls.product.push({
+                pd_f_id: data.id,
+                pd_f_img: data.img_path,
+                pd_f_name: data.pd_f_name,
+                pd_details: [{
+                    size: '',
+                    qty: 0
+                }]
+            })
+            el.toggleModal()
 
+        },
+
+        addsize(data) {
+            data.pd_details.push({
+                qty: 0,
+                size: ""
+            })
         }
     }
 })
