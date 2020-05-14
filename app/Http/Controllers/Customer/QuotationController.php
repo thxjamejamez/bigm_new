@@ -51,4 +51,20 @@ class QuotationController extends Controller
         $ProductModels = new \App\Products();
         return response()->json($ProductModels->getProductFormatList());
     }
+
+
+    public function viewDetail()
+    {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'รายละเอียดใบเสนอราคา',
+                'path' => '#'
+            ]
+        ];
+        return view('customer.quotation.components.detail', ['banners' => $banners]);
+    }
 }

@@ -33,9 +33,8 @@
                     <tr align="center">
                     <th style="width: 5%">ลำดับ</th>
                     <th style="width: 25%">ชื่อวัตถุดิบ</th>
-                    <th style="width: 26%">รูปสินค้า</th>
-                    <th style="width: 15%">ราคา (บาท)</th>
-                    <th style="width: 15%">สถานะ</th>
+                    <th style="width: 35%">รูปสินค้า</th>
+                    {{-- <th style="width: 15%">สถานะ</th> --}}
                     <th style="width: 7%">เเก้ไข</th>
                     <th style="width: 7%">ลบ</th>
                     </tr>
@@ -46,23 +45,22 @@
                     <tr>
                         <td>{{ $mt->id }}</td>
                         <td>{{ $mt->name }}</td>
-                        <td>{{ $mt->img_file }}</td>
-                        <td>{{ $mt->price_per_unit }}</td>
-                        <td>    
+                        <td>{{($mt->img_path) ? $mt->img_path : '/img/defualt_product.jpg'}}</td>
+                        {{-- <td>    
                                 @if ($mt->active==1)
                                     <div>ยังดำเนินการ</div>    
                                 @else
                                     <div>หยุดดำเนินการ</div>            
                                 @endif
-                        </td>
+                        </td> --}}
                         <td>
                                 <div class="btn btn-warning btn-circle btn-sm">
                                     <i class="far fa-edit"></i>
                                 </div>
                         </td>
                         <td>
-                            <a href="{{ url('material/remove/'.$mt->id)}}">
-                                <div  class="btn btn-danger btn-circle btn-sm">
+                            <a href="{{route('removeMaterial', ['id'=>$mt->id])}}" onclick="return confirm('Are you sure?')">
+                                <div class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </div>
                             </a>
@@ -89,22 +87,23 @@
         </button>
     </div>
     <div class="modal-body">
-        <form>
+        <form action="{{route('storeMaterial')}}" method="POST">
             <div>
-                <span>ชื่อสินค้า</span>
-                <input type="text" name="" class="form-control" required>
+                @csrf
+                <span>ชื่อวัตถุดิบ</span>
+                <input type="text" name="nameMaterial" class="form-control" required>
             </div>
-            <div class="mt-2">
+            {{-- <div class="mt-2">
                 <span>ราคา (บาท)</span>
                 <input type="text" name="" class="form-control" required>
             </div>
             <div class="mt-2">
                 <span>ขนาด (เซนติเมตร)</span>
                 <input type="text" name="" class="form-control" required>
-            </div>
+            </div> --}}
             <div class="mt-2">
-                <span>ภาพสินค้า</span>
-                <input type="file" name="" class="form-control" required>
+                <span>ภาพวัตถุดิบ</span>
+                <input type="file" name="imgMaterial" class="form-control" required>
             </div>
 
             <div class="modal-footer">
