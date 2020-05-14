@@ -10,14 +10,11 @@ class Products extends Model
     protected $table = "product_formats";
     public $timestamps = false;
 
-    public function getProductFormatList(require_by)
+    public function getProductFormatList()
     {
         $pd_f = \DB::table('product_formats')
             ->join('product_categories', 'product_formats.category_id', '=', 'product_categories.id')
-            ->where('product_formats.created_by', 1)
-            ->when(isset(\Auth::user()->id), function ($query) {
-                $query->where('product_formats.created_by', \Auth::user()->id);
-            })
+            ->whereIn('product_formats.created_by', [1, \Auth::user()->id])
             ->select(
                 'product_formats.id as pd_f_id',
                 'product_formats.name as pd_f_name',
