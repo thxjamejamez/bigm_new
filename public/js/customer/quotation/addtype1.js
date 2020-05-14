@@ -3,7 +3,8 @@ const APP = new Vue({
     data: {
         controls: {
             product: [],
-            modal: []
+            modal: [],
+            submit: false
         },
         lib: {
             product_format: []
@@ -32,6 +33,7 @@ const APP = new Vue({
 
         addProductFormat(data) {
             let el = this
+            el.controls.submit = true
             el.controls.product.push({
                 pd_f_id: data.pd_f_id,
                 pd_f_img: data.img_path,

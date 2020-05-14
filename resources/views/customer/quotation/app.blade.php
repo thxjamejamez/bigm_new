@@ -21,10 +21,22 @@
                 <table class="table table-bordered" id="quotation-table" width="100%" cellspacing="0">
                     <thead>
                         <tr align="center">
-                            <th style="width: 50%">เลขที่ใบเสนอราคา</th>
+                            <th style="width: 40%">เลขที่ใบเสนอราคา</th>
                             <th style="width: 50%">สถานะใบเสนอราคา</th>
+                            <th style="width: 10%"></th>
                         </tr>
                     </thead>
+
+                    <tbody>
+                        @foreach ($quotation as $item)
+                        <tr align="center">
+                            <td style="width: 40%">{{sprintf("Q%05d", $item->id)}}</td>
+                            <td style="width: 50%">{{$item->status}}</td>
+                            <td style="width: 10%"><a href="{{route('viewDetailQuotation', ['id'=> $item->id])}}"
+                                    class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
 

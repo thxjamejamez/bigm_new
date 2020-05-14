@@ -18,6 +18,7 @@ class CreateAppointmentsTable extends Migration
             $table->dateTime('appointment_datetime', 0);
             $table->dateTime('appointment_change_datetime', 0)->nullable();
             $table->unsignedInteger('appointment_status');
+            $table->tinyInteger('appointment_type')->default(1)->comment('1=นัดวัด, 2=นัดติดตั้ง');
             $table->foreign('appointment_status')->references('id')->on('l_appointment_status');
         });
     }

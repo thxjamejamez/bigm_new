@@ -37,7 +37,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::group(['prefix' => 'quotation'], function () {
         Route::get('/', 'QuotationController@view')->name('viewQuotation');
         Route::get('/add/{type}', 'QuotationController@viewAdd')->name('viewAddQuotation');
-        Route::get('/viewDetail', 'QuotationController@viewDetail')->name('viewDetail');
+        Route::post('/type1', 'QuotationController@storeType1')->name('storeQuotationType1');
+        Route::get('/{id}', 'QuotationController@viewDetail')->name('viewDetailQuotation');
     });
 
 
@@ -105,7 +106,6 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
 
 
     Route::group(['prefix' => 'quotations'], function () {
-
         Route::get('/', 'QuotationsController@view')->name('quotations');
         Route::get('/{id}', 'QuotationsController@viewDetail')->name('quotationsDetail');
 
@@ -114,7 +114,7 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     });
 
 
-    
+
     Route::group(['prefix' => 'payQuotations'], function () {
 
         Route::get('/', 'PayQuotationController@view')->name('payQuotations');
@@ -123,8 +123,4 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
         // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
         // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
-
-
-
-
 });

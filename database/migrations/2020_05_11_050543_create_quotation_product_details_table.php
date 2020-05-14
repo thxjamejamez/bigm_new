@@ -17,7 +17,7 @@ class CreateQuotationProductDetailsTable extends Migration
             $table->unsignedInteger('quotation_product_id');
             $table->string('size', 50);
             $table->integer('qty');
-            $table->double('price_per_unit', 8, 2);
+            $table->double('price_per_unit', 8, 2)->nullable();
             $table->foreign('quotation_product_id')->references('id')->on('quotation_products');
         });
     }
