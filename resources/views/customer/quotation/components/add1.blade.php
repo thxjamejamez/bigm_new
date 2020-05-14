@@ -70,24 +70,27 @@
 
                                 </div>
 
-                                <div v-for="detail in pd.pd_details" class="row mb-3">
+                                <div v-for="(detail, index) in pd.pd_details" class="row mb-3">
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" v-model="detail.size">
+                                            <input type="text" class="form-control" @keypress="validKeyNumbers"
+                                                v-model="detail.size">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <input type="number" class="form-control" v-model="detail.qty">
+                                            <input type="number" class="form-control" min="0" max="20"
+                                                v-model="detail.qty">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <button class="btn btn-danger btn-sm">ลบ</button>
+                                            <div v-if="pd.pd_details.length > 1" class="col-md-3">
+                                                <button class="btn btn-danger btn-sm"
+                                                    @click="removesize(pd, index)">ลบ</button>
                                             </div>
                                             <div v-if="detail.size && detail.qty != 0" class="col-md-3">
                                                 <button class="btn btn-primary btn-sm"
