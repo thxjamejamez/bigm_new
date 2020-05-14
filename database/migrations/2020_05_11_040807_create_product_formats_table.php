@@ -16,7 +16,7 @@ class CreateProductFormatsTable extends Migration
         Schema::create('product_formats', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name', 50);
-            $table->string('img_path', 50)->nullable();
+            $table->string('img_path', 50)->nullable()->default('/img/defualt_product.jpg');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('created_by');
             $table->boolean('active')->defualt(1);

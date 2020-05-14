@@ -3,16 +3,7 @@ const APP = new Vue({
     data: {
         controls: {
             product: [],
-            modal: [{
-                id: 2,
-                pd_f_name: 'test01',
-                img_path: '/img/defualt_product.jpg'
-
-            }, {
-                id: 1,
-                pd_f_name: 'test02',
-                img_path: '/img/defualt_product.jpg'
-            }]
+            modal: []
         },
         lib: {
             product_format: []
@@ -20,19 +11,29 @@ const APP = new Vue({
     },
 
     created() {
-        this.getProductFormat()
+        let edata = JSON.parse(window.atob(data))
+        this.lib.product_format = _.forEach(edata, function (value, key) {
+            let path = value.img_path
+            if (value.img_path == '') {
+                path = '/img/defualt_product.jpg'
+            }
+            return value.img_path = path
+        })
     },
 
     methods: {
         toggleModal() {
-
+            let choosed = _.map(this.controls.product, 'pd_f_id')
+            this.controls.modal = _.filter(this.lib.product_format, function (o) {
+                return !_.includes(choosed, o.pd_f_id)
+            })
             $('#add-productformat').modal('toggle');
         },
 
         addProductFormat(data) {
             let el = this
             el.controls.product.push({
-                pd_f_id: data.id,
+                pd_f_id: data.pd_f_id,
                 pd_f_img: data.img_path,
                 pd_f_name: data.pd_f_name,
                 pd_details: [{
@@ -65,14 +66,6 @@ const APP = new Vue({
             }
         },
 
-        async getProductFormat() {
-            let el = this
-            const response = await fetch('/api/productformat/');
-            const myJson = await response.json();
-            if (myJson.status) {
-                let data = myJson.data
-                el.lib.product_format = data
-            }
-        }
+
     }
 })
