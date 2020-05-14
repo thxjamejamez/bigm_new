@@ -42,15 +42,15 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($user as $key=> $item)    
+                        @foreach ($userInfor as $key=> $item)    
                             <tr>
                                 <td align="center">{{$key+1}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>มะกูลต๊ะ</td>
+                                <td>{{$item->first_name}}</td>
+                                <td>{{$item->last_name}}</td>
                                 <td align="center">ลูกค้า</td>
-                                <td align="center">{{$item->name}}</td>
+                                <td align="center">{{$item->tel}}</td>
                                 <td align="center">
-                                    <a href="/apanel/user/2" class="btn btn-success  btn-circle btn-sm">
+                                    <a href="/apanel/user/{{$item->id}}" class="btn btn-success  btn-circle btn-sm">
                                         <i class="fas fa-search"></i>
                                     </a>
                                 </td>

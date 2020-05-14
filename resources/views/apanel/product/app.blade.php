@@ -34,9 +34,9 @@
                             <th style="width: 5%">ลำดับ</th>
                             <th style="width: 22%">ชื่อสินค้า</th>
                             <th style="width: 26%">รูปสินค้า</th>
-                            <th style="width: 15%">ราคา (บาท)</th>
-                            <th style="width: 15%">ขนาด (เซนติเมตร)</th>
-                            <th style="width: 13%">รายละเอียด</th>
+                            
+                            <th style="width: 20%">สร้างโดย</th>
+                            <th style="width: 7%">เเก้ไข</th>
                             <th style="width: 7%">ลบ</th>
                         </tr>
                     </thead>
@@ -44,22 +44,24 @@
                         @foreach ($product as $key=>$item)
                             
                         <tr>
-                        <td>{{$key+1}}</td>
-                        <td>{{$item->name}}</td>
+                            <td>{{$key+1}}</td>
+                            <td>{{$item->name}}</td>
                             <td><img style="width: 250px;height: 150px;"
-                                src="{{($item->img) ? $item->img : '/img/defualt_product.jpg'}}">
+                                src="{{($item->img_path) ? $item->img_path : '/img/defualt_product.jpg'}}">
                             </td>
-                            <td>{{$item->price}}</td>
-                            <td>{{$item->size}}</td>
+                      
+                            <td>{{$item->created_by}}</td>
                             <td>
-                                <a href="/apanel/product/{{$item->id}}" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-search"></i>
+                                <a href="/apanel/product/{{$item->id}}" class="btn btn-warning btn-circle btn-sm">
+                                    <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <div class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </div>
+                                <a href="{{route('removeProduct', ['id'=>$item->id])}}" onclick="return confirm('Are you sure?')">
+                                    <div class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -83,26 +85,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+            <form action="{{route('storeProduct')}}" method="POST">
+                    @csrf
                     <div>
                         <span>ชื่อสินค้า</span>
-                        <input type="text" name="" class="form-control" required>
+                        <input type="text" name="product_name" class="form-control" required>
                     </div>
-                    <div>
+                    {{-- <div>
                         <span>รายละเอียดสินค้า</span>
                         <textarea style="height: 100px" class="form-control"></textarea>
-                    </div>
-                    <div class="mt-2">
+                    </div> --}}
+                    {{-- <div class="mt-2">
                         <span>ราคา (บาท)</span>
                         <input type="text" name="" class="form-control" required>
-                    </div>
-                    <div class="mt-2">
+                    </div> --}}
+                    {{-- <div class="mt-2">
                         <span>ขนาด (เซนติเมตร)</span>
                         <input type="text" name="" class="form-control" required>
-                    </div>
+                    </div> --}}
                     <div class="mt-2">
                         <span>ภาพสินค้า</span>
-                        <input type="file" name="" class="form-control" required>
+                        <input type="file" name="product_img" class="form-control" required>
                     </div>
 
                     <div class="modal-footer">

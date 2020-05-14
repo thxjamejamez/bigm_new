@@ -78,7 +78,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('Payquotations') }}">
+                <a class="nav-link" href="{{ route('payQuotations') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>การเสนอราคา</span></a>
             </li>

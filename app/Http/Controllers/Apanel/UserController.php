@@ -5,13 +5,18 @@ namespace App\Http\Controllers\Apanel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \App\User;
+use \App\Custinfo;
 
 class UserController extends Controller
 {
     public function view()
     {
-        $user = User::get();
-        return view('apanel.user.app',['user'=>$user]);
+
+        $userInfor = Custinfo::get();
+        // $user = User::get();
+
+
+        return view('apanel.user.app',['userInfor'=>$userInfor]);
     }
 
     public function viewDetail($id)

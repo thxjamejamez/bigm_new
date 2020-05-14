@@ -22,4 +22,27 @@ class PaymentController extends Controller
 
         return view('customer.payment.app', ['banners' => $banners]);
     }
+
+    public function store (Request $request)
+    {
+        \DB::table('order_payments')->insert([
+            'order_id' => $request->order_id,
+            'bank_name' => $request->bankname,
+            'name_sender'=> $request->bank_account,
+            'amount' => $request->amount,
+            'payment_datetime' => $request->date_transfer,
+            'remark' => $request->remark,
+            'img_slip' => '/img/defualt_product.jpg',
+            'payment_status' => 1,
+        
+        ]);
+
+        return redirect()->route('payment');
+    }
+
+
+    public function viewReceipt()
+    {
+        return view('customer.payment.components.receipt');
+    }
 }

@@ -83,16 +83,4 @@ class QuotationController extends Controller
     {
         return response()->json('12344');
     }
-
-    // public function getProductFormatList()
-    // {
-    //     return response()->json([
-    //         "status" => true,
-    //         "data" => \Auth::user()
-    //     ], 200);
-    //     $ProductModels = new \App\Products();
-    //     return response()->json([
-    //         "status" => true,
-    //     ], 200);
-    // }
 }

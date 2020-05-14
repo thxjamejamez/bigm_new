@@ -15,11 +15,11 @@ class CreateOrderPaymentsTable extends Migration
     {
         Schema::create('order_payments', function (Blueprint $table) {
             $table->unsignedInteger('order_id');
-            $table->integer('bank_id');
+            $table->string('bank_name', 50);
             $table->string('name_sender', 50);
             $table->double('amount', 8, 2);
             $table->dateTime('payment_datetime', 0);
-            $table->string('remark', 100);
+            $table->string('remark', 100)->nullable();
             $table->string('img_slip', 50);
             $table->unsignedInteger('payment_status');
             $table->foreign('order_id')->references('id')->on('orders');

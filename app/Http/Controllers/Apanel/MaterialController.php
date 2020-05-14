@@ -10,15 +10,33 @@ class MaterialController extends Controller
 {
     public function view()
     {
-        $listMaterial = Material::All();
+        $listMaterial = Material::where('l_decorative.active', 1)->get();
         return view('apanel.material.app',compact('listMaterial'));
     }
 
-    public function remove($id)
+  
+    public function store (Request $request)
     {
-        Material::remove($id);
+        \DB::table('l_decorative')->insert([
+            'name' => $request->nameMaterial,
+            'img_path' => '/img/defualt_product.jpg',
+            'active' => 1
+        ]);
+
+        return redirect()->route('viewMaterial');
+    }
+
+    
+    public function inactiveMaterial($id)
+    {
+        \DB::table('l_decorative')
+            ->where('l_decorative.id', $id)
+            ->update([
+                'l_decorative.active' => 0
+            ]);
         
-        return redirect('apanel.material.app');
+        return redirect()->route('viewMaterial');
+        
     }
 
 

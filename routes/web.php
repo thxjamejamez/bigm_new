@@ -37,9 +37,18 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::group(['prefix' => 'quotation'], function () {
         Route::get('/', 'QuotationController@view')->name('viewQuotation');
         Route::get('/add/{type}', 'QuotationController@viewAdd')->name('viewAddQuotation');
+        Route::get('/viewDetail', 'QuotationController@viewDetail')->name('viewDetail');
     });
 
-    Route::get('payment', 'PaymentController@view')->name('payment');
+
+
+    Route::group(['prefix' => 'payment'], function () {
+        Route::get('/', 'PaymentController@view')->name('payment');
+        Route::post('/', 'PaymentController@store')->name('storePayment');
+        Route::get('/viewReceipt', 'PaymentController@viewReceipt')->name('viewReceipt');
+    });
+
+
 
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/', 'CartController@view')->name('viewCart');
@@ -74,10 +83,14 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     Route::group(['prefix' => 'product'], function () {
         Route::get('/', 'ProductController@view')->name('viewProduct');
         Route::get('/{id}', 'ProductController@viewDetail')->name('detailProduct');
+        Route::post('/', 'ProductController@store')->name('storeProduct');
+        Route::get('/{id}/remove', 'ProductController@inactiveProduct')->name('removeProduct');
     });
 
     Route::group(['prefix' => 'material'], function () {
         Route::get('/', 'MaterialController@view')->name('viewMaterial');
+        Route::post('/', 'MaterialController@store')->name('storeMaterial');
+        Route::get('/{id}/remove', 'MaterialController@inactiveMaterial')->name('removeMaterial');
     });
 
     Route::group(['prefix' => 'order'], function () {
