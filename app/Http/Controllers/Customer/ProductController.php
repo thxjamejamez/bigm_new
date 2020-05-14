@@ -67,4 +67,20 @@ class ProductController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        \DB::table('product_formats')->insert([
+            'name' => $request->product_name,
+            'img_path' => '/img/defualt_product.jpg',
+            'category_id' =>2,
+            'created_by' => \Auth::user()->id,
+            'active' => 1
+        ]);
+
+        return redirect()->route('viewProductCust');
+
+
+    }
+
+
 }

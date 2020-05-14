@@ -32,12 +32,13 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::post('/', 'SendAddressController@add')->name('AddSendAddress');
         Route::post('/{id}', 'SendAddressController@update')->name('editSendAddress');
         Route::get('/{id}/remove', 'SendAddressController@remove')->name('removeSendAddress');
+        Route::get('/{id}/edit', 'SendAddressController@edit')->name('editdefaultAddress');
     });
 
     Route::group(['prefix' => 'quotation'], function () {
         Route::get('/', 'QuotationController@view')->name('viewQuotation');
         Route::get('/add/{type}', 'QuotationController@viewAdd')->name('viewAddQuotation');
-        Route::get('/viewDetail', 'QuotationController@viewDetail')->name('viewDetail');
+        Route::get('/{id}', 'QuotationController@viewDetail')->name('viewDetail');
     });
 
 
@@ -47,7 +48,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::post('/', 'PaymentController@store')->name('storePayment');
         Route::get('/viewReceipt', 'PaymentController@viewReceipt')->name('viewReceipt');
     });
-
 
 
     Route::group(['prefix' => 'cart'], function () {
@@ -61,11 +61,18 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::get('/{id}', 'OrderController@viewDetail')->name('viewOrderDetail');
         Route::post('/', 'OrderController@store')->name('storeOrder');
     });
+
+
+    Route::post('storeProductCustomer', 'ProductController@store')->name('storeProductCustomer');
+    
+    Route::get('appointmentView', 'AppointmentController@viewDetail')->name('appointmentView');
 });
-Route::get('product', 'Customer\ProductController@view');
+
+Route::get('product', 'Customer\ProductController@view')->name('viewProductCust');
+
+
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
-
 Route::get('customProduct', 'Customer\ProductController@customProduct')->name('customProduct');
 
 
@@ -125,6 +132,6 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
     });
 
 
-
+  
 
 });

@@ -56,8 +56,8 @@
                                             <span class="lnr lnr-trash" style="font-size: 16px"></span>
                                         </a>
 
-                                        @if($item->defualt)
-                                        <a href="#" class="genric-btn success circle">
+                                        @if(!$item->defualt)
+                                        <a href="{{route('editdefaultAddress',['id'=>$item->id])}}" class="genric-btn success circle">
                                             <span style="font-size: 12px">ตั้งเป็นค่าตั้งต้น</span>
                                         </a>
                                         @endif
@@ -151,6 +151,8 @@
 
     </div>
 </div>
+
+
 @endsection
 
 @section('footer-js')

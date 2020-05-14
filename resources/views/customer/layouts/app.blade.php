@@ -49,7 +49,7 @@
                     <ul class="nav-menu">
                         <li><a href="/">หน้าแรก</a></li>
                         <li><a href="{{ route('aboutme') }}">เกี่ยวกับเรา</a></li>
-                        <li><a href="/product">สินค้า</a></li>
+                        <li><a href="{{route('viewProductCust')}}">สินค้า</a></li>
                         <li><a href="{{ route('contact') }}">ติดต่อ</a></li>
 
                         @auth
@@ -73,6 +73,10 @@
 
                                     <a class="dropdown-item" href="{{ route('payment') }}">
                                         เเจ้งชำระเงิน
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('appointmentView') }}">
+                                        การนัดหมาย
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('customProduct') }}">

@@ -115,4 +115,22 @@ class SendAddressController extends Controller
             ->where('customer_info.user_id', \Auth::user()->id)
             ->first();
     }
+
+
+    public function edit($id)
+    {
+
+        \DB::table('cust_send_address')
+        ->update([
+            'cust_send_address.defualt' => 0
+        ]);
+
+        \DB::table('cust_send_address')
+            ->where('cust_send_address.id', $id)
+            ->update([
+                'cust_send_address.defualt' => 1
+            ]);
+        
+        return redirect()->route('sendAddress');
+    }
 }

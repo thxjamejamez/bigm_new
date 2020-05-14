@@ -79,6 +79,20 @@ class QuotationController extends Controller
         }
     }
 
+    public function viewDetail($id) {
+        $banners = [
+            0 => [
+                'name' => 'หน้าแรก',
+                'path' => '/'
+            ],
+            1 => [
+                'name' => 'รายละเอียดใบเสนอราคา',
+                'path' => '#'
+            ]
+        ];
+        return view('customer.quotation.components.detail', ['banners' => $banners]);
+    }
+
     public function getQuotationlist()
     {
         return response()->json('12344');
