@@ -63,16 +63,9 @@
                                     <a class="dropdown-item" href="{{ route('viewQuotation') }}">
                                         ใบเสนอราคา
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('viewCart') }}">
-                                        ตะกร้าสินค้า
-                                    </a>
 
                                     <a class="dropdown-item" href="{{ route('viewOrder') }}">
                                         รายการคำสั่งซื้อ
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('payment') }}">
-                                        เเจ้งชำระเงิน
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('appointmentView') }}">

@@ -21,12 +21,13 @@ class OrderController extends Controller
             ]
         ];
 
-        $orders = \App\Orders::where('orders.order_by', \Auth::user()->id)
+        $orders = \App\Orders::join('quotations', 'orders.quotation_id', '=', 'quotations.id')
             ->leftjoin('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
+            ->where('quotations.required_by', \Auth::user()->id)
             ->select(
                 'orders.id as order_id',
-                'orders.order_date',
-                'orders.send_date',
+                'orders.created_at',
+                'orders.send_datetime',
                 'orders.order_status',
                 'l_order_status.name as order_status_name'
             )
