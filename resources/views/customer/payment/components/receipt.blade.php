@@ -1,13 +1,3 @@
-@extends('customer.layouts.app')
-
-@section('title', 'เเจ้งชำระเงิน')
-
-@section('header-css')
-
-@endsection
-
-@section('content')
-
 <div align="center"><img src="https://obs.line-scdn.net/0hHr0B2qf4F10NOzxcOvBoCjdtFDI-VwReaQ1GXlFVSWl1DFcJYVUKaCFoHWhwWVADYw5bPCgyDGxwW1MMMVQK/w644" style="width: 100px;height: 100px"></div>
     
 <table style="width: 100%;margin-top: 20px">
@@ -76,10 +66,3 @@
 <div align="right" style="margin-top: 50px">วันที่พิมพ์ <?php echo date('d-m-Y h:i:s'); ?></div>
 
     
-    
-
-@endsection
-
-@section('footer-js')
-
-@endsection

@@ -159,6 +159,6 @@ class QuotationController extends Controller
                 $s_quotation_pd_detail->save();
             }
         }
-        return response()->json($request);
+        return redirect()->route('viewQuotation');
     }
 }
