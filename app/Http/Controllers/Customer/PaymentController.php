@@ -39,4 +39,10 @@ class PaymentController extends Controller
 
         return redirect()->route('payment');
     }
+
+
+    public function viewReceipt()
+    {
+        return view('customer.payment.components.receipt');
+    }
 }

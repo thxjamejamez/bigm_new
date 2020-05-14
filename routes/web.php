@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::group(['prefix' => 'payment'], function () {
         Route::get('/', 'PaymentController@view')->name('payment');
         Route::post('/', 'PaymentController@store')->name('storePayment');
+        Route::get('/viewReceipt', 'PaymentController@viewReceipt')->name('viewReceipt');
     });
 
 
