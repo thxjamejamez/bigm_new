@@ -84,14 +84,14 @@
                                             <div class="input-group">
                                                 <input :name="'size['+index_pd+']['+index_detail+']'" type="text"
                                                     class="form-control" @keypress="validKeyNumbers"
-                                                    v-model="detail.size">
+                                                    v-model="detail.size" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <input :name="'qty['+index_pd+']['+index_detail+']'" type="number"
-                                                    class="form-control" min="0" max="20" v-model="detail.qty">
+                                                    class="form-control" min="0" max="20" v-model="detail.qty" required>
                                             </div>
                                         </div>
 
