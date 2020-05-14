@@ -48,8 +48,15 @@ class QuotationController extends Controller
 
     public function getProductFormatList()
     {
+        return response()->json([
+            "status" => true,
+            "data" => \Auth::user()
+        ], 200);
         $ProductModels = new \App\Products();
-        return response()->json($ProductModels->getProductFormatList());
+        return response()->json([
+            "status" => true,
+            "data" => $ProductModels->getProductFormatList()
+        ], 200);
     }
 
 

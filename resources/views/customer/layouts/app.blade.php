@@ -212,6 +212,7 @@
     <script src="/js/customer/layouts/mail-script.js"></script>
     <script src="/js/customer/layouts/main.js"></script>
     <script src="/plugins/moment/moment-locale.js"></script>
+    <script src="/plugins/lodash/lodash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     {{-- start import js --}}

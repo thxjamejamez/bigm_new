@@ -3,15 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Products extends Model
 {
     protected $table = "product_formats";
     public $timestamps = false;
 
-    public function getProductFormatList()
+    public function getProductFormatList(require_by)
     {
-
         $pd_f = \DB::table('product_formats')
             ->join('product_categories', 'product_formats.category_id', '=', 'product_categories.id')
             ->where('product_formats.created_by', 1)
