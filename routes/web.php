@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
 
     Route::post('storeProductCustomer', 'ProductController@store')->name('storeProductCustomer');
-    
+
     Route::get('appointmentView', 'AppointmentController@viewDetail')->name('appointmentView');
 });
 
@@ -130,11 +130,4 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
         // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
         // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
-<<<<<<< HEAD
-=======
-
-
-  
-
->>>>>>> bbca12cc83a7272831743dd80b8d54557fa08993
 });
