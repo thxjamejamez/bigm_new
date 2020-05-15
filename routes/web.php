@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::get('/', 'QuotationController@view')->name('viewQuotation');
         Route::get('/add/{type}', 'QuotationController@viewAdd')->name('viewAddQuotation');
         Route::post('/type1', 'QuotationController@storeType1')->name('storeQuotationType1');
+        Route::post('/type2', 'QuotationController@storeType2')->name('storeQuotationType2');
         Route::get('/{id}', 'QuotationController@viewDetail')->name('viewDetailQuotation');
     });
 

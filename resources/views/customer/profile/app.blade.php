@@ -21,8 +21,8 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-2">
                         <label>คำนำหน้า</label>
-                        <select class="form-control" name="title">
-                            <option value="0">--เลือก--</option>
+                        <select class="form-control" name="title" required="required">
+                            <option value="">--เลือก--</option>
                             @foreach ($l_title as $item)
                             <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
                                 ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}</option>
@@ -56,13 +56,13 @@
                         <label>ที่อยู่</label>
                         <input name="address" type="text" class="form-control" @if(isset($user->profile->address)
                         &&
-                        ($user->profile->address)) value="{{$user->profile->address}}" @endif>
+                        ($user->profile->address)) value="{{$user->profile->address}}" @endif required="required">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label>จังหวัด</label>
-                        <select class="form-control" name="province">
-                            <option value="0">--เลือกจังหวัด--</option>
+                        <select class="form-control" required="required" name="province">
+                            <option value="">--เลือกจังหวัด--</option>
                             @foreach ($l_province as $item)
                             <option value="{{$item->id}}" @if (isset($user->profile->province_id) &&
                                 ($user->profile->province_id == $item->id)) selected @endif >{{$item->name}}</option>
@@ -75,7 +75,7 @@
                     <div class="form-group col-md-4">
                         <label>อำเภอ</label>
                         <select class="form-control" name="amphure" @if (!isset($user->profile->amphure_id)) disabled
-                            @endif>
+                            @endif required="required">
                             <option value="0">--เลือกอำเภอ--</option>
                             @foreach ($l_amphure as $item)
                             <option value="{{$item->id}}" @if (isset($user->profile->amphure_id) &&
@@ -87,8 +87,8 @@
                     <div class="form-group col-md-4">
                         <label>ตำบล</label>
                         <select class="form-control" name="district" @if (!isset($user->profile->district_id))
-                            disabled @endif>
-                            <option value="0">--เลือกตำบล--</option>
+                            disabled @endif required="required">
+                            <option value="">--เลือกตำบล--</option>
                             @foreach ($l_district as $item)
                             <option value="{{$item->id}}" @if (isset($user->profile->district_id) &&
                                 ($user->profile->district_id == $item->id)) selected @endif>{{$item->name}}</option>

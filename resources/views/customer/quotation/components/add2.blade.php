@@ -3,6 +3,7 @@
 @section('title', 'ขอใบเสนอราคา')
 
 @section('header-css')
+<link rel="stylesheet" href="/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
 <style>
     img {
         max-height: 255px;
@@ -35,7 +36,7 @@
     <div class="container">
 
         <div class="section-top-border">
-            <form action="{{route('storeQuotationType1')}}" method="POST">
+            <form action="{{route('storeQuotationType2')}}" method="POST">
                 @csrf
                 @if(!$can_order)
                 <div class="alert alert-danger" role="alert">
@@ -51,75 +52,21 @@
                 </div>
                 @endif
 
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <blockquote v-for="(pd, index_pd) in controls.product" class="generic-blockquote">
-                            <div class="row">
-                                <div class="col-md-4 d-flex justify-content-center">
-                                    <img :src="pd.pd_f_img">
-                                    <input type="hidden" :name="'product['+index_pd+']'" v-bind:value="pd.pd_f_id">
-                                </div>
-
-                                <div class="col-md-8 mb-3">
-                                    <div class="head-pddetail row mb-3">
-                                        <div class="col-md-6 text-center">
-                                            <span class="text-head">
-                                                ขนาดสินค้า
-                                            </span>
-                                        </div>
-                                        <div class="col-md-3 text-center">
-                                            <span class="text-head">
-                                                จำนวน
-                                            </span>
-                                        </div>
-                                        <div class="col-md-3 text-center">
-                                        </div>
-
-                                    </div>
-
-                                    <div v-for="(detail, index_detail) in pd.pd_details" class="row mb-3">
-
-                                        <div class="col-md-6">
-                                            <div class="input-group">
-                                                <input :name="'size['+index_pd+']['+index_detail+']'" type="text"
-                                                    class="form-control" @keypress="validKeyNumbers"
-                                                    v-model="detail.size" required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="input-group">
-                                                <input :name="'qty['+index_pd+']['+index_detail+']'" type="number"
-                                                    class="form-control" min="0" max="20" v-model="detail.qty"
-                                                    required="required">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <div class="row">
-                                                <div v-if="pd.pd_details.length > 1" class="col-md-3">
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        @click="removesize(pd, index_detail)">ลบ</button>
-                                                </div>
-                                                <div v-if="detail.size && detail.qty != 0" class="col-md-3">
-                                                    <button type="button" class="btn btn-primary btn-sm"
-                                                        @click="addsize(pd)">เพิ่ม</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
+                <div class="row grid mb-3">
+                    <div class="single-portfolio col-sm-4" v-for="(pd, index_pd) in controls.product">
+                        <input type="hidden" name="product[]" :value="pd.pd_f_id">
+                        <div class="relative">
+                            <div class="thumb">
+                                <div class="overlay overlay-bg"></div>
+                                <img class="image img-fluid" :src="pd.pd_f_img" alt="">
                             </div>
-                        </blockquote>
-
+                        </div>
+                        <div class="p-inner text-center">
+                            <div class="text-head">@{{pd.pd_f_name}}</div>
+                            <div class="cat">@{{pd.pd_cate_name}}</div>
+                        </div>
                     </div>
                 </div>
-
 
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-5">
@@ -132,6 +79,11 @@
                                 จ.{{$item->province_name}}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <label>วันที่นัดวัดขนาด</label>
+                        <input name="appointment_dt" type="text" class="form-control" required="required">
                     </div>
 
                 </div>
@@ -184,10 +136,10 @@
 @endsection
 
 @section('footer-js')
+<script src="/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script>
     const data = "{{base64_encode(json_encode($pd_f))}}"
 </script>
-
-<script src="/js/customer/quotation/addtype1.js"></script>
+<script src="/js/customer/quotation/addtype2.js"></script>
 
 @endsection

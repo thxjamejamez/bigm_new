@@ -36,9 +36,9 @@ new Vue({
                 el.action.set_modal.header = 'เพิ่มข้อมูลที่อยู่การติดตั้ง'
                 el.action.set_modal.btn_save = 'บันทึก'
                 el.form.address = ''
-                el.form.province = 0
-                el.form.amphure = 0
-                el.form.district = 0
+                el.form.province = ''
+                el.form.amphure = ''
+                el.form.district = ''
             } else {
                 el.action.set_modal.form_action = '/sendAddress/' + id
                 el.getDetail(id)
@@ -84,8 +84,8 @@ new Vue({
                     id
                 }) => id == el.form.amphure)
                 if (!result) {
-                    el.form.amphure = 0
-                    el.form.district = 0
+                    el.form.amphure = ''
+                    el.form.district = ''
                 }
             }
         },
@@ -100,7 +100,7 @@ new Vue({
                     id
                 }) => id == el.form.district)
                 if (!result) {
-                    el.form.district = 0
+                    el.form.district = ''
                 }
             }
         },

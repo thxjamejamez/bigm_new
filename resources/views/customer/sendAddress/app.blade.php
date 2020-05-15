@@ -57,7 +57,8 @@
                                         </a>
 
                                         @if(!$item->defualt)
-                                        <a href="{{route('editdefaultAddress',['id'=>$item->id])}}" class="genric-btn success circle">
+                                        <a href="{{route('editdefaultAddress',['id'=>$item->id])}}"
+                                            class="genric-btn success circle">
                                             <span style="font-size: 12px">ตั้งเป็นค่าตั้งต้น</span>
                                         </a>
                                         @endif
@@ -101,7 +102,8 @@
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-12">
                                     <label>ที่อยู่</label>
-                                    <input v-model="form.address" name="address" type="text" class="form-control">
+                                    <input v-model="form.address" name="address" type="text" class="form-control"
+                                        required="required">
                                 </div>
                             </div>
 
@@ -109,8 +111,8 @@
                                 <div class="form-group col-md-6">
                                     <label>จังหวัด</label>
                                     <select name="province" class="form-control" v-model="form.province"
-                                        @change="callAmphure(form.province)">
-                                        <option value="0">--เลือกจังหวัด--</option>
+                                        @change="callAmphure(form.province)" required="required">
+                                        <option value="">--เลือกจังหวัด--</option>
                                         <option v-for="item in lib.province" :value="item.id">
                                             @{{ item.name }}</option>
                                     </select>
@@ -118,8 +120,9 @@
                                 <div class="form-group col-md-6">
                                     <label>อำเภอ</label>
                                     <select name="amphure" class="form-control" v-model="form.amphure"
-                                        @change="callDistrict(form.amphure)" :disabled="form.province == 0">
-                                        <option value="0">--เลือกอำเภอ--</option>
+                                        @change="callDistrict(form.amphure)" :disabled="form.province == 0"
+                                        required="required">
+                                        <option value="">--เลือกอำเภอ--</option>
                                         <option v-for="item in lib.amphure" :value="item.id">
                                             @{{ item.name }}</option>
                                     </select>
@@ -130,8 +133,8 @@
                                 <div class="form-group col-md-6">
                                     <label>ตำบล</label>
                                     <select name="district" class="form-control" v-model="form.district"
-                                        :disabled="form.amphure == 0">
-                                        <option value="0">--เลือกตำบล--</option>
+                                        :disabled="form.amphure == 0" required="required">
+                                        <option value="">--เลือกตำบล--</option>
                                         <option v-for="item in lib.district" :value="item.id">
                                             @{{ item.name }}</option>
                                     </select>

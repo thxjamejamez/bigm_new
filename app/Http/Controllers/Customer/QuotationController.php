@@ -161,4 +161,21 @@ class QuotationController extends Controller
         }
         return redirect()->route('viewQuotation');
     }
+
+    public function storeType2(Request $request)
+    {
+        $s_quotation = new \App\Quotations();
+        $s_quotation->required_by = \Auth::user()->id;
+        $s_quotation->quotation_type = 2;
+        $s_quotation->quotation_status = 2;
+        $s_quotation->send_address = $request->cust_send_address;
+        $s_quotation->save();
+
+        foreach ($request->product as $pdkey => $value) {
+            $s_quotation_pd = new \App\QuotationProducts();
+            $s_quotation_pd->quotation_id = $s_quotation->id;
+            $s_quotation_pd->product_format_id = $value;
+            $s_quotation_pd->save();
+        }
+    }
 }
