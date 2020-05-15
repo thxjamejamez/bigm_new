@@ -40,6 +40,10 @@ class QuotationController extends Controller
                 'path' => '/'
             ],
             1 => [
+                'name' => 'ใบเสนอราคา',
+                'path' => route('viewQuotation')
+            ],
+            2 => [
                 'name' => 'รายละเอียดใบเสนอราคา',
                 'path' => '#'
             ]
@@ -56,6 +60,7 @@ class QuotationController extends Controller
                 'quotations.id',
                 'quotations.quotation_status',
                 'l_quotation_status.name as status',
+                'quotations.quotation_type',
                 'cust_send_address.address',
                 'cust_send_address.district_id',
                 'l_district.name as district_name',
@@ -68,6 +73,7 @@ class QuotationController extends Controller
 
         $quotation_pd = \App\QuotationProducts::with(['details'])
             ->join('product_formats', 'quotation_products.product_format_id', '=', 'product_formats.id')
+            ->where('quotation_products.quotation_id', $id)
             ->select(
                 'quotation_products.id',
                 'quotation_products.product_format_id',
@@ -76,7 +82,32 @@ class QuotationController extends Controller
             )
             ->get();
 
-        return view('customer.quotation.components.detail', ['banners' => $banners, 'quotation' => $quotation, 'quotation_pd' => $quotation_pd]);
+        $appointment = [];
+        if ($quotation->quotation_type == 2 && in_array($quotation->quotation_status, [2, 3, 4])) {
+            $appointment = \App\Appointments::join('quotations', 'appointments.quotation_id', '=', 'quotations.id')
+                ->join('cust_send_address', 'quotations.send_address', '=', 'cust_send_address.id')
+                ->leftjoin('l_appointment_status', 'appointments.appointment_status', '=', 'l_appointment_status.id')
+                ->leftjoin('l_district', 'cust_send_address.district_id', '=', 'l_district.id')
+                ->leftjoin('l_amphure', 'cust_send_address.amphure_id', '=', 'l_amphure.id')
+                ->leftjoin('l_province', 'cust_send_address.province_id', '=', 'l_province.id')
+                ->where('appointments.quotation_id', $id)
+                ->select(
+                    'appointments.appointment_datetime',
+                    'appointments.appointment_change_datetime',
+                    'appointments.appointment_status',
+                    'l_appointment_status.name as status',
+                    'cust_send_address.address',
+                    'cust_send_address.district_id',
+                    'l_district.name as district_name',
+                    'cust_send_address.amphure_id',
+                    'l_amphure.name as amphure_name',
+                    'cust_send_address.province_id',
+                    'l_province.name as province_name'
+                )
+                ->first();
+        }
+
+        return view('customer.quotation.components.detail', ['banners' => $banners, 'quotation' => $quotation, 'quotation_pd' => $quotation_pd, 'appointment' => $appointment]);
     }
 
     public function viewAdd($type)
@@ -177,5 +208,56 @@ class QuotationController extends Controller
             $s_quotation_pd->product_format_id = $value;
             $s_quotation_pd->save();
         }
+
+        $s_appointment = new \App\Appointments();
+        $s_appointment->quotation_id = $s_quotation->id;
+        $s_appointment->appointment_datetime = date('Y-m-d H:i:s', strtotime($request->appointment_dt));
+        $s_appointment->appointment_status = 1;
+        $s_appointment->appointment_type = 1;
+        $s_appointment->save();
+
+        return redirect()->route('viewQuotation');
+    }
+
+    public function changeDateAppointment($id)
+    {
+        $appt = \App\Appointments::join('quotations', 'appointments.quotation_id', '=', 'quotations.id')
+            ->where('appointments.quotation_id', $id)
+            ->where('quotations.quotation_status', 3)
+            ->where('quotations.required_by', \Auth::user()->id)
+            ->first();
+
+        if ($appt) {
+            \DB::table('appointments')
+                ->where('appointments.quotation_id', $id)
+                ->update([
+                    'appointments.appointment_datetime' => $appt->appointment_change_datetime,
+                    'appointments.appointment_change_datetime' => NULL
+                ]);
+
+            \DB::table('quotations')
+                ->where('quotations.id', $id)
+                ->update([
+                    'quotations.quotation_status' => 2
+                ]);
+        }
+
+        return redirect()->route('viewQuotation');
+    }
+
+    public function cancelQuotation($id)
+    {
+        $appt = \App\Quotations::where('quotations.id', $id)
+            ->whereNotIn('quotations.quotation_status', [4, 6])
+            ->where('quotations.required_by', \Auth::user()->id)
+            ->first();
+        if ($appt) {
+            \DB::table('quotations')
+                ->where('quotations.id', $id)
+                ->update([
+                    'quotations.quotation_status' => 7
+                ]);
+        }
+        return redirect()->route('viewQuotation');
     }
 }

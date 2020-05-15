@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->dateTime('send_datetime', 0);
             $table->dateTime('send_change_datetime', 0)->nullable();
             $table->unsignedInteger('order_status');
-            $table->string('remark', 100);
+            $table->string('remark', 100)->nullable();
             $table->timestamp('created_at', 0);
             $table->foreign('quotation_id')->references('id')->on('quotations');
             $table->foreign('order_status')->references('id')->on('l_order_status');

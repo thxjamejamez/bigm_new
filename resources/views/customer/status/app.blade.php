@@ -68,11 +68,11 @@
                                                     </div>
                                                     <div>
                                                         วันที่ทำรายการ:
-                                                        {{ date('d-m-Y', strtotime($item->order_date)) }}
+                                                        {{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}
                                                     </div>
                                                     <div>
                                                         วันที่ทำการติดตั้ง:
-                                                        {{ date('d-m-Y', strtotime($item->send_date)) }}
+                                                        {{ date('d-m-Y H:i:s', strtotime($item->send_datetime)) }}
                                                     </div>
 
                                                 </div>

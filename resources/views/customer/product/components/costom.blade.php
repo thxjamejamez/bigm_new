@@ -11,43 +11,43 @@
 <div class="whole-wrap">
     <div class="container">
         <div class="section-top-border">
-            <div >
+            <div>
                 <style>
-                * {
-                    /*
+                    * {
+                        /*
                     padding: 0;
                     margin: 0;
                     */
-                }
-                
-                .content {
-                    margin: 0 auto;
-                    width: 600px;
-                    max-width: 100%;
-                }
-                
-                .text {
-                    /*
+                    }
+
+                    .content {
+                        margin: 0 auto;
+                        width: 600px;
+                        max-width: 100%;
+                    }
+
+                    .text {
+                        /*
                     float: left;
                     width: 50%;
                     */
-                }
-                
-                .imageupload {
-                    /*
+                    }
+
+                    .imageupload {
+                        /*
                         float:left;
                         width:50%;
                         */
-                }
-                
-                .bgcolor span,
-                .txtcolor span {
-                    width: 40px;
-                    height: 40px;
-                    display: inline-block;
-                    /*margin:5px;*/
-                
-                }
+                    }
+
+                    .bgcolor span,
+                    .txtcolor span {
+                        width: 40px;
+                        height: 40px;
+                        display: inline-block;
+                        /*margin:5px;*/
+
+                    }
                 </style>
 
                 <!-- Start Banner Area -->
@@ -78,23 +78,24 @@
                                         <div class="col-md-9">
                                             <div class="blog_post">
                                                 <div class="blog_details">
-                                                    <div style="font-size: 20px;font-weight: bold;color: black" align="center">
+                                                    <div style="font-size: 20px;font-weight: bold;color: black"
+                                                        align="center">
                                                         ออกแบบหน้าต่าง
-                                                    </div>                                    
+                                                    </div>
                                                     <center><canvas id="mainscreen"></canvas></center>
-                                                    {{-- <div>
-                                                    <br>
-                                                    <h4 align="center">คำนวณราคาทั้งหมด 
-                                                        <div id="showprice" name="custom_price"></div>
-                                                    </h4>                                    
-                                                    </div> --}}
                                                     <div>
-                                                    <h4 align="center">มีอะไรบ้าง</h4>
+                                                        <br>
+                                                        <h4 align="center">
+                                                            <div id="showprice" name="custom_price"></div>
+                                                        </h4>
+                                                    </div>
+                                                    <div>
+                                                        <h4 align="center"></h4>
                                                         <div id="showname" name="custom_name"></div>
-                                                    </div>                                    
+                                                    </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </article>
                                 </div>
@@ -104,76 +105,77 @@
                                     <aside class="row blog_item">
                                         <div class="col-lg-6">
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/butterfly.png" 
-                                                class="addpic" name="l2" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/butterfly.png"
+                                                    class="addpic" name="l2" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/butterfly01.png" 
-                                                class="addpic2" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/butterfly01.png"
+                                                    class="addpic2" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/butterfly02.png" 
-                                                class="addpic3" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/butterfly02.png"
+                                                    class="addpic3" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050022_EA.png" 
-                                                class="addpic4" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/10050022_EA.png"
+                                                    class="addpic4" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/flow1.png" 
-                                                class="addpic5" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/flow1.png" class="addpic5"
+                                                    name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050047_EA_1200_1.png" 
-                                                class="addpic6" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/10050047_EA_1200_1.png"
+                                                    class="addpic6" name="" style="width: 120px;">
                                             </div>
                                         </div>
                                         <div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050025_EA_1200_1.png" 
-                                                class="addpic7" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/10050025_EA_1200_1.png"
+                                                    class="addpic7" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050027_EA_1200_1.png" 
-                                                class="addpic8" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/10050027_EA_1200_1.png"
+                                                    class="addpic8" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050035_EA_1200_1.png" 
-                                                class="addpic9" name="" style="width: 120px;">
+                                                <input type="image" src="img/material_custom/10050035_EA_1200_1.png"
+                                                    class="addpic9" name="" style="width: 120px;">
                                             </div>
                                             <div class="drag-me">
-                                                <input type="image" src="img/material_custom/10050037_EA_1200_1.png" 
-                                                class="addpic10" name="" style="width: 120px;">
-                                            </div>                            
+                                                <input type="image" src="img/material_custom/10050037_EA_1200_1.png"
+                                                    class="addpic10" name="" style="width: 120px;">
+                                            </div>
                                         </div>
                                         {{-- <div class="single-defination">
                                             <h4 class="mb-20">เพิ่มรูปภาพตกแต่ง</h4>
                                             <input id="imagebroswer" class="genric-btn info radius" type="file">
                                         </div> --}}
-                                    </aside>                                        
+                                    </aside>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="blog_details" align="center">
-                                <form action="index.php?page=custom&action=add_custom" method="post">
-                                    <div class="clear:both; single-defination" align="center" style="font-weight: bold;font-size: 16px;">                   
-                                        หากต้องการลบรูป ให้กดที่รูปและกดปุ่ม Delete              
-                                    </div>
-                                    <hr>
-                                    <!-- <div id="showprice" name="custom_price"></div> -->
-                                    <input type="hidden" id="submitprice" name="custom_price">
-                                    <div class="save genric-btn danger circle">บันทึกรูปภาพ</div>  
-                    <!--
+                        <form action="index.php?page=custom&action=add_custom" method="post">
+                            <div class="clear:both; single-defination" align="center"
+                                style="font-weight: bold;font-size: 16px;">
+                                หากต้องการลบรูป ให้กดที่รูปและกดปุ่ม Delete
+                            </div>
+                            <hr>
+                            <!-- <div id="showprice" name="custom_price"></div> -->
+                            <input type="hidden" id="submitprice" name="custom_price">
+                            <div class="save genric-btn danger circle">บันทึกรูปภาพ</div>
+                            <!--
                                     <button type="submit" value="สั่งซื้อสินค้า" 
                                     class="genric-btn danger circle">สั่งซื้อสินค้า</button>
                     -->
-                                </form>
+                        </form>
                     </div>
                 </section>
-            
-                
-            </div>            
+
+
+            </div>
         </div>
     </div>
 </div>
@@ -181,17 +183,17 @@
 @endsection
 
 @section('footer-js')
-    <script src="js/customProduct/jquery.min.js" type="text/javascript"></script>
-    <script src="js/customProduct/fabric.js" type="text/javascript"></script>
-    <script src="js/customProduct/FileSaver.js" type="text/javascript"></script>
-    <script src="js/customProduct/canvas-toBlob.js"></script>
+<script src="js/customProduct/jquery.min.js" type="text/javascript"></script>
+<script src="js/customProduct/fabric.js" type="text/javascript"></script>
+<script src="js/customProduct/FileSaver.js" type="text/javascript"></script>
+<script src="js/customProduct/canvas-toBlob.js"></script>
 
-    <link rel="stylesheet" href="css/customer/style2.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="css/customer/style2.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             // var total = []
             var screen = new fabric.Canvas('mainscreen');
             screen.setHeight(620);
@@ -231,6 +233,7 @@
                     //var name = new String(d.getDate()+d.getHours()+d.getMilliseconds()+"myImg.png");
                     
                 });
+                location.reload();
             });
             // event การเลือกสีเสื้อ
             $(".bgcolor span").click(function() {
@@ -290,7 +293,6 @@
                         document.getElementById("showname").innerHTML = product_name
                         totalprice -= screen.getActiveObject().price
                     }            
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                     screen.remove(activeObject);
                 }
@@ -318,9 +320,6 @@
                     product_name.push(product_name_txt);
                     console.log(product_name)
                     document.getElementById("showname").innerHTML = product_name
-                    //document.getElementById("submitname").value = product_name
-                    
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                     console.log('dasdsaccc',canvas.toDataURL())
                     
@@ -341,7 +340,6 @@
                     });
                     screen.add(img1);
                     totalprice += 15
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -358,8 +356,7 @@
                         height: 100
                     });
                     screen.add(img1);
-                    totalprice += 18
-                    document.getElementById("showprice").innerHTML = totalprice          
+                    totalprice += 18        
                     document.getElementById("submitprice").value = totalprice
                     
                 });
@@ -378,7 +375,6 @@
                     });
                     screen.add(img1);
                     totalprice += 15
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -396,7 +392,6 @@
                     });
                     screen.add(img1);
                     totalprice += 15
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -414,7 +409,6 @@
                     });
                     screen.add(img1);
                     totalprice += 30
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -432,7 +426,6 @@
                     });
                     screen.add(img1);
                     totalprice += 25
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -450,7 +443,6 @@
                     });
                     screen.add(img1);
                     totalprice += 35
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -468,7 +460,6 @@
                     });
                     screen.add(img1);
                     totalprice += 35
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -486,7 +477,6 @@
                     });
                     screen.add(img1);
                     totalprice += 25
-                    document.getElementById("showprice").innerHTML = totalprice
                     document.getElementById("submitprice").value = totalprice
                 });
             });
@@ -638,5 +628,5 @@
             canvas.add(img);
         });
         canvas.renderAll();
-        </script>
+</script>
 @endsection

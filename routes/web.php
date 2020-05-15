@@ -41,8 +41,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::post('/type1', 'QuotationController@storeType1')->name('storeQuotationType1');
         Route::post('/type2', 'QuotationController@storeType2')->name('storeQuotationType2');
         Route::get('/{id}', 'QuotationController@viewDetail')->name('viewDetailQuotation');
+        Route::get('/changedate/{id}', 'QuotationController@changeDateAppointment')->name('changeDateAppt');
+        Route::get('/cancel/{id}', 'QuotationController@cancelQuotation')->name('cancelQuotation');
     });
-
 
 
     Route::group(['prefix' => 'payment'], function () {
@@ -61,11 +62,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
     Route::group(['prefix' => 'order'], function () {
         Route::get('/', 'OrderController@view')->name('viewOrder');
         Route::get('/{id}', 'OrderController@viewDetail')->name('viewOrderDetail');
-        Route::post('/', 'OrderController@store')->name('storeOrder');
+        Route::post('/{quotation_id}/make', 'OrderController@makeOrder')->name('makeOrder');
     });
 
 
     Route::post('storeProductCustomer', 'ProductController@store')->name('storeProductCustomer');
+
 
     Route::get('appointmentView', 'AppointmentController@viewDetail')->name('appointmentView');
 });
