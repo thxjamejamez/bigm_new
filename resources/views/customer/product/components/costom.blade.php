@@ -249,7 +249,7 @@
             // console.log(element->img_path);
             
             $('.addpic'+(index+1)).click(function() {
-                var pic = fabric.Image.fromURL(element.img_path);
+                var pic = fabric.Image.fromURL('`${element.img_path}`');
                 var txt = $(".txt").val();
                 
                 fabric.Image.fromURL(element.img_path, function(myImg) {
@@ -273,55 +273,55 @@
             })
         })
         
-        // $(".addpic").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/butterfly.png');
-        //     var txt = $(".txt").val();
-        //     //  fruits.push("Kiwi");
+        $(".addpic").click(function() {
+            var pic = fabric.Image.fromURL('img/material_custom/butterfly.png');
+            var txt = $(".txt").val();
+            //  fruits.push("Kiwi");
             
-        //     fabric.Image.fromURL('img/material_custom/butterfly.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'butterfly',
-        //             price:20,
-        //             left: 0,
-        //             top: 0,
-        //             width: 150,
-        //             height: 100
-        //         });
-        //         // localStorage.setItem("addprice", 100);
-        //         screen.add(img1);
-        //         totalprice += 20
-        //         product_name_txt = 'แมลงปอ'
-        //         //product_name += "แมงปอ";
-        //         product_name.push(product_name_txt);
-        //         console.log(product_name)
-        //         document.getElementById("showname").innerHTML = product_name
-        //         document.getElementById("submitprice").value = totalprice
-        //         console.log('dasdsaccc',canvas.toDataURL())
+            fabric.Image.fromURL('img/material_custom/butterfly.png', function(myImg) {
+                var img1 = myImg.set({
+                    name:'butterfly',
+                    price:20,
+                    left: 0,
+                    top: 0,
+                    width: 150,
+                    height: 100
+                });
+                // localStorage.setItem("addprice", 100);
+                screen.add(img1);
+                totalprice += 20
+                product_name_txt = 'แมลงปอ'
+                //product_name += "แมงปอ";
+                product_name.push(product_name_txt);
+                console.log(product_name)
+                document.getElementById("showname").innerHTML = product_name
+                document.getElementById("submitprice").value = totalprice
+                console.log('dasdsaccc',canvas.toDataURL())
                 
-        //     });
+            });
             
-        // });
-        // $(".addpic2").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/butterfly01.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/butterfly01.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'butterfly01',
-        //             price:15,
-        //             left: 0,
-        //             top: 0,
-        //             width: 150,
-        //             height: 150
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 15
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic3").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/butterfly02.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/butterfly02.png', function(myImg) {
+        });
+        $(".addpic2").click(function() {
+            var pic = fabric.Image.fromURL('img/material_custom/butterfly01.png');
+            var txt = $(".txt").val();
+            fabric.Image.fromURL('img/material_custom/butterfly01.png', function(myImg) {
+                var img1 = myImg.set({
+                    name:'butterfly01',
+                    price:15,
+                    left: 0,
+                    top: 0,
+                    width: 150,
+                    height: 150
+                });
+                screen.add(img1);
+                totalprice += 15
+                document.getElementById("submitprice").value = totalprice
+            });
+        });
+        $(".addpic3").click(function() {
+            var pic = fabric.Image.fromURL('img/material_custom/butterfly02.png');
+            var txt = $(".txt").val();
+            fabric.Image.fromURL('img/material_custom/butterfly02.png', function(myImg) {
         //         var img1 = myImg.set({
         //             name:'butterfly02',
         //             price:18,
