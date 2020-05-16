@@ -157,7 +157,7 @@
 
                                         <div class="row">
                                             <div class="col-md-4 d-flex justify-content-center">
-                                                <img style="max-height: 150px"
+                                                <img style="height: 150px; width:150px"
                                                     src="{{($pd_item->img_path) ? $pd_item->img_path : '/img/defualt_product.jpg'}}">
                                             </div>
 

@@ -11,6 +11,11 @@
         font-weight: 600;
         font-size: 17px;
     }
+
+    img {
+        height: 150px;
+        width: 150px;
+    }
 </style>
 @endsection
 
