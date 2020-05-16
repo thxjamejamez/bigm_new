@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
 
     Route::get('appointmentView', 'AppointmentController@viewDetail')->name('appointmentView');
+    Route::get('customProduct', 'ProductController@customProduct')->name('customProduct');
 });
 
 Route::get('product', 'Customer\ProductController@view')->name('viewProductCust');
@@ -79,7 +80,6 @@ Route::get('product', 'Customer\ProductController@view')->name('viewProductCust'
 
 Route::get('aboutme', 'Customer\AboutController@view')->name('aboutme');
 Route::get('contact', 'Customer\ContactController@view')->name('contact');
-Route::get('customProduct', 'Customer\ProductController@customProduct')->name('customProduct');
 
 
 # Apanel 

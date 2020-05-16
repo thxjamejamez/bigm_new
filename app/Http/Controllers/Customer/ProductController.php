@@ -63,7 +63,9 @@ class ProductController extends Controller
             ]
         ];
 
-        return view('customer.product.components.costom', ['banners' => $banners]);
+        $material = \App\Decorative::where('l_decorative.active', 1)->get();
+
+        return view('customer.product.components.costom', ['banners' => $banners, 'material' => $material]);
     }
 
 
