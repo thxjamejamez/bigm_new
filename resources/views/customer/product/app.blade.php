@@ -65,7 +65,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="{{route('storeProductCustomer')}}" method="POST">
+                <form action="{{route('storeProductCustomer')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <span>ชื่อสินค้า</span>
@@ -85,12 +85,12 @@
                     </div> --}}
                     <div class="mt-2">
                         <span>ภาพสินค้า</span>
-                        <input type="file" name="product_img" class="form-control" required>
+                        <input type="file" name="product_img" class="form-control" value="" required>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <button type="Submit" class="btn btn-primary">บันทึก</button>
+                        <button type="submit" class="btn btn-primary">บันทึก</button>
                     </div>
                 </form>
             </div>

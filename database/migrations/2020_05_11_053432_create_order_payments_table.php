@@ -21,9 +21,7 @@ class CreateOrderPaymentsTable extends Migration
             $table->dateTime('payment_datetime', 0);
             $table->string('remark', 100)->nullable();
             $table->string('img_slip', 50);
-            $table->unsignedInteger('payment_status');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('payment_status')->references('id')->on('l_payment_status');
         });
     }
 

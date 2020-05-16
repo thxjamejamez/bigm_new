@@ -62,25 +62,23 @@ class ProductController extends Controller
                 'path' => '#'
             ]
         ];
-        
-        return view('customer.product.components.costom',['banners' => $banners]);
+
+        return view('customer.product.components.costom', ['banners' => $banners]);
     }
 
 
     public function store(Request $request)
     {
+        $imageName = time() . '.' . $request->product_img->getClientOriginalExtension();
+        $request->product_img->move(public_path('img/product'), $imageName);
         \DB::table('product_formats')->insert([
             'name' => $request->product_name,
-            'img_path' => '/img/defualt_product.jpg',
-            'category_id' =>2,
+            'img_path' => '/img/product/' . $imageName,
+            'category_id' => 2,
             'created_by' => \Auth::user()->id,
             'active' => 1
         ]);
 
         return redirect()->route('viewProductCust');
-
-
     }
-
-
 }

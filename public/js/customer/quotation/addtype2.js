@@ -25,7 +25,7 @@ const APP = new Vue({
     mounted() {
         $("input[name='appointment_dt']").datetimepicker({
             locale: moment().local("th"),
-            format: "dd-mm-yyyy hh:mm",
+            format: "dd-mm-yyyy hh:i",
             autoclose: true,
             startDate: moment().add(3, "days").toDate(),
         });
@@ -50,12 +50,10 @@ const APP = new Vue({
                 pd_f_img: data.img_path,
                 pd_f_name: data.pd_f_name,
                 pd_cate_name: data.pd_cate_name,
-                pd_details: [
-                    {
-                        size: "",
-                        qty: 0,
-                    },
-                ],
+                pd_details: [{
+                    size: "",
+                    qty: 0,
+                }, ],
             });
             el.toggleModal();
         },

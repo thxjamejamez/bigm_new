@@ -203,7 +203,7 @@
 <script>
     $("input[name='install_dt']").datetimepicker({
         locale: moment().local("th"),
-        format: "dd-mm-yyyy hh:mm",
+        format: "dd-mm-yyyy hh:i",
         autoclose: true,
         startDate: moment().add(3, "days").toDate(),
     });

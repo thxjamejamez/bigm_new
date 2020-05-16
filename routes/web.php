@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
 
 
     Route::group(['prefix' => 'payment'], function () {
-        Route::get('/', 'PaymentController@view')->name('payment');
+        Route::get('/{id}', 'PaymentController@view')->name('payment');
         Route::post('/', 'PaymentController@store')->name('storePayment');
         Route::get('/viewReceipt', 'PaymentController@viewReceipt')->name('viewReceipt');
     });
@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Customer'], function () {
         Route::get('/', 'OrderController@view')->name('viewOrder');
         Route::get('/{id}', 'OrderController@viewDetail')->name('viewOrderDetail');
         Route::post('/{quotation_id}/make', 'OrderController@makeOrder')->name('makeOrder');
+        Route::get('/changedate/{id}', 'OrderController@changeDateOrder')->name('changeDateOrder');
+        Route::get('/cancel/{id}', 'OrderController@cancelOrder')->name('cancelOrder');
     });
 
 

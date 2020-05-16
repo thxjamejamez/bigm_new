@@ -61,30 +61,108 @@ class OrderController extends Controller
             ]
         ];
 
-        $orderDetail = \App\Orders::with(['details'])
-            ->leftjoin('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
-            ->where('orders.order_by', \Auth::user()->id)
+        $order = \App\Orders::join('quotations', 'orders.quotation_id', '=', 'quotations.id')
+            ->join('cust_send_address', 'quotations.send_address', '=', 'cust_send_address.id')
+            ->leftjoin('l_district', 'cust_send_address.district_id', '=', 'l_district.id')
+            ->leftjoin('l_amphure', 'cust_send_address.amphure_id', '=', 'l_amphure.id')
+            ->leftjoin('l_province', 'cust_send_address.province_id', '=', 'l_province.id')
+            ->join('l_order_status', 'orders.order_status', '=', 'l_order_status.id')
             ->where('orders.id', $id)
+            ->where('quotations.required_by', \Auth::user()->id)
             ->select(
-                'orders.*',
-                'l_order_status.name as order_status_name'
+                'orders.id',
+                'orders.send_datetime',
+                'orders.send_change_datetime',
+                'orders.order_status',
+                'l_order_status.name as status',
+                'orders.remark',
+                'orders.amount',
+                'cust_send_address.district_id',
+                'l_district.name as district_name',
+                'cust_send_address.amphure_id',
+                'l_amphure.name as amphure_name',
+                'cust_send_address.province_id',
+                'l_province.name as province_name',
+                'orders.created_at'
             )
             ->first();
 
-        if ($orderDetail) {
-            $orderDetail->order_no = $this->getOrderNo($orderDetail->id);
+        if (!$order) {
+            return redirect()->back();
         }
 
-        return view('customer.status.components.orderDetail', ['banners' => $banners, 'order' => $orderDetail]);
+        $OrderModels = new \App\Orders();
+
+        if ($order) {
+            $order->order_no = $this->getOrderNo($order->id);
+        }
+
+        return view('customer.status.components.orderDetail', ['banners' => $banners, 'order' => $order, 'product' => $OrderModels->getProductInOrder($id, \Auth::user()->id)]);
     }
 
     public function makeOrder(Request $request, $quotation_id)
     {
+        $sum = 0;
+
+        $all_pd_detail = \App\QuotationProducts::join('quotation_product_details', 'quotation_products.id', '=', 'quotation_product_details.quotation_product_id')
+            ->where('quotation_products.quotation_id', $quotation_id)
+            ->get();
+
+        foreach ($all_pd_detail as $key => $value) {
+            $sum += ($value['qty'] * $value['price_per_unit']);
+        }
+
+        $UpdateQuotationSts = \App\Quotations::find($quotation_id);
+        $UpdateQuotationSts->quotation_status = 6;
+        $UpdateQuotationSts->save();
+
         $AddOrder = new \App\Orders;
         $AddOrder->quotation_id = $quotation_id;
         $AddOrder->send_datetime = date('Y-m-d H:i:s', strtotime($request->install_dt));
         $AddOrder->order_status = 1;
+        $AddOrder->amount = $sum;
         $AddOrder->save();
+
+        return redirect()->route('viewOrder');
+    }
+
+    public function changeDateOrder($id)
+    {
+
+        $order = \App\Orders::join('quotations', 'orders.quotation_id', '=', 'quotations.id')
+            ->whereIn('orders.order_status', [1, 2, 3])
+            ->where('orders.id', $id)
+            ->where('quotations.required_by', \Auth::user()->id)
+            ->first();
+
+        if (!$order) {
+            return redirect()->back();
+        }
+
+        $UpdateOrder = \App\Orders::find($id);
+        $UpdateOrder->send_datetime = $UpdateOrder->send_change_datetime;
+        $UpdateOrder->send_change_datetime = NULL;
+        $UpdateOrder->order_status = 1;
+        $UpdateOrder->save();
+
+        return redirect()->route('viewOrder');
+    }
+
+    public function cancelOrder($id)
+    {
+        $order = \App\Orders::join('quotations', 'orders.quotation_id', '=', 'quotations.id')
+            ->whereIn('orders.order_status', [1, 2, 3, 4])
+            ->where('orders.id', $id)
+            ->where('quotations.required_by', \Auth::user()->id)
+            ->first();
+
+        if (!$order) {
+            return redirect()->back();
+        }
+
+        $UpdateOrder = \App\Orders::find($id);
+        $UpdateOrder->order_status = 8;
+        $UpdateOrder->save();
 
         return redirect()->route('viewOrder');
     }

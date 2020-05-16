@@ -78,7 +78,7 @@
                                                 </div>
                                                 <div class="col-md-2 d-flex align-items-center"
                                                     style="justify-content: space-around;">
-                                                    <div class="st-label st-process">
+                                                    <div class="st-label st-{{$item->sts_class}}">
                                                         {{ $item->order_status_name }}
                                                     </div>
                                                 </div>
