@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Custinfo', 'user_id', 'id');
     }
+
+    public function isAdmin()
+    {
+        return $this->type === 1;
+    }
 }

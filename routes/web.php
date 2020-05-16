@@ -13,7 +13,11 @@
 
 
 Route::get('/', function () {
-    return view('customer.home');
+    if (\Auth::check() && auth()->user()->isAdmin()) {
+        return redirect()->route('indexApanel');
+    } else {
+        return view('customer.home');
+    }
 });
 
 Auth::routes();
@@ -83,10 +87,10 @@ Route::get('contact', 'Customer\ContactController@view')->name('contact');
 
 
 # Apanel 
-Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel'], function () {
+Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'admin'], function () {
     Route::get('/', function () {
         return view('apanel.home');
-    });
+    })->name('indexApanel');
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@view')->name('viewUser');

@@ -15,7 +15,8 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        ข้อมูลของ {{$user->profile->first_name}} {{$user->profile->last_name}}
+                        ข้อมูลของ @if(isset($user->profile->first_name)){{$user->profile->first_name}}
+                        {{$user->profile->last_name}}@endif
                     </h6>
                 </div>
                 <div style="margin-left: auto;">
@@ -45,86 +46,99 @@
                                         <option value="0">--เลือก--</option>
                                         @foreach ($l_title as $item)
                                         <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
-                                            ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}</option>
+                                            ($user->profile->title_id == $item->id)) selected @endif>{{ $item->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label>ชื่อ</label>
-                                    <input name="first_name" type="text" class="form-control" @if(isset($user->profile->first_name)
+                                    <input name="first_name" type="text" class="form-control"
+                                        @if(isset($user->profile->first_name)
                                     &&
-                                    ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif required readonly>
+                                    ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif required
+                                    readonly>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label>นามสกุล</label>
-                                    <input name="last_name" type="text" class="form-control" @if(isset($user->profile->last_name)
+                                    <input name="last_name" type="text" class="form-control"
+                                        @if(isset($user->profile->last_name)
                                     &&
-                                    ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required readonly>
+                                    ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required
+                                    readonly>
                                 </div>
                             </div>
-            
+
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-4">
                                     <label>วัน-เดือน-ปีเกิด</label>
-                                    <input name="birth_date" type="text" class="form-control" @if(isset($user->profile->birthdate)
+                                    <input name="birth_date" type="text" class="form-control"
+                                        @if(isset($user->profile->birthdate)
                                     &&
                                     ($user->profile->birthdate))
-                                    value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required readonly>
+                                    value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required
+                                    readonly>
                                 </div>
-            
+
                                 <div class="form-group col-md-4">
                                     <label>ที่อยู่</label>
-                                    <input name="address" type="text" readonly class="form-control" @if(isset($user->profile->address)
+                                    <input name="address" type="text" readonly class="form-control"
+                                        @if(isset($user->profile->address)
                                     &&
                                     ($user->profile->address)) value="{{$user->profile->address}}" @endif>
                                 </div>
-            
+
                                 <div class="form-group col-md-4">
                                     <label>จังหวัด</label>
                                     <select class="form-control" name="province" readonly>
                                         <option value="0">--เลือกจังหวัด--</option>
                                         @foreach ($l_province as $item)
                                         <option value="{{$item->id}}" @if (isset($user->profile->province_id) &&
-                                            ($user->profile->province_id == $item->id)) selected @endif >{{$item->name}}</option>
+                                            ($user->profile->province_id == $item->id)) selected @endif >{{$item->name}}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-            
+
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-4">
                                     <label>อำเภอ</label>
-                                    <select class="form-control" name="amphure" readonly @if (!isset($user->profile->amphure_id)) disabled
+                                    <select class="form-control" name="amphure" readonly
+                                        @if(!isset($user->profile->amphure_id)) disabled
                                         @endif>
                                         <option value="0">--เลือกอำเภอ--</option>
                                         @foreach ($l_amphure as $item)
                                         <option value="{{$item->id}}" @if (isset($user->profile->amphure_id) &&
-                                            ($user->profile->amphure_id == $item->id)) selected @endif>{{$item->name}}</option>
+                                            ($user->profile->amphure_id == $item->id)) selected @endif>{{$item->name}}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
-            
+
                                 <div class="form-group col-md-4">
                                     <label>ตำบล</label>
-                                    <select class="form-control" name="district" readonly @if (!isset($user->profile->district_id))
+                                    <select class="form-control" name="district" readonly
+                                        @if(!isset($user->profile->district_id))
                                         disabled @endif>
                                         <option value="0">--เลือกตำบล--</option>
                                         @foreach ($l_district as $item)
                                         <option value="{{$item->id}}" @if (isset($user->profile->district_id) &&
-                                            ($user->profile->district_id == $item->id)) selected @endif>{{$item->name}}</option>
+                                            ($user->profile->district_id == $item->id)) selected @endif>{{$item->name}}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
-            
+
                                 <div class="form-group col-md-4">
                                     <label>เบอร์โทร</label>
-                                    <input name="tel" type="text" class="form-control" readonly onkeypress="return isNumberKey(event)"
-                                        @if(isset($user->profile->tel)
+                                    <input name="tel" type="text" class="form-control" readonly
+                                        onkeypress="return isNumberKey(event)" @if(isset($user->profile->tel)
                                     &&
                                     ($user->profile->tel)) value="{{$user->profile->tel}}" @endif>
                                 </div>
                             </div>
-            
+
                             <div class="button-group-area center" aria-disabled="true">
                                 <button type="submit" class="genric-btn primary-border circle">บันทึก</button>
                                 <button type="reset" class="genric-btn danger-border circle">ยกเลิก</button>
@@ -132,7 +146,7 @@
                         </form>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
 </div>

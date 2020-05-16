@@ -58,7 +58,7 @@ class ProductController extends Controller
                 'path' => '/'
             ],
             1 => [
-                'name' => 'สินค้า',
+                'name' => 'ออกแบบสินค้า',
                 'path' => '#'
             ]
         ];
@@ -72,10 +72,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $imageName = time() . '.' . $request->product_img->getClientOriginalExtension();
-        $request->product_img->move(public_path('img/product'), $imageName);
+        $request->product_img->move(public_path('storage/product'), $imageName);
         \DB::table('product_formats')->insert([
             'name' => $request->product_name,
-            'img_path' => '/img/product/' . $imageName,
+            'img_path' => '/storage/product/' . $imageName,
             'category_id' => 2,
             'created_by' => \Auth::user()->id,
             'active' => 1

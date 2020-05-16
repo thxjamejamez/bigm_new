@@ -1,6 +1,6 @@
 @extends('customer.layouts.app', ['banner' => $banners])
 
-@section('title', 'เเจ้งชำระเงิน')
+@section('title', 'ออกแบบสินค้า')
 
 @section('header-css')
 
@@ -86,9 +86,10 @@
                                             <div class="row">
                                                 @foreach ($material as $key => $item)
                                                 <div class="col-lg-6">
-                                                    <div class="drag-me">
-                                                        <input type="image" src="{{$item->img_path}}"
-                                                            class="addpic{{$key+1}}" name=""
+                                                    <div
+                                                        class="drag-me mx-auto d-flex justify-content-center flex-wrap">
+                                                        <img src="{{$item->img_path}}" class="addpic col-centered"
+                                                            data-img="{{$item->img_path}}" data-name="{{$item->name}}"
                                                             style="width: 100px; height: 100px">
                                                     </div>
                                                 </div>
@@ -244,54 +245,22 @@
                 screen.remove(activeObject);
             }
         });
-
-        $.each(material, function( index, element ) {
-            // console.log(element->img_path);
-            
-            $('.addpic'+(index+1)).click(function() {
-                var pic = fabric.Image.fromURL('`${element.img_path}`');
-                var txt = $(".txt").val();
-                
-                fabric.Image.fromURL(element.img_path, function(myImg) {
-                    var img1 = myImg.set({
-                        name:'butterfly',
-                        price:20,
-                        left: 0,
-                        top: 0,
-                        width: 150,
-                        height: 100
-                    });
-                    screen.add(img1);
-                    totalprice += 20
-                    product_name_txt = element.name
-                    product_name.push(product_name_txt);
-                    console.log(product_name)
-                    document.getElementById("showname").innerHTML = product_name
-                    document.getElementById("submitprice").value = totalprice
-                    console.log('dasdsaccc',canvas.toDataURL())
-                });
-            })
-        })
         
         $(".addpic").click(function() {
-            var pic = fabric.Image.fromURL('img/material_custom/butterfly.png');
+            var pic = fabric.Image.fromURL($(this).data('img'));
             var txt = $(".txt").val();
-            //  fruits.push("Kiwi");
-            
-            fabric.Image.fromURL('img/material_custom/butterfly.png', function(myImg) {
+
+            fabric.Image.fromURL($(this).data('img'), function(myImg) {
                 var img1 = myImg.set({
-                    name:'butterfly',
+                    name:$(this).data('name'),
                     price:20,
                     left: 0,
                     top: 0,
                     width: 150,
                     height: 100
                 });
-                // localStorage.setItem("addprice", 100);
                 screen.add(img1);
-                totalprice += 20
-                product_name_txt = 'แมลงปอ'
-                //product_name += "แมงปอ";
+                product_name_txt = $(this).data('name')
                 product_name.push(product_name_txt);
                 console.log(product_name)
                 document.getElementById("showname").innerHTML = product_name
@@ -301,161 +270,10 @@
             });
             
         });
-        $(".addpic2").click(function() {
-            var pic = fabric.Image.fromURL('img/material_custom/butterfly01.png');
-            var txt = $(".txt").val();
-            fabric.Image.fromURL('img/material_custom/butterfly01.png', function(myImg) {
-                var img1 = myImg.set({
-                    name:'butterfly01',
-                    price:15,
-                    left: 0,
-                    top: 0,
-                    width: 150,
-                    height: 150
-                });
-                screen.add(img1);
-                totalprice += 15
-                document.getElementById("submitprice").value = totalprice
-            });
-        });
-        $(".addpic3").click(function() {
-            var pic = fabric.Image.fromURL('img/material_custom/butterfly02.png');
-            var txt = $(".txt").val();
-            fabric.Image.fromURL('img/material_custom/butterfly02.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'butterfly02',
-        //             price:18,
-        //             left: 0,
-        //             top: 0,
-        //             width: 150,
-        //             height: 100
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 18        
-        //         document.getElementById("submitprice").value = totalprice
-                
-        //     });
-        // });
-        // $(".addpic4").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050022_EA.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050022_EA.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050022_EA',
-        //             price:15,
-        //             left: 0,
-        //             top: 0,
-        //             width: 120,
-        //             height: 150
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 15
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic5").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/flow1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/flow1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'flow1',
-        //             price:15,
-        //             left: 0,
-        //             top: 0,
-        //             width: 150,
-        //             height: 100
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 15
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic6").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050047_EA_1200_1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050047_EA_1200_1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050047_EA_1200_1',
-        //             price:30,
-        //             left: 0,
-        //             top: 0,
-        //             width: 120,
-        //             height: 120
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 30
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic7").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050025_EA_1200_1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050025_EA_1200_1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050025_EA_1200_1',
-        //             price:25,
-        //             left: 0,
-        //             top: 0,
-        //             width: 150,
-        //             height: 120
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 25
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic8").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050027_EA_1200_1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050027_EA_1200_1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050027_EA_1200_1',
-        //             price:35,
-        //             left: 0,
-        //             top: 0,
-        //             width: 120,
-        //             height: 120
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 35
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic9").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050035_EA_1200_1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050035_EA_1200_1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050035_EA_1200_1',
-        //             price:35,
-        //             left: 0,
-        //             top: 0,
-        //             width: 110,
-        //             height: 200
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 35
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
-        // $(".addpic10").click(function() {
-        //     var pic = fabric.Image.fromURL('img/material_custom/10050037_EA_1200_1.png');
-        //     var txt = $(".txt").val();
-        //     fabric.Image.fromURL('img/material_custom/10050037_EA_1200_1.png', function(myImg) {
-        //         var img1 = myImg.set({
-        //             name:'10050037_EA_1200_1',
-        //             price:25,
-        //             left: 0,
-        //             top: 0,
-        //             width: 120,
-        //             height: 120
-        //         });
-        //         screen.add(img1);
-        //         totalprice += 25
-        //         document.getElementById("submitprice").value = totalprice
-        //     });
-        // });
+     
     });
+
+
     var canvas = new fabric.Canvas('canvas');
     var DIMICON = 15;
     var HideControls = {

@@ -12,11 +12,10 @@ class UserController extends Controller
     public function view()
     {
 
-        $userInfor = Custinfo::get();
-        // $user = User::get();
+        $userInfor = User::where('users.type', 2)
+            ->get();
 
-
-        return view('apanel.user.app',['userInfor'=>$userInfor]);
+        return view('apanel.user.app', ['userInfor' => $userInfor]);
     }
 
     public function viewDetail($id)
