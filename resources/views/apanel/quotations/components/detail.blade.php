@@ -12,7 +12,7 @@
        <div style="display: flex;">
          <div style="margin-top: 10px;">
            <h6 class="m-0 font-weight-bold text-primary">
-                การนัดหมายของ  xxxxxxxxxxxxx
+                การนัดหมายของ  {{$quotationsDetail[0]->first_name}} {{$quotationsDetail[0]->last_name}}
            </h6>
          </div>
          {{-- <div style="margin-left: auto;">
@@ -28,13 +28,16 @@
            <div style="font-size: 20px;color: black">รายการสินค้าที่สั่งซื้อ</div>  
            <div class="col-md-12">
                <div class="row" style="margin-top: 10px">
+
+                @foreach ($quotationsDetail as $item)
+
                   <div class="col-md-6" >
-                    <img style="max-width: 220px;max-height: 130px;border-radius: 10px" src="https://i.ytimg.com/vi/P5NDgc6kEVM/maxresdefault.jpg">
+                    <img style="max-width: 220px;max-height: 130px;border-radius: 10px" src="{{$item->img_path}}">
                   </div>
 
                   <div class="col-md-6">
                     <div style="font-size: 18px;color:black;">
-                      ประตูบานเกรด
+                     {{$item->pd_cate_name}}
                     </div>
 
                     <div style="font-size: 16px;margin-top: 10px">
@@ -45,34 +48,16 @@
                       <span style="color: black">ราคา</span> ยังไม่ทราบราคา 
                     </div>
                   </div>
+                  @endforeach
+
                </div>
-
-               <div class="row" style="margin-top: 10px">
-                <div class="col-md-6" >
-                  <img style="max-width: 220px;max-height: 130px;border-radius: 10px" src="https://i.ytimg.com/vi/P5NDgc6kEVM/maxresdefault.jpg">
-                </div>
-
-                <div class="col-md-6">
-                  <div style="font-size: 18px;color:black;">
-                    ประตูบานเกรด
-                  </div>
-
-                  <div style="font-size: 16px;margin-top: 10px">
-                   <span style="color: black">ขนาด</span> ยังไม่ทราบขนาด
-                  </div>
-
-                  <div style="font-size: 16px;margin-top: 5px">
-                    <span style="color: black">ราคา</span> ยังไม่ทราบราคา 
-                  </div>
-                </div>
-             </div>
            </div>
 
            <div style="font-size: 20px;margin-top: 20px;color: black">สถานที่นัดหมาย</div>  
-           <div>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</div>
+           <div>{{$item->address}}</div>
 
-           <div style="font-size: 20px;margin-top: 20px;color: black">วันที่นัดหมายการวัด </div>
-           <div>6 มิถุนายน 2563</div>
+           <div style="font-size: 20px;margin-top: 20px;color: black">วันที่นัดหมาย </div>
+           <div>{{$item->appointment_datetime}}</div>
 
             <div style="text-align: right">
                 <div>
