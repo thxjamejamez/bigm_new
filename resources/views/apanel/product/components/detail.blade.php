@@ -62,7 +62,7 @@
           <div class="col-md-4 mx-auto">
             <div class="button-group-area text-center">
               <button type="submit" class="btn btn-success">บันทึก</button>
-              <button type="reset" class="btn btn-danger">ยกเลิก</button>
+              <a href="{{route('viewProduct')}}" class="btn btn-danger">ยกเลิก</a>
             </div>
           </div>
         </div>
