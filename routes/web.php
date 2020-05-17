@@ -92,11 +92,16 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         return view('apanel.home');
     })->name('indexApanel');
 
+
+    // Route::get('default', 'DefaultController@view')->name('default');
+
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@view')->name('viewUser');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
         Route::post('/{id}', 'UserController@edit')->name('editUser');
         Route::get('/inactive/{id}', 'UserController@remove')->name('removeUser');
+
+       
     });
 
     Route::group(['prefix' => 'product'], function () {
