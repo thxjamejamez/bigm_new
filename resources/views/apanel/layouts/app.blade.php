@@ -72,7 +72,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('quotations') }}">
+                <a class="nav-link" href="{{ route('viewApanelAppointment') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>การนัดหมาย</span></a>
             </li>

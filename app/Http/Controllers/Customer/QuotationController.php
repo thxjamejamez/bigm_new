@@ -232,7 +232,8 @@ class QuotationController extends Controller
                 ->where('appointments.quotation_id', $id)
                 ->update([
                     'appointments.appointment_datetime' => $appt->appointment_change_datetime,
-                    'appointments.appointment_change_datetime' => NULL
+                    'appointments.appointment_change_datetime' => NULL,
+                    'appointments.appointment_status' => 1
                 ]);
 
             \DB::table('quotations')

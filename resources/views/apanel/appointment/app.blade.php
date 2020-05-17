@@ -1,6 +1,6 @@
 @extends('apanel.layouts.app')
 
-@section('title', 'ใบเสนอราคา')
+@section('title', 'การนัดหมาย')
 
 @section('header-css')
 <link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -14,16 +14,9 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        รายการใบสั่งซื้อสินค้า
+                        ข้อมูลการนัดหมาย
                     </h6>
                 </div>
-                {{-- <div style="margin-left: auto;">
-                    <div>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
-                            เพิ่มข้อมูลสินค้า
-                        </button>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <div class="card-body">
@@ -31,32 +24,33 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr align="center">
-                            <th style="width: 5%">ลำดับ</th>
                             <th style="width: 18%">ชื่อ</th>
                             <th style="width: 18%">สกุล</th>
                             <th style="width: 15%">เบอร์โทร</th>
                             <th style="width: 15%">วันที่นัดหมาย</th>
                             <th style="width: 15%">ประเภทการนัด</th>
+                            <th style="width: 15%">สถานะ</th>
                             <th style="width: 15%">ดูรายละเอียด</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($appointments as $item)
                         <tr>
-                            <td align="center">1</td>
                             <td>{{$item->first_name}}</td>
                             <td>{{$item->last_name}}</td>
-                            <td align="center">{{$item->last_name}}</td>
                             <td align="center">{{$item->tel}}</td>
+                            <td align="center">{{date('d-m-Y H:i:s', strtotime($item->appointment_datetime))}}</td>
                             <td align="center">
                                 @if ($item->appointment_type==1)
-                                    นัดวัด
+                                วัดขนาดสินค้า
                                 @else
-                                    นัดติดตั้ง
+                                ติดตั้งสินค้า
                                 @endif
                             </td>
+                            <td align="center">{{$item->status}}</td>
                             <td align="center">
-                                <a href="/apanel/quotations/2" class="btn btn-success  btn-circle btn-sm">
+                                <a href="{{route('viewApanelAppointmentDetail', ['id' => $item->quotation_id, 'type' => $item->appointment_type])}}"
+                                    class="btn btn-success  btn-circle btn-sm">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>

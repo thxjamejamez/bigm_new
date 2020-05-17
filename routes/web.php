@@ -128,9 +128,11 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
     });
 
 
-    Route::group(['prefix' => 'quotations'], function () {
-        Route::get('/', 'QuotationsController@view')->name('quotations');
-        Route::get('/{id}', 'QuotationsController@viewDetail')->name('quotationsDetail');
+    Route::group(['prefix' => 'appointment'], function () {
+        Route::get('/', 'AppointmentController@view')->name('viewApanelAppointment');
+        Route::get('/{id}/{type}', 'AppointmentController@viewDetail')->name('viewApanelAppointmentDetail');
+        Route::get('/{id}/{type}/remove', 'AppointmentController@cancel')->name('cancelAppointment');
+        Route::post('/{id}/{type}/changedate', 'AppointmentController@chagedate')->name('changeAppointmentDate');
     });
 
 

@@ -14,6 +14,7 @@ class CreateAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('appointments', function (Blueprint $table) {
+            $table->Increments('id');
             $table->unsignedInteger('quotation_id');
             $table->dateTime('appointment_datetime', 0);
             $table->dateTime('appointment_change_datetime', 0)->nullable();
