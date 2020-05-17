@@ -32,32 +32,36 @@
                     <thead>
                         <tr align="center">
                             <th style="width: 5%">ลำดับ</th>
-                            <th style="width: 20%">ชื่อ</th>
-                            <th style="width: 19%">สกุล</th>
+                            <th style="width: 18%">ชื่อ</th>
+                            <th style="width: 18%">สกุล</th>
                             <th style="width: 15%">เบอร์โทร</th>
                             <th style="width: 15%">วันที่นัดหมาย</th>
-                            <th style="width: 12%">ดูรายละเอียด</th>
-                            {{-- <th style="width: 7%">ลบ</th> --}}
+                            <th style="width: 15%">ประเภทการนัด</th>
+                            <th style="width: 15%">ดูรายละเอียด</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($appointments as $item)
                         <tr>
                             <td align="center">1</td>
-                            <td>สิทธิกร</td>
-                            <td>มะกูลต๊ะ</td>
+                            <td>{{$item->required_by}}</td>
+                            <td>{{$item->required_by}}</td>
                             <td align="center">0856238872</td>
-                            <td align="center">13/2/2555</td>
+                            <td align="center">{{$item->appointment_datetime}}</td>
+                            <td align="center">
+                                @if ($item->appointment_type==1)
+                                    นัดวัด
+                                @else
+                                    นัดติดตั้ง
+                                @endif
+                            </td>
                             <td align="center">
                                 <a href="/apanel/quotations/2" class="btn btn-success  btn-circle btn-sm">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>
-                            {{-- <td align="center">
-                                <div class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </div>
-                            </td> --}}
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
