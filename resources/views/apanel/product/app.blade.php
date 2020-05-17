@@ -34,7 +34,6 @@
                             <th style="width: 5%">ลำดับ</th>
                             <th style="width: 22%">ชื่อสินค้า</th>
                             <th style="width: 26%">รูปสินค้า</th>
-
                             <th style="width: 20%">สร้างโดย</th>
                             <th style="width: 7%">เเก้ไข</th>
                             <th style="width: 7%">ลบ</th>
@@ -47,7 +46,7 @@
                             <td align="center">{{$key+1}}</td>
                             <td>{{$item->name}}</td>
                             <td align="center"><img style="width: 150px;height: 150px;"
-                                    src="{{($item->img_path) ? $item->img_path : '/img/defualt_product.jpg'}}">
+                                    src="{{($item->img_path) ? $item->img_path :'/img/defualt_product.jpg'}}">
                             </td>
 
                             <td>{{$item->created_by}}</td>

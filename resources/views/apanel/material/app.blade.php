@@ -43,24 +43,24 @@
 
                         @foreach ($listMaterial as $key => $mt)
                         <tr>
-                            <td>{{ $mt->id }}</td>
+                            <td align="center">{{ $mt->id }}</td>
                             <td>{{ $mt->name }}</td>
-                            <td>{{($mt->img_path) ? $mt->img_path : '/img/defualt_product.jpg'}}</td>
+                            <td align="center"> <img style="width: 150px;height: 150px;" src="{{($mt->img_path) ? $mt->img_path : '/img/defualt_product.jpg'}}"></td>
                             {{-- <td>    
                                 @if ($mt->active==1)
                                     <div>ยังดำเนินการ</div>    
                                 @else
                                     <div>หยุดดำเนินการ</div>            
                                 @endif
-                        </td> --}}
-                            <td>
+                            </td> --}}
+                            <td align="center">
                                 <div class="btn btn-warning btn-circle btn-sm">
                                     <a href="/apanel/material/{{$mt->id}}" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
                             </td>
-                            <td>
+                            <td align="center">
                                 <a href="{{route('removeMaterial', ['id'=>$mt->id])}}"
                                     onclick="return confirm('Are you sure?')">
                                     <div class="btn btn-danger btn-circle btn-sm">
@@ -91,7 +91,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('storeMaterial')}}" method="POST">
+                <form action="{{route('storeMaterial')}}" method="POST" enctype="multipart/form-data">
                     <div>
                         @csrf
                         <span>ชื่อวัตถุดิบ</span>
@@ -107,7 +107,7 @@
             </div> --}}
                     <div class="mt-2">
                         <span>ภาพวัตถุดิบ</span>
-                        <input type="file" name="imgMaterial" class="form-control" required>
+                        <input type="file" name="img_material" class="form-control" required>
                     </div>
 
                     <div class="modal-footer">

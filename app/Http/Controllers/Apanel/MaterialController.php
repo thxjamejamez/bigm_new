@@ -17,9 +17,13 @@ class MaterialController extends Controller
   
     public function store (Request $request)
     {
+        $imageName = time() . '.' . $request->img_material->getClientOriginalExtension();
+        $request->img_material->move(public_path('storage/product'), $imageName);
+
+
         \DB::table('l_decorative')->insert([
             'name' => $request->nameMaterial,
-            'img_path' => '/img/defualt_product.jpg',
+            'img_path' =>'/storage/product/' . $imageName,
             'active' => 1
         ]);
 
