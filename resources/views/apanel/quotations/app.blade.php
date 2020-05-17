@@ -44,10 +44,10 @@
                         @foreach ($appointments as $item)
                         <tr>
                             <td align="center">1</td>
-                            <td>{{$item->required_by}}</td>
-                            <td>{{$item->required_by}}</td>
-                            <td align="center">0856238872</td>
-                            <td align="center">{{$item->appointment_datetime}}</td>
+                            <td>{{$item->first_name}}</td>
+                            <td>{{$item->last_name}}</td>
+                            <td align="center">{{$item->last_name}}</td>
+                            <td align="center">{{$item->tel}}</td>
                             <td align="center">
                                 @if ($item->appointment_type==1)
                                     นัดวัด
