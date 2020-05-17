@@ -53,10 +53,14 @@
 <div class="container">
 
     <div class="col-md-12 text-center mt-4">
+        @auth
         <div class="genric-btn primary-border circle mb-30" data-toggle="modal" data-target="#staticBackdrop">
             + อัปโหลดข้อมูลสินค้า
         </div>
+        @endauth
+
     </div>
+
 
     @foreach ($products as $key_cate => $item_cate)
     @if(count($item_cate))
