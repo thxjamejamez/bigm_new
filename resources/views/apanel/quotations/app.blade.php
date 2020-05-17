@@ -1,6 +1,6 @@
 @extends('apanel.layouts.app')
 
-@section('title', 'จัดการข้อมูลสินค้า')
+@section('title', 'ใบเสนอราคา')
 
 @section('header-css')
 <link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

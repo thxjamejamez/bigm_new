@@ -1,6 +1,6 @@
 @extends('apanel.layouts.app')
 
-@section('title', 'จัดการข้อมูลสินค้า')
+@section('title', 'จัดการข้อมูลรูปแบบสินค้า')
 
 @section('header-css')
 <link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -14,7 +14,7 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        จัดการข้อมูลสินค้า
+                        จัดการข้อมูลรูปแบบสินค้า
                     </h6>
                 </div>
                 <div style="margin-left: auto;">
@@ -34,7 +34,7 @@
                             <th style="width: 5%">ลำดับ</th>
                             <th style="width: 22%">ชื่อสินค้า</th>
                             <th style="width: 26%">รูปสินค้า</th>
-                            
+
                             <th style="width: 20%">สร้างโดย</th>
                             <th style="width: 7%">เเก้ไข</th>
                             <th style="width: 7%">ลบ</th>
@@ -42,22 +42,23 @@
                     </thead>
                     <tbody>
                         @foreach ($product as $key=>$item)
-                            
+
                         <tr>
-                            <td>{{$key+1}}</td>
+                            <td align="center">{{$key+1}}</td>
                             <td>{{$item->name}}</td>
-                            <td><img style="width: 250px;height: 150px;"
-                                src="{{($item->img_path) ? $item->img_path : '/img/defualt_product.jpg'}}">
+                            <td align="center"><img style="width: 150px;height: 150px;"
+                                    src="{{($item->img_path) ? $item->img_path : '/img/defualt_product.jpg'}}">
                             </td>
-                      
+
                             <td>{{$item->created_by}}</td>
-                            <td>
+                            <td align="center">
                                 <a href="/apanel/product/{{$item->id}}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
-                            <td>
-                                <a href="{{route('removeProduct', ['id'=>$item->id])}}" onclick="return confirm('Are you sure?')">
+                            <td align="center">
+                                <a href="{{route('removeProduct', ['id'=>$item->id])}}"
+                                    onclick="return confirm('Are you sure?')">
                                     <div class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </div>
@@ -85,24 +86,12 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form action="{{route('storeProduct')}}" method="POST">
+                <form action="{{route('storeProduct')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <span>ชื่อสินค้า</span>
                         <input type="text" name="product_name" class="form-control" required>
                     </div>
-                    {{-- <div>
-                        <span>รายละเอียดสินค้า</span>
-                        <textarea style="height: 100px" class="form-control"></textarea>
-                    </div> --}}
-                    {{-- <div class="mt-2">
-                        <span>ราคา (บาท)</span>
-                        <input type="text" name="" class="form-control" required>
-                    </div> --}}
-                    {{-- <div class="mt-2">
-                        <span>ขนาด (เซนติเมตร)</span>
-                        <input type="text" name="" class="form-control" required>
-                    </div> --}}
                     <div class="mt-2">
                         <span>ภาพสินค้า</span>
                         <input type="file" name="product_img" class="form-control" required>
