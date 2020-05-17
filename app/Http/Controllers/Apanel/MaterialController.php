@@ -39,6 +39,49 @@ class MaterialController extends Controller
         
     }
 
+    public function viewDetail($id)
+    {
+        $decorative = \App\Material::where('l_decorative.id', $id)->first();
+        return view('apanel.material.components.detail', ['decorative' => $decorative]);
+    }
+
+    public function RemoveDecorativePic($id)
+    {
+        $decorative = \App\Material::find($id);
+        $img_path_pd = public_path() . $decorative->img_path;
+        unlink($img_path_pd);
+        $decorative->img_path = '';
+        $decorative->save();
+
+        return redirect()->back();
+    }
+
+    public function updateMaterial($id, Request $request)
+    {
+        if($request->img_material==""){
+            \DB::table('l_decorative')
+                ->where('l_decorative.id', $id)
+                ->update([
+                    'name' => $request->name_material,
+                ]);
+    
+            return redirect()->route('viewMaterial');
+        }else{
+            $imageName = time() . '.' . $request->img_material->getClientOriginalExtension();
+            $request->img_material->move(public_path('storage/product'), $imageName);
+            \DB::table('l_decorative')
+                ->where('l_decorative.id', $id)
+                ->update([
+                    'name' => $request->name_material,
+                    'l_decorative.img_path' => '/storage/product/' . $imageName,
+                ]);
+    
+            return redirect()->route('viewMaterial');
+        }
+
+       
+    }
+
 
 }
 

@@ -55,7 +55,9 @@
                         </td> --}}
                             <td>
                                 <div class="btn btn-warning btn-circle btn-sm">
-                                    <i class="far fa-edit"></i>
+                                    <a href="/apanel/material/{{$mt->id}}" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
                                 </div>
                             </td>
                             <td>

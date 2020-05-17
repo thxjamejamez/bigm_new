@@ -49,16 +49,34 @@ class ProductController extends Controller
 
     public function updateProduct($id, Request $request)
     {
-        $imageName = time() . '.' . $request->img_product->getClientOriginalExtension();
-        $request->img_product->move(public_path('storage/product'), $imageName);
-        \DB::table('product_formats')
-            ->where('product_formats.id', $id)
-            ->update([
-                'name' => $request->product_name,
-                'product_formats.img_path' => '/storage/product/' . $imageName,
-            ]);
+        if($request->img_product==""){
+   
+            \DB::table('product_formats')
+                ->where('product_formats.id', $id)
+                ->update([
+                    'name' => $request->product_name,              
+                ]);
+    
+            return redirect()->route('viewProduct');
+        }else{
+            $imageName = time() . '.' . $request->img_product->getClientOriginalExtension();
+            $request->img_product->move(public_path('storage/product'), $imageName);
+            \DB::table('product_formats')
+                ->where('product_formats.id', $id)
+                ->update([
+                    'name' => $request->product_name,
+                    'product_formats.img_path' => '/storage/product/' . $imageName,
+                ]);
+    
+            return redirect()->route('viewProduct');
+        }
 
-        return redirect()->route('viewProduct');
+
+
+
+
+
+ 
     }
 
     public function RemoveProductPic($id)

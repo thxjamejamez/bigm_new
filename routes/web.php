@@ -112,6 +112,9 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         Route::get('/', 'MaterialController@view')->name('viewMaterial');
         Route::post('/', 'MaterialController@store')->name('storeMaterial');
         Route::get('/{id}/remove', 'MaterialController@inactiveMaterial')->name('removeMaterial');
+        Route::get('/{id}', 'MaterialController@viewDetail')->name('detailMaterial');
+        Route::get('/{id}/remove/pic', 'MaterialController@RemoveDecorativePic')->name('RemoveDecorativePic');
+        Route::post('/{id}/update', 'MaterialController@updateMaterial')->name('updateMaterialFormat');
     });
 
     Route::group(['prefix' => 'order'], function () {
