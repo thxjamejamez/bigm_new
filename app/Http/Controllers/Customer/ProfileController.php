@@ -24,12 +24,12 @@ class ProfileController extends Controller
         $list_title = \DB::table('l_title')
             ->get();
 
-            
+
         $user = User::with(['profile'])->where('id', \Auth::user()->id)->first();
 
         $list_province = \DB::table('l_province')
             ->get();
-    
+
         $list_amphure = \DB::table('l_amphure')
             ->when(isset($user->profile->province_id), function ($q) use ($user) {
                 $q->where('l_amphure.province_id', $user->profile->province_id);

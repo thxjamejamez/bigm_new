@@ -95,13 +95,17 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@view')->name('viewUser');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
+        Route::post('/{id}', 'UserController@edit')->name('editUser');
+        Route::get('/inactive/{id}', 'UserController@remove')->name('removeUser');
     });
 
     Route::group(['prefix' => 'product'], function () {
         Route::get('/', 'ProductController@view')->name('viewProduct');
         Route::get('/{id}', 'ProductController@viewDetail')->name('detailProduct');
         Route::post('/', 'ProductController@store')->name('storeProduct');
+        Route::post('/{id}/update', 'ProductController@updateProduct')->name('updateProductFormat');
         Route::get('/{id}/remove', 'ProductController@inactiveProduct')->name('removeProduct');
+        Route::get('/{id}/remove/pic', 'ProductController@RemoveProductPic')->name('RemoveProductPic');
     });
 
     Route::group(['prefix' => 'material'], function () {
@@ -124,9 +128,6 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
     Route::group(['prefix' => 'quotations'], function () {
         Route::get('/', 'QuotationsController@view')->name('quotations');
         Route::get('/{id}', 'QuotationsController@viewDetail')->name('quotationsDetail');
-
-        // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
-        // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
 
 
@@ -135,8 +136,5 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
 
         Route::get('/', 'PayQuotationController@view')->name('payQuotations');
         Route::get('/{id}', 'PayQuotationController@viewDetail')->name('payQuotationsDetail');
-
-        // Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
-        // Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
     });
 });

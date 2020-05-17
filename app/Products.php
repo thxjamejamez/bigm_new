@@ -14,6 +14,7 @@ class Products extends Model
     {
         $pd_f = \DB::table('product_formats')
             ->join('product_categories', 'product_formats.category_id', '=', 'product_categories.id')
+            ->where('product_formats.active', 1)
             ->whereIn('product_formats.created_by', [1, \Auth::user()->id])
             ->select(
                 'product_formats.id as pd_f_id',

@@ -3,12 +3,17 @@
 @section('title', 'จัดการข้อมูลผู้ใช้งาน')
 
 @section('header-css')
-
+<link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
 
 <div class="container-fluid">
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div style="display: flex;">
@@ -40,14 +45,15 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td align="center">
-                                <a href="/apanel/user/{{$item->id}}" class="btn btn-success  btn-circle btn-sm">
-                                    <i class="fas fa-search"></i>
+                                <a href="/apanel/user/{{$item->id}}" class="btn btn-warning btn-circle btn-sm">
+                                    <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td align="center">
-                                <div class="btn btn-danger btn-circle btn-sm">
+                                <button class="btn btn-danger btn-circle btn-sm" type="button"
+                                    onclick="remove({{$item->id}})">
                                     <i class="fas fa-trash"></i>
-                                </div>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -61,8 +67,52 @@
 @endsection
 
 @section('footer-js')
-
+<script src="/plugins/apanel/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/apanel/datatables/dataTables.bootstrap4.min.js"></script>
 <script>
     $('#dataTable').DataTable()
+    @if (session()->has('updated'))
+        Swal.fire(
+            'สำเร็จ',
+            'แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว',
+            'success'
+        )
+    @elseif(session()->has('removed'))
+        Swal.fire(
+            'สำเร็จ',
+            'ลบข้อมูลผู้ใช้เรียบร้อยแล้ว',
+            'success'
+        )
+    @endif
+
+    function remove(id) {
+        const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+        title: 'คุณแน่ใจหรือ?',
+        text: "คุณต้องการลบข้อมูลผู้ใช้นี้",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ใช่',
+        cancelButtonText: 'ไม่ใช่',
+        reverseButtons: true
+        }).then((result) => {
+        if (result.value) {
+            window.location = '/apanel/user/inactive/' + id
+        } else if (
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+        }
+        })
+    }
+    
+    
+    
 </script>
 @endsection

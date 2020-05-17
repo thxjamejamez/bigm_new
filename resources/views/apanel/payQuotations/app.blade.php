@@ -1,6 +1,6 @@
 @extends('apanel.layouts.app')
 
-@section('title', 'จัดการข้อมูลสินค้า')
+@section('title', 'ข้อมูลการเสนอราคา')
 
 @section('header-css')
 <link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -17,13 +17,6 @@
                         รายการใบสั่งซื้อสินค้า
                     </h6>
                 </div>
-                {{-- <div style="margin-left: auto;">
-                    <div>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop">
-                            เพิ่มข้อมูลสินค้า
-                        </button>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <div class="card-body">

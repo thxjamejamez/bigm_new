@@ -3,7 +3,6 @@
 @section('title', 'รายละเอียดผู้ใช้งาน')
 
 @section('header-css')
-<link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
 @endsection
 
@@ -15,16 +14,8 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        ข้อมูลของ @if(isset($user->profile->first_name)){{$user->profile->first_name}}
-                        {{$user->profile->last_name}}@endif
+                        ข้อมูลของ {{$user->name}}
                     </h6>
-                </div>
-                <div style="margin-left: auto;">
-                    <div>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop">
-                            เเก้ไขข้อมูล
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -32,17 +23,13 @@
             <div class="whole-wrap">
                 <div class="container">
                     <div class="section-top-border">
-                        @if(session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                        @endif
-                        <form action="{{ route('editprofile') }}" method="POST">
+
+                        <form action="{{ route('editUser', ['user_id' => $user->id]) }}" method="POST">
                             @csrf
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-2">
                                     <label>คำนำหน้า</label>
-                                    <select class="form-control" name="title" readonly>
+                                    <select class="form-control" name="title" required>
                                         <option value="0">--เลือก--</option>
                                         @foreach ($l_title as $item)
                                         <option value="{{ $item->id }}" @if (isset($user->profile->title_id) &&
@@ -56,16 +43,15 @@
                                     <input name="first_name" type="text" class="form-control"
                                         @if(isset($user->profile->first_name)
                                     &&
-                                    ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif required
-                                    readonly>
+                                    ($user->profile->first_name)) value="{{$user->profile->first_name}}" @endif
+                                    required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label>นามสกุล</label>
                                     <input name="last_name" type="text" class="form-control"
                                         @if(isset($user->profile->last_name)
                                     &&
-                                    ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required
-                                    readonly>
+                                    ($user->profile->last_name)) value="{{$user->profile->last_name}}" @endif required>
                                 </div>
                             </div>
 
@@ -76,21 +62,20 @@
                                         @if(isset($user->profile->birthdate)
                                     &&
                                     ($user->profile->birthdate))
-                                    value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required
-                                    readonly>
+                                    value="{{date('d-m-Y', strtotime($user->profile->birthdate))}}" @endif required>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>ที่อยู่</label>
-                                    <input name="address" type="text" readonly class="form-control"
+                                    <input name="address" type="text" class="form-control"
                                         @if(isset($user->profile->address)
                                     &&
-                                    ($user->profile->address)) value="{{$user->profile->address}}" @endif>
+                                    ($user->profile->address)) value="{{$user->profile->address}}" @endif required>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label>จังหวัด</label>
-                                    <select class="form-control" name="province" readonly>
+                                    <select class="form-control" name="province" required>
                                         <option value="0">--เลือกจังหวัด--</option>
                                         @foreach ($l_province as $item)
                                         <option value="{{$item->id}}" @if (isset($user->profile->province_id) &&
@@ -104,8 +89,8 @@
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-4">
                                     <label>อำเภอ</label>
-                                    <select class="form-control" name="amphure" readonly
-                                        @if(!isset($user->profile->amphure_id)) disabled
+                                    <select class="form-control" name="amphure" @if(!isset($user->profile->amphure_id))
+                                        disabled
                                         @endif>
                                         <option value="0">--เลือกอำเภอ--</option>
                                         @foreach ($l_amphure as $item)
@@ -118,7 +103,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>ตำบล</label>
-                                    <select class="form-control" name="district" readonly
+                                    <select class="form-control" name="district"
                                         @if(!isset($user->profile->district_id))
                                         disabled @endif>
                                         <option value="0">--เลือกตำบล--</option>
@@ -132,7 +117,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>เบอร์โทร</label>
-                                    <input name="tel" type="text" class="form-control" readonly
+                                    <input name="tel" type="text" class="form-control"
                                         onkeypress="return isNumberKey(event)" @if(isset($user->profile->tel)
                                     &&
                                     ($user->profile->tel)) value="{{$user->profile->tel}}" @endif>
@@ -140,8 +125,8 @@
                             </div>
 
                             <div class="button-group-area center" aria-disabled="true">
-                                <button type="submit" class="genric-btn primary-border circle">บันทึก</button>
-                                <button type="reset" class="genric-btn danger-border circle">ยกเลิก</button>
+                                <button type="submit" class="btn btn-success">บันทึก</button>
+                                <button type="reset" class="btn btn-danger">ยกเลิก</button>
                             </div>
                         </form>
                     </div>
@@ -156,13 +141,10 @@
 @section('footer-js')
 <script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="/plugins/apanel/datatables/jquery.dataTables.min.js"></script>
-<script src="/plugins/apanel/datatables/dataTables.bootstrap4.min.js"></script>
 
 <script>
     $('#dataTable').DataTable()
-</script>
 
-<script>
     const elm_province = $('select[name="province"]')
     const elm_amphure = $('select[name="amphure"]')
     const elm_district = $('select[name="district"]')
@@ -236,6 +218,7 @@
         && (charCode < 48 || charCode > 57))
         return false;
         return true;
-    }  
+    } 
+
 </script>
 @endsection

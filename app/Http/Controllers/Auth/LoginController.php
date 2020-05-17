@@ -30,7 +30,7 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return voidf
      */
     public function __construct()
     {
@@ -44,5 +44,14 @@ class LoginController extends Controller
         } else {
             return '/';
         }
+    }
+
+    protected function credentials($request)
+    {
+        return [
+            'email' => $request->email,
+            'password' => $request->password,
+            'active' => '1',
+        ];
     }
 }
