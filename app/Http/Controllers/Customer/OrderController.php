@@ -116,8 +116,16 @@ class OrderController extends Controller
         $UpdateQuotationSts->quotation_status = 6;
         $UpdateQuotationSts->save();
 
+        $s_appointment = new \App\Appointments;
+        $s_appointment->quotation_id = $quotation_id;
+        $s_appointment->appointment_datetime = date('Y-m-d H:i:s', strtotime($request->install_dt));
+        $s_appointment->appointment_status = 1;
+        $s_appointment->appointment_type = 2;
+        $s_appointment->save();
+
         $AddOrder = new \App\Orders;
         $AddOrder->quotation_id = $quotation_id;
+        $AddOrder->appointment_id = $s_appointment->id;
         $AddOrder->send_datetime = date('Y-m-d H:i:s', strtotime($request->install_dt));
         $AddOrder->order_status = 1;
         $AddOrder->amount = $sum;
@@ -144,6 +152,12 @@ class OrderController extends Controller
         $UpdateOrder->send_change_datetime = NULL;
         $UpdateOrder->order_status = 1;
         $UpdateOrder->save();
+
+        $UpdateAppointment = \App\Appointments::find($UpdateOrder->appointment_id);
+        $UpdateAppointment->appointment_datetime = $UpdateOrder->send_datetime;
+        $UpdateAppointment->appointment_change_datetime = NULL;
+        $UpdateAppointment->appointment_status = 1;
+        $UpdateAppointment->save();
 
         return redirect()->route('viewOrder');
     }

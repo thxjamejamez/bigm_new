@@ -11,6 +11,7 @@
 |
 */
 
+use App\Quotations;
 
 Route::get('/', function () {
     if (\Auth::check() && auth()->user()->isAdmin()) {
@@ -100,8 +101,6 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
         Route::post('/{id}', 'UserController@edit')->name('editUser');
         Route::get('/inactive/{id}', 'UserController@remove')->name('removeUser');
-
-       
     });
 
     Route::group(['prefix' => 'product'], function () {
@@ -137,10 +136,17 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         Route::get('/', 'AppointmentController@view')->name('viewApanelAppointment');
         Route::get('/{id}/{type}', 'AppointmentController@viewDetail')->name('viewApanelAppointmentDetail');
         Route::get('/{id}/{type}/remove', 'AppointmentController@cancel')->name('cancelAppointment');
+        Route::get('/{id}/{type}/accept', 'AppointmentController@accept')->name('acceptAppointment');
         Route::post('/{id}/{type}/changedate', 'AppointmentController@chagedate')->name('changeAppointmentDate');
     });
 
-
+    Route::group(['prefix' => 'quotaion'], function () {
+        Route::get('/', 'QuotationsController@view')->name('viewQuotationApanel');
+        Route::get('/{id}', 'QuotationsController@detail')->name('viewDetailQuotationApanel');
+        Route::get('/addDetail/{quotation_id}/{appointment_id}', 'QuotationsController@addDetail')->name('addQuotationDetail');
+        Route::post('/addDetail/{quotation_id}', 'QuotationsController@storeDetail')->name('storeQuotationProductDetail');
+        Route::post('/addPrice/{quotation_id}', 'QuotationsController@storePrice')->name('storeQuotationProductPrice');
+    });
 
     Route::group(['prefix' => 'payQuotations'], function () {
 

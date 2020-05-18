@@ -66,21 +66,21 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('viewCheckPayment') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>ตรวจสอบการชำระเงิน</span></a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewApanelAppointment') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>การนัดหมาย</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('payQuotations') }}">
+                <a class="nav-link" href="{{ route('viewQuotationApanel') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>การเสนอราคา</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('viewCheckPayment') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>ตรวจสอบการชำระเงิน</span></a>
             </li>
 
 
@@ -218,6 +218,7 @@
     <script src="/plugins/moment/moment-locale.js"></script>
     <script src="/plugins/lodash/lodash.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     @yield('footer-js')
 

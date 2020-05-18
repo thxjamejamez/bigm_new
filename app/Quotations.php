@@ -29,6 +29,7 @@ class Quotations extends Model
             $item->details = \DB::table('quotation_product_details')
                 ->where('quotation_product_details.quotation_product_id', $item->quotation_product_id)
                 ->select(
+                    'quotation_product_details.id',
                     'quotation_product_details.size',
                     'quotation_product_details.qty',
                     'quotation_product_details.price_per_unit'

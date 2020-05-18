@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->Increments('id');
             $table->unsignedInteger('quotation_id');
+            $table->unsignedInteger('appointment_id');
             $table->dateTime('send_datetime', 0);
             $table->dateTime('send_change_datetime', 0)->nullable();
             $table->unsignedInteger('order_status');
@@ -23,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->double('amount', 8, 2)->default(0);
             $table->timestamp('created_at', 0);
             $table->foreign('quotation_id')->references('id')->on('quotations');
+            $table->foreign('appointment_id')->references('id')->on('appointments');
             $table->foreign('order_status')->references('id')->on('l_order_status');
         });
     }

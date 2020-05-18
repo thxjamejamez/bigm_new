@@ -27,7 +27,7 @@ class AppointmentController extends Controller
             ->leftjoin('l_amphure', 'cust_send_address.amphure_id', '=', 'l_amphure.id')
             ->leftjoin('l_province', 'cust_send_address.province_id', '=', 'l_province.id')
             ->where('quotations.required_by', \Auth::user()->id)
-            ->where('appointments.appointment_status', 2)
+            ->where('appointments.appointment_status', 3)
             ->select(
                 'appointments.appointment_datetime',
                 'appointments.appointment_status',

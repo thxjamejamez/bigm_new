@@ -32,16 +32,24 @@
 
         <div class="col-md-6">
           <div style="font-size: 18px;color:black;">
+            {{$item->name}}
+          </div>
+          <div style="font-size: 16px;color:#7d7a7a;margin-top: 10px">
             {{$item->pd_cate_name}}
           </div>
-
+          @if($item->details)
+          @foreach($item->details as $detail)
           <div style="font-size: 16px;margin-top: 10px">
-            <span style="color: black">ขนาด</span> ยังไม่ทราบขนาด
+            <span style="color: black">ขนาด: </span>{{$detail->size}}
           </div>
-
+          <div style="font-size: 16px;margin-top: 10px">
+            <span style="color: black">จำนวน: </span>{{$detail->qty}} ชิ้น
+          </div>
           <div style="font-size: 16px;margin-top: 5px">
-            <span style="color: black">ราคา</span> ยังไม่ทราบราคา
+            <span style="color: black">ราคาต่อหน่วย: </span>{{number_format($detail->price_per_unit, 2)}} บาท
           </div>
+          @endforeach
+          @endif
         </div>
         @endforeach
 
@@ -69,19 +77,31 @@
 
     <div style="text-align: right">
       <div>
+        @if($appointmentDetail->appointment_status == 3 && $appointmentDetail->appointment_type == 1)
+        <a href="{{route('addQuotationDetail', ['id' => $appointmentDetail->quotation_id, 'appt_id' => $appointmentDetail->id])}}"
+          class="btn btn-success">
+          เพิ่มข้อมูลรายละเอียดสินค้า
+        </a>
+        @elseif($appointmentDetail->appointment_status == 3 && $appointmentDetail->appointment_type == 2)
+        <a href="/" class="btn btn-success">
+          ยืนยันการติดตั้งสินค้า
+        </a>
+        @else
         <button class="btn btn-danger"
           onclick="remove({{$appointmentDetail->id}}, {{$appointmentDetail->appointment_type}})">
           ปฏิเสธการนัดหมาย
         </button>
 
-        <button class="btn btn-success">
+        <a href="{{route('acceptAppointment', ['id' => $appointmentDetail->id, 'type' => $appointmentDetail->appointment_type])}}"
+          class="btn btn-success">
           ตอบรับการนัดหมาย
-        </button>
+        </a>
 
         <button class="btn btn-warning"
           onclick="RequireChangeDateTime({{$appointmentDetail->id}}, {{$appointmentDetail->appointment_type}})">
           ขอเปลี่ยนแปลงวันนัดหมาย
         </button>
+        @endif
       </div>
     </div>
 
@@ -108,8 +128,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+            <button type="submit" class="btn btn-primary">บันทึก</button>
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@
                             </td>
                             <td align="center">{{$item->status}}</td>
                             <td align="center">
-                                <a href="{{route('viewApanelAppointmentDetail', ['id' => $item->quotation_id, 'type' => $item->appointment_type])}}"
+                                <a href="{{route('viewApanelAppointmentDetail', ['id' => $item->id, 'type' => $item->appointment_type])}}"
                                     class="btn btn-success  btn-circle btn-sm">
                                     <i class="fas fa-search"></i>
                                 </a>
