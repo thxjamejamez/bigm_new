@@ -39,7 +39,7 @@ class AppointmentController extends Controller
                 'cust_send_address.amphure_id',
                 'l_amphure.name as amphure_name',
                 'cust_send_address.province_id',
-                'l_province.name as province_name',
+                'l_province.name as province_name'
             )
             ->get();
 

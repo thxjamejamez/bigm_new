@@ -129,7 +129,7 @@
     <!-- start footer Area -->
     <footer class="footer-area section-gap">
         <div class="container">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-5 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h4>About Me</h4>
@@ -185,7 +185,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </footer>
     <!-- End footer Area -->

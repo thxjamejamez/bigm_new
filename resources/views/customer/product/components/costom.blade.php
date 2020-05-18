@@ -90,7 +90,7 @@
                                                         class="drag-me mx-auto d-flex justify-content-center flex-wrap">
                                                         <img src="{{$item->img_path}}" class="addpic col-centered"
                                                             data-img="{{$item->img_path}}" data-name="{{$item->name}}"
-                                                            style="width: 100px; height: 100px">
+                                                            style="max-width: 140px; max-height: 140px">
                                                     </div>
                                                 </div>
                                                 @endforeach
@@ -247,6 +247,8 @@
         });
         
         $(".addpic").click(function() {
+            let input_width = this.width
+            let input_height = this.height
             var pic = fabric.Image.fromURL($(this).data('img'));
             var txt = $(".txt").val();
 
@@ -256,8 +258,8 @@
                     price:20,
                     left: 0,
                     top: 0,
-                    width: 150,
-                    height: 100
+                    width: input_width,
+                    height: input_height
                 });
                 screen.add(img1);
                 product_name_txt = $(this).data('name')
@@ -356,14 +358,14 @@
         if (corner) {
             switch (corner) {
                 case 'ml':
-                    action = 'scale';
+                    // action = 'scale';
                     break;
                 case 'mr':
-                    action = 'scaleX'; //ขยายไปด้านข้าง
+                    // action = 'scaleX'; //ขยายไปด้านข้าง
                     break;
                 case 'mt':
                 case 'mb':
-                    action = 'scaleY'; //ขยายรูปขึ้น
+                    // action = 'scaleY'; //ขยายรูปขึ้น
                     break;
                 case 'mtr':
                     action = 'rotate'; //หมุน
@@ -373,11 +375,11 @@
                     action = 'rotate';
                     break;
                 case 'tl':
-                    action = 'scale';
+                    // action = 'scale';
                     break;
                     /**ADD END**/
                 default:
-                    action = 'scale';
+                    // action = 'scale';
             }
             return action;
         }

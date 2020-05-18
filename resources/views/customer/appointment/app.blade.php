@@ -1,6 +1,6 @@
 @extends('customer.layouts.app', ['banner' => $banners])
 
-@section('title', 'ที่อยู่การติดตั้ง')
+@section('title', 'รายการนัดหมาย')
 
 @section('header-css')
 @endsection
