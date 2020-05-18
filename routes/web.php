@@ -144,6 +144,7 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
     Route::group(['prefix' => 'quotaion'], function () {
         Route::get('/', 'QuotationsController@view')->name('viewQuotationApanel');
         Route::get('/{id}', 'QuotationsController@detail')->name('viewDetailQuotationApanel');
+        Route::get('/{id}/cancel', 'QuotationsController@cancel')->name('cancelQuotationApanel');
         Route::get('/addDetail/{quotation_id}/{appointment_id}', 'QuotationsController@addDetail')->name('addQuotationDetail');
         Route::post('/addDetail/{quotation_id}', 'QuotationsController@storeDetail')->name('storeQuotationProductDetail');
         Route::post('/addPrice/{quotation_id}', 'QuotationsController@storePrice')->name('storeQuotationProductPrice');

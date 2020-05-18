@@ -35,7 +35,7 @@
                             <td style="width: 40%">{{sprintf("Q%05d", $item->id)}}</td>
                             <td style="width: 50%">{{$item->status}}</td>
                             <td style="width: 10%"><a href="{{route('viewDetailQuotationApanel', ['id'=> $item->id])}}"
-                                    class="btn btn-primary btn-sm">เพิ่มข้อมูลราคา</a></td>
+                                    class="btn btn-primary btn-sm">ดูรายละเอียด</a></td>
 
                         </tr>
                         @endforeach

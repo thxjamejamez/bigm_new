@@ -88,8 +88,10 @@
 
                 <div class="row">
                     <div class="col-md-12 text-right">
+                        <a class="btn btn-danger"
+                            href="{{route('cancelQuotationApanel', ['quotation_id' => $q_detail->id])}}">ปฏิเสธการเสนอราคา</a>
                         <button class="btn btn-success">
-                            บันทึกข้อมูล
+                            เพิ่มข้อมูลใบเสนอราคา
                         </button>
                     </div>
                 </div>

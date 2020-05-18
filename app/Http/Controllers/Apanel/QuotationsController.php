@@ -103,4 +103,14 @@ class QuotationsController extends Controller
 
         return redirect()->route('viewQuotationApanel');
     }
+
+    public function cancel($id)
+    {
+        \DB::table('quotations')
+            ->where('quotations.id', $id)
+            ->update([
+                'quotation_status' => 7
+            ]);
+        return redirect()->route('viewQuotationApanel');
+    }
 }
