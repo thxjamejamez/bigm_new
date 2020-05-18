@@ -14,7 +14,7 @@
             <div style="display: flex;">
                 <div style="margin-top: 10px;">
                     <h6 class="m-0 font-weight-bold text-primary">
-                        ออร์เดอร์ทั้งหมด
+                        รายการคำสั่งซืื้อ
                     </h6>
                 </div>
             </div>
@@ -24,29 +24,25 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr align="center">
-                            <th style="width: 13%">หมายเลขคำสั่งซื้อ</th>
-                            <th style="width: 22%">ชื่อ - สกุล</th>
-                            <th style="width: 13%">วันที่ติดตั้ง</th>
-                            <th style="width: 12%">ราคา</th>
-                            <th style="width: 15%">สถานะ</th>
-                            <th style="width: 10%">รายละเอียด</th>
+                            <th style="width: 40%">หมายเลขคำสั่งซื้อ</th>
+                            <th style="width: 50%">สถานะคำสั่งซื้อ</th>
+                            <th style="width: 10%"></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($order as $item)
                         <tr>
-                            <td align="center">xxxxxxx</td>
-                            <td>xxxxxxx</td>
-                            <td align="center">xxxxxxx</td>
-                            <td align="center">xxxxx</td>
-                            <td align="center">xxxxxxx</td>
+                            <td align="center">{{sprintf("ORD%05d", $item->id)}}</td>
+                            <td align="center">{{$item->status}}</td>
                             <td align="center">
-                                <a href="{{ route('OrderDetail', ['id' => 1]) }}">
+                                <a href="{{ route('viewOrderDetailApanel', ['id' => 1]) }}">
                                     <div class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-search"></i>
                                     </div>
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

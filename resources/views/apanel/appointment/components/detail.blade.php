@@ -22,15 +22,14 @@
     <div style="font-size: 20px;color: black">รายการรูปแบบสินค้า</div>
     <div class="col-md-12">
       <div class="row" style="margin-top: 10px">
-
         @foreach ($product as $item)
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
           <img style="max-width: 220px;max-height: 130px;border-radius: 10px"
             src="{{($item->img_path) ? $item->img_path : '/img/defualt_product.jpg'}}">
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
           <div style="font-size: 18px;color:black;">
             {{$item->name}}
           </div>
@@ -83,7 +82,8 @@
           เพิ่มข้อมูลรายละเอียดสินค้า
         </a>
         @elseif($appointmentDetail->appointment_status == 3 && $appointmentDetail->appointment_type == 2)
-        <a href="/" class="btn btn-success">
+        <a href="{{route('changeOrderToInstalled', ['appointment_id' => $appointmentDetail->id])}}"
+          class="btn btn-success">
           ยืนยันการติดตั้งสินค้า
         </a>
         @else

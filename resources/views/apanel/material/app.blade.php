@@ -34,7 +34,6 @@
                             <th style="width: 5%">ลำดับ</th>
                             <th style="width: 25%">ชื่อวัตถุดิบ</th>
                             <th style="width: 35%">รูปสินค้า</th>
-                            {{-- <th style="width: 15%">สถานะ</th> --}}
                             <th style="width: 7%">เเก้ไข</th>
                             <th style="width: 7%">ลบ</th>
                         </tr>
@@ -45,14 +44,8 @@
                         <tr>
                             <td align="center">{{ $mt->id }}</td>
                             <td>{{ $mt->name }}</td>
-                            <td align="center"> <img style="width: 150px;height: 150px;" src="{{($mt->img_path) ? $mt->img_path : '/img/defualt_product.jpg'}}"></td>
-                            {{-- <td>    
-                                @if ($mt->active==1)
-                                    <div>ยังดำเนินการ</div>    
-                                @else
-                                    <div>หยุดดำเนินการ</div>            
-                                @endif
-                            </td> --}}
+                            <td align="center"> <img style="width: 150px;height: 150px;"
+                                    src="{{($mt->img_path) ? $mt->img_path : '/img/defualt_product.jpg'}}"></td>
                             <td align="center">
                                 <div class="btn btn-warning btn-circle btn-sm">
                                     <a href="/apanel/material/{{$mt->id}}" class="btn btn-warning btn-circle btn-sm">
@@ -97,14 +90,7 @@
                         <span>ชื่อวัตถุดิบ</span>
                         <input type="text" name="nameMaterial" class="form-control" required>
                     </div>
-                    {{-- <div class="mt-2">
-                <span>ราคา (บาท)</span>
-                <input type="text" name="" class="form-control" required>
-            </div>
-            <div class="mt-2">
-                <span>ขนาด (เซนติเมตร)</span>
-                <input type="text" name="" class="form-control" required>
-            </div> --}}
+
                     <div class="mt-2">
                         <span>ภาพวัตถุดิบ</span>
                         <input type="file" name="img_material" class="form-control" required>

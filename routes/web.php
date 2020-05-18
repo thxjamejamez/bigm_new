@@ -93,9 +93,6 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         return view('apanel.home');
     })->name('indexApanel');
 
-
-    // Route::get('default', 'DefaultController@view')->name('default');
-
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'UserController@view')->name('viewUser');
         Route::get('/{id}', 'UserController@viewDetail')->name('detailUser');
@@ -122,13 +119,17 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
     });
 
     Route::group(['prefix' => 'order'], function () {
-        Route::get('/', 'OrderController@view')->name('Order');
-        Route::get('/{id}', 'OrderController@viewDtail')->name('OrderDetail');
+        Route::get('/', 'OrderController@view')->name('viewOrderApanel');
+        Route::get('/{id}', 'OrderController@viewDtail')->name('viewOrderDetailApanel');
+        Route::get('/{order_id}/done', 'OrderController@changeOrderToDone')->name('changeOrderToDone');
+        Route::get('/{appointment_id}/install', 'OrderController@changeOrderToInstalled')->name('changeOrderToInstalled');
     });
 
     Route::group(['prefix' => 'checkPayMent'], function () {
         Route::get('/', 'CheckPayMentController@view')->name('viewCheckPayment');
         Route::get('/{id}', 'CheckPayMentController@viewDetail')->name('detailCheckPayMent');
+        Route::get('/{id}/success', 'CheckPayMentController@PaymentSuccess')->name('PaymentSuccess');
+        Route::get('/{id}/invalid', 'CheckPayMentController@PaymentInvalid')->name('PaymentInvalid');
     });
 
 
@@ -148,9 +149,5 @@ Route::group(['prefix' => 'apanel', 'namespace' => 'Apanel', 'middleware' => 'ad
         Route::post('/addPrice/{quotation_id}', 'QuotationsController@storePrice')->name('storeQuotationProductPrice');
     });
 
-    Route::group(['prefix' => 'payQuotations'], function () {
-
-        Route::get('/', 'PayQuotationController@view')->name('payQuotations');
-        Route::get('/{id}', 'PayQuotationController@viewDetail')->name('payQuotationsDetail');
-    });
+    Route::get('/report/summary', 'SummaryReportController@index')->name('viewSummaryReport');
 });

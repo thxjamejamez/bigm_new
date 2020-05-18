@@ -14,7 +14,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::group(['middleware' => 'auth:web'], function () {
 Route::group(['prefix' => 'list', 'namespace' => 'API'], function () {
     Route::get('province', 'ListController@GetProvinceList');
     Route::get('amphure/{province_id}', 'ListController@GetAmphureList');
@@ -30,4 +29,7 @@ Route::group(['namespace' => 'Customer'], function () {
     # Quotations
     Route::get('quotation', 'QuotationController@getQuotationlist');
 });
-// });
+
+Route::group(['namespace' => 'Apanel'], function () {
+    Route::get('salesummaryget', 'SummaryReportController@getsalesummary');
+});

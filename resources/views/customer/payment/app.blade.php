@@ -21,16 +21,20 @@
               enctype="multipart/form-data">
               @csrf
               <div class="form-group">
-                <label>## หมายเลขคำสั่งซื้อ {{sprintf("ORD%05d", $order->id)}} </label>
-                <input type="hidden" name="order_id" value="1">
+                <label>## หมายเลขคำสั่งซื้อ: {{sprintf("ORD%05d", $order->id)}} | ยอดรวม:
+                  {{number_format($order->amount, 2)}} </label>
+                <input type="hidden" name="order_id" value="{{$order->id}}">
               </div>
               <div class="form-group">
                 <label>เลือกธนาคารที่โอน</label>
                 <select class="form-control" name="bankname">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="ธนาคารกรุงเทพ จำกัด (มหาชน)">ธนาคารกรุงเทพ จำกัด (มหาชน)</option>
+                  <option value="ธนาคารกรุงไทย จำกัด (มหาชน)">ธนาคารกรุงไทย จำกัด (มหาชน)</option>
+                  <option value="ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน)">ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน)</option>
+                  <option value="ธนาคารกสิกรไทย จำกัด (มหาชน)">ธนาคารกสิกรไทย จำกัด (มหาชน)</option>
+                  <option value="ธนาคารทหารไทย จำกัด (มหาชน)">ธนาคารทหารไทย จำกัด (มหาชน)</option>
+                  <option value="ธนาคารไทยพาณิชย์ จำกัด (มหาชน)">ธนาคารไทยพาณิชย์ จำกัด (มหาชน)</option>
+                  <option value="ธนาคารยูโอบี จำกัด (มหาชน)">ธนาคารยูโอบี จำกัด (มหาชน)</option>
                 </select>
               </div>
               <div class="form-group">

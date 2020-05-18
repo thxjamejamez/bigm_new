@@ -48,44 +48,52 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewUser') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>จัดการข้อมูลผู้ใช้งาน</span></a>
             </li>
 
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewProduct') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-align-justify"></i>
                     <span>จัดการข้อมูลรูปแบบสินค้า</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewMaterial') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-puzzle-piece"></i>
                     <span>จัดการข้อมูลวัตถุดิบ</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewApanelAppointment') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-atlas"></i>
                     <span>การนัดหมาย</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewQuotationApanel') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-balance-scale"></i>
                     <span>การเสนอราคา</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('viewCheckPayment') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-check-square"></i>
                     <span>ตรวจสอบการชำระเงิน</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('viewOrderApanel') }}">
+                    <i class="fas fa-fw fa-money-check"></i>
+                    <span>รายการคำสั่งซื้อ</span></a>
+            </li>
 
-
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('viewSummaryReport') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>รายงานการขาย</span></a>
+            </li>
 
 
             <!-- Divider -->

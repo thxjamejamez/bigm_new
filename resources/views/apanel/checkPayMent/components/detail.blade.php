@@ -1,158 +1,139 @@
 @extends('apanel.layouts.app')
 
-@section('title', 'รายละเอียดตรวจสอบการชำระเงิน')
+@section('title', 'รายละเอียดการชำระเงิน')
 
 @section('header-css')
 <link href="/plugins/apanel/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<style>
+    img {
+        width: 300px;
+        height: 350px;
+    }
+</style>
 @endsection
 
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-       <div style="display: flex;">
-         <div style="margin-top: 10px;">
-           <h6 class="m-0 font-weight-bold text-primary">
-             รายละเอียดการชำระเงิน
-           </h6>
-         </div>
-       </div>
-     </div>
-     <div class="card-body">
-           <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-6">
-                       <table style="width: 100%;">
-                           <tr style="text-align: left;">
-                               <td>
-                                   หมายเลขคำสั่งซื้อ
-                               </td>
-                               <td>
-                                   : xxxxxxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                                   ชื่อลูกค้า
-                               </td>
-                               <td>
-                                   : xxxxxxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                                   เบอร์โทร
-                               </td>
-                               <td>
-                                   : xxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-                           <tr style="text-align: left;">
-                               <td>
-                                   วันที่ติดตั้ง
-                               </td>
-                               <td>
-                                       : xxxxxxxxxxxxxxxxxxxxxxx
-                               </td>
-                           </tr>
-   
-                           <tr style="text-align: left;">
-                                   <td>
-                                   ห้องที่ถูกจอง
-                                   </td>
-                                   <td>
-                                       : xxxxxxxxxxxxx
-                                   </td>   
-                           </tr>
-   
-                           <tr style="text-align: left;">
-                               <td>
-                                   สถานะ
-                               </td>
-                               <td >
-                                   : xxxxxxxxxxxx
-                               </td>
-                           </tr>
+        <div style="display: flex;">
+            <div style="margin-top: 10px;">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    รายละเอียดการชำระเงิน
+                </h6>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <table style="width: 100%;">
+                        <tr style="text-align: left;">
+                            <td>
+                                หมายเลขคำสั่งซื้อ
+                            </td>
+                            <td>
+                                : {{sprintf("ORD%05d", $order_detail->id)}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                สถานะคำสั่งซื้อ
+                            </td>
+                            <td>
+                                : {{$order_detail->status}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                ยอดที่ต้องชำระ
+                            </td>
+                            <td>
+                                : {{number_format($order_detail->amount, 2)}} บาท
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                ชื่อลูกค้าที่แจ้งชำระ
+                            </td>
+                            <td>
+                                : {{$order_detail->name_sender}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                โอนจากบัญชี
+                            </td>
+                            <td>
+                                : {{$order_detail->bank_name}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                จำนวนเงินที่ชำระ
+                            </td>
+                            <td>
+                                : {{number_format($order_detail->send_amount, 2)}} บาท
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                วันเวลาที่ชำระเงิน
+                            </td>
+                            <td>
+                                : {{date('d-m-Y H:i:s', strtotime($order_detail->payment_datetime))}}
+                            </td>
+                        </tr>
+                        <tr style="text-align: left;">
+                            <td>
+                                หมายเหตุ
+                            </td>
+                            <td>
+                                : {{$order_detail->remark}}
+                            </td>
+                        </tr>
 
-                           <tr style="text-align: left;">
-                            <td>
-                                ชื่อบัญชี
-                            </td>
-                            <td>
-                                : xxxxxxxxxxx
-                            </td>
-                        </tr>
-                        <tr style="text-align: left;">
-                            <td>
-                                โอนไปธนาคาร
-                            </td>
-                            <td>
-                                : xxxxxxxxxxxxx
-                            </td>
-                        </tr>
-                        <tr style="text-align: left;">
-                            <td>
-                                จำนวนเงิน
-                            </td>
-                            <td>
-                            : xxxxxxxxxxxxxxxxx
-                            </td>
-                        </tr>
-                        <tr style="text-align: left;">
-                            <td>
-                            วันที่โอน
-                            </td>
-                            <td>
-                            : xxxxxxxxxxxxxxxxxxxxxxx
-                            </td>
-                        </tr>
-                        <tr style="text-align: left;">
-                            <td>
-                            เวลา
-                            </td>
-                            <td>
-                            : xxxxxxxxxxxxxxx
-                            </td>
-                        </tr>
-   
-                       </table>
-                   </div>
-               </div>
-           </div>
-           <hr>
-           <div class="col-md-12">
-               <div class="row">
-                   <div class="col-md-12" align="center">
-                       <p>img</p>
-          
-                   </div>
-               </div>
-           </div>
-           <hr>
-           <div align="center">
-               <table>
-                   <tr>
-                       <td style="width: 140px;">
-                           <a href="">
-                                <button style="width: 100%;" class="btn btn-danger">
-                                    ไม่ถูกต้อง
-                                </button>
-                           </a>
-                       </td>
-                       <td>
-                           &nbsp;
-                       </td>
-                       <td style="width: 140px">
-                           <a href="">
-                                <button style="width: 100%;" class="btn btn-success">
-                                    ถูกต้อง
-                                </button>   
-                           </a>
-                       </td>
-                   </tr>
-               </table>
-            
-           </div>
-       </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12" align="center">
+                    <img src="{{$order_detail->img_slip}}">
+                </div>
+            </div>
+        </div>
+        <hr>
+        @if (in_array($order_detail->order_status, [4, 9]))
+        <div align="center">
+            <table>
+                <tr>
+                    <td style="width: 140px;">
+                        <a href="{{route('PaymentInvalid', ['id' => $order_detail->id])}}">
+                            <button style="width: 100%;" class="btn btn-danger">
+                                ไม่ถูกต้อง
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td style="width: 140px">
+                        <a href="{{route('PaymentSuccess', ['id' => $order_detail->id])}}">
+                            <button style="width: 100%;" class="btn btn-success">
+                                ถูกต้อง
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        @endif
+
+
+    </div>
 </div>
 @endsection
 

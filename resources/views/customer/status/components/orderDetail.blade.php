@@ -60,7 +60,8 @@
                 <div class="row justify-content-between">
                     <div class="col-md-12 justify-content-between">
                         <div class="col-md-10 justify-content-between">
-                            กรุณาชำระเงิน และแจ้งชำระเงิน
+                            กรุณาชำระเงิน เลขที่บัญชี 230-2-19598-9 ธ.ธนาคารกสิกรไทย นายวิเชียร อุณใจ
+                            หากชำระเงินแล้วโปรดแจ้งชำระเงิน
                         </div>
                         <div class="col-md-2 float-right">
                             <a class="btn btn-primary" href="{{route('payment', ['id' => $order->id])}}">
@@ -165,7 +166,7 @@
                                                 <div class="head-pddetail row mb-3">
                                                     <div class="col-md-6 text-center">
                                                         <span class="text-head">
-                                                            ขนาดสินค้า
+                                                            ขนาดสินค้า (เซนติเมตร)
                                                         </span>
                                                     </div>
                                                     <div class="col-md-3 text-center">
@@ -175,7 +176,7 @@
                                                     </div>
                                                     <div class="col-md-3 text-center">
                                                         <span class="text-head">
-                                                            ราคา
+                                                            ราคาต่อหน่วย
                                                         </span>
                                                     </div>
                                                 </div>

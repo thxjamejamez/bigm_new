@@ -77,6 +77,7 @@ class OrderController extends Controller
                 'l_order_status.name as status',
                 'orders.remark',
                 'orders.amount',
+                'cust_send_address.address',
                 'cust_send_address.district_id',
                 'l_district.name as district_name',
                 'cust_send_address.amphure_id',
