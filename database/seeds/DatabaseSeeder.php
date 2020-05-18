@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AmphureTableSeeder::class);
         $this->call(DistrictTableSeeder::class);
         $this->call(ProductCategoriesSeeder::class);
-        $this->call(ProductsSeeder::class);
+        // $this->call(ProductsSeeder::class);
         $this->call(OrderStatusSeeder::class);
         $this->call(QuotationStatusSeeder::class);
         $this->call(AppointmentStatusSeeder::class);

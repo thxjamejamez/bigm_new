@@ -65,7 +65,7 @@
                                     <div class="head-pddetail row mb-3">
                                         <div class="col-md-6 text-center">
                                             <span class="text-head">
-                                                ขนาดสินค้า
+                                                ขนาดสินค้า (เซนติเมตร)
                                             </span>
                                         </div>
                                         <div class="col-md-3 text-center">
@@ -84,7 +84,7 @@
                                             <div class="input-group">
                                                 <input :name="'size['+index_pd+']['+index_detail+']'" type="text"
                                                     class="form-control" @keypress="validKeyNumbers"
-                                                    v-model="detail.size" required="required">
+                                                    v-model="detail.size" required="required" placeholder="กว้าง*ยาว">
                                             </div>
                                         </div>
 

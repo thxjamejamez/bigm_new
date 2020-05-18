@@ -14,19 +14,19 @@ class ProductCategoriesSeeder extends Seeder
         $data = $this->data();
         foreach ($data as $key => $value) {
             \DB::table('product_categories')
-            ->insertOrIgnore([
-                'id' => $value['id'],
-                'name' => $value['name'],
-                'active' => 1
-            ]);
+                ->insertOrIgnore([
+                    'id' => $value['id'],
+                    'name' => $value['name'],
+                    'active' => 1
+                ]);
         }
     }
 
     private function data()
     {
         return [
-            ['id' => 1, 'name' => 'สินค้าทั่วไป'],
-            ['id' => 2, 'name' => 'สินค้าที่สร้างเอง']
+            ['id' => 1, 'name' => 'รูปแบบสินค้าทั่วไป'],
+            ['id' => 2, 'name' => 'รูปแบบสินค้าที่อัพโหลด']
         ];
     }
 }
