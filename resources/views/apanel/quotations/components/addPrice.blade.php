@@ -29,7 +29,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 d-flex justify-content-center">
-                                <img src="{{($pd->img_path) ? $pd->img_path : '\img\defualt_product.jpg'}}">
+                                <img style="max-width: 200px"
+                                    src="{{($pd->img_path) ? $pd->img_path : '\img\defualt_product.jpg'}}">
                                 <input type="hidden" :name="'product[{{$keypd}}]'" value="{{$pd->product_format_id}}">
                             </div>
 

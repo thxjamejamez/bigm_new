@@ -110,8 +110,7 @@ class AppointmentController extends Controller
             $quotation->quotation_status = 3;
             $quotation->save();
         } else {
-            $findorder = \App\Orders::where('orders.quotation_id', $appointment->quotation_id)->first();
-            $order = \App\Orders::find($findorder->id);
+            $order = \App\Orders::find($appointment->quotation_id);
             $order->order_status = 2;
             $order->send_change_datetime = date('Y-m-d H:i:s', strtotime($request->change_date));
             $order->save();
