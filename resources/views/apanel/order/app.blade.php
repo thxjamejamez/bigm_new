@@ -35,11 +35,11 @@
                             <td align="center">{{sprintf("ORD%05d", $item->id)}}</td>
                             <td align="center">{{$item->status}}</td>
                             <td align="center">
-                                <a href="{{ route('viewOrderDetailApanel', ['id' => 1]) }}">
+                                <a href="{{ route('viewOrderDetailApanel', ['order_id' => $item->id]) }}">
                                     <div class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-search"></i>
                                     </div>
-                                </a>
+                                </a>z
                             </td>
                         </tr>
                         @endforeach

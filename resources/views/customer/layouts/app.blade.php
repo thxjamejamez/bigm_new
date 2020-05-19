@@ -43,7 +43,7 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+                    <a href="/"><img src="img/WG_Logo.png" style="width: 90px;"></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
